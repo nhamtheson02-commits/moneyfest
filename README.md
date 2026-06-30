@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MONEYFEST
 
-## Getting Started
+MONEYFEST là website Phase 1 MVP xây bằng Next.js App Router, TypeScript, Tailwind CSS và Prisma.
 
-First, run the development server:
+## Chạy local
 
 ```bash
+npm install
+npx prisma generate
+npx prisma db push
+npx prisma db seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mở:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Database
 
-## Learn More
+Local dev đang dùng SQLite để dễ chạy ngay:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+DATABASE_URL="file:./prisma/dev.db"
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Production nên dùng PostgreSQL qua Supabase, Neon hoặc provider tương thích Prisma. Khi deploy production, thiết lập `DATABASE_URL` trong dashboard hosting/secrets. Không hard-code database URL trong source code.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Gợi ý production:
 
-## Deploy on Vercel
+```env
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/DATABASE?schema=public"
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Lưu ý: Prisma schema hiện đang cấu hình cho SQLite dev mode. Khi chuyển hẳn sang PostgreSQL production, cần cập nhật datasource/provider và chạy migration theo môi trường production.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Admin
+
+Route `/admin` được bảo vệ bằng Basic Auth qua biến môi trường:
+
+```env
+ADMIN_USERNAME="admin"
+ADMIN_PASSWORD="use-a-long-random-password"
+```
+
+Nếu thiếu hai biến này, `/admin` sẽ không mở public và sẽ hiển thị hướng dẫn cấu hình. Không commit mật khẩu thật vào repository.
+
+## Form và consent
+
+Các form thu lead có:
+
+- Validation server-side bằng Zod.
+- Honeypot chống bot cơ bản.
+- Consent checkbox bắt buộc khi lưu thông tin cá nhân.
+- Lead trùng email sẽ được cập nhật thay vì tạo mới bừa bãi.
+
+## Lệnh kiểm tra
+
+```bash
+npm run lint
+npm run build
+```
+
+Nếu đổi Prisma schema:
+
+```bash
+npx prisma generate
+npx prisma db push
+```
+
+Nếu đổi seed:
+
+```bash
+npx prisma db seed
+```

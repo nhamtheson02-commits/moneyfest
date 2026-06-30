@@ -1,0 +1,150 @@
+import { prisma } from "@/lib/prisma";
+
+export const services = [
+  {
+    title: "Ebook trả phí",
+    price: "Từ 99.000 VND",
+    description: "Bộ workbook thực hành ngân sách, xử lý nợ và lập kế hoạch đầu tư cá nhân.",
+    status: "Sẵn sàng thử nghiệm",
+  },
+  {
+    title: "Tư vấn 1:1",
+    price: "Theo nhu cầu",
+    description: "Buổi làm việc riêng để soi dòng tiền, mục tiêu và lập kế hoạch 90 ngày.",
+    status: "Mở form đăng ký",
+  },
+  {
+    title: "Membership MONEYFEST",
+    price: "Sắp ra mắt",
+    description: "Cộng đồng học tài chính cá nhân, template hằng tháng và Q&A định kỳ.",
+    status: "Sắp ra mắt",
+  },
+  {
+    title: "Dashboard tài chính",
+    price: "Sắp ra mắt",
+    description: "Theo dõi tài sản, nợ, dòng tiền và mục tiêu trong một nơi.",
+    status: "Sắp ra mắt",
+  },
+];
+
+async function safeQuery<T>(query: Promise<T>, fallback: T) {
+  try {
+    return await query;
+  } catch {
+    return fallback;
+  }
+}
+
+export async function getHomeData() {
+  const [ebooks, posts] = await Promise.all([
+    safeQuery(
+      prisma.ebook.findMany({
+        where: { isFeatured: true },
+        orderBy: { createdAt: "desc" },
+        take: 3,
+      }),
+      [],
+    ),
+    safeQuery(
+      prisma.post.findMany({
+        where: { isFeatured: true },
+        include: { category: true, tags: true },
+        orderBy: { publishedAt: "desc" },
+        take: 3,
+      }),
+      [],
+    ),
+  ]);
+
+  return { ebooks, posts };
+}
+
+export async function getEbooks() {
+  return safeQuery(
+    prisma.ebook.findMany({
+      orderBy: [{ isFeatured: "desc" }, { createdAt: "desc" }],
+    }),
+    [],
+  );
+}
+
+export async function getEbookBySlug(slug: string) {
+  return safeQuery(
+    prisma.ebook.findUnique({
+      where: { slug },
+      include: { _count: { select: { downloads: true } } },
+    }),
+    null,
+  );
+}
+
+export async function getPosts() {
+  return safeQuery(
+    prisma.post.findMany({
+      include: { category: true, tags: true },
+      orderBy: { publishedAt: "desc" },
+    }),
+    [],
+  );
+}
+
+export async function getPostBySlug(slug: string) {
+  return safeQuery(
+    prisma.post.findUnique({
+      where: { slug },
+      include: { category: true, tags: true },
+    }),
+    null,
+  );
+}
+
+export async function getAdminData() {
+  const fallback = {
+    leadCount: 0,
+    ebookDownloadCount: 0,
+    postCount: 0,
+    consultationCount: 0,
+    leads: [],
+    downloads: [],
+    consultations: [],
+  };
+
+  try {
+    const [
+      leadCount,
+      ebookDownloadCount,
+      postCount,
+      consultationCount,
+      leads,
+      downloads,
+      consultations,
+    ] = await Promise.all([
+      prisma.lead.count(),
+      prisma.ebookDownload.count(),
+      prisma.post.count(),
+      prisma.consultationRequest.count(),
+      prisma.lead.findMany({ orderBy: { createdAt: "desc" }, take: 8 }),
+      prisma.ebookDownload.findMany({
+        include: { lead: true, ebook: true },
+        orderBy: { createdAt: "desc" },
+        take: 8,
+      }),
+      prisma.consultationRequest.findMany({
+        orderBy: { createdAt: "desc" },
+        take: 8,
+      }),
+    ]);
+
+    return {
+      leadCount,
+      ebookDownloadCount,
+      postCount,
+      consultationCount,
+      leads,
+      downloads,
+      consultations,
+    };
+  } catch {
+    return fallback;
+  }
+}
