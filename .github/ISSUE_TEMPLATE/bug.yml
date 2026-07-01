@@ -1,0 +1,22 @@
+name: Báo lỗi
+description: Báo một lỗi trên website MoneyFest
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Lỗi đang xảy ra
+      description: Mô tả điều bạn thấy và điều bạn mong đợi.
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Trang bị lỗi
+      placeholder: https://moneyfest-website.netlify.app/...
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Ảnh hoặc video
+
