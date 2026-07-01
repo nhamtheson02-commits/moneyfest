@@ -4,6 +4,7 @@ import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { useReportWebVitals } from "next/web-vitals";
+import { captureMarketingAttribution } from "@/lib/attribution";
 
 declare global {
   interface Window {
@@ -19,6 +20,7 @@ export function Analytics() {
   const pathname = usePathname();
 
   useEffect(() => {
+    captureMarketingAttribution();
     if (!gaId || !window.gtag) return;
     window.gtag("event", "page_view", {
       page_location: window.location.href,

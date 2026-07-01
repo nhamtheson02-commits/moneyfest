@@ -8,6 +8,7 @@ import Link from "next/link";
 import { submitEbookDownload } from "@/lib/actions";
 import { ebookDownloadSchema } from "@/lib/validation";
 import { trackEvent } from "@/lib/analytics";
+import { getMarketingAttribution } from "@/lib/attribution";
 import type { z } from "zod";
 
 type FormValues = z.infer<typeof ebookDownloadSchema>;
@@ -25,7 +26,8 @@ export function EbookDownloadForm({ ebookSlug }: { ebookSlug: string }) {
     setMessage(null);
     setDownloadUrl(null);
     startTransition(async () => {
-      const result = await submitEbookDownload(values);
+      const attribution = getMarketingAttribution();
+      const result = await submitEbookDownload({ ...values, ...attribution });
       setMessage(result.message);
       if (result.downloadUrl) setDownloadUrl(result.downloadUrl);
       if (result.ok) {
@@ -33,6 +35,8 @@ export function EbookDownloadForm({ ebookSlug }: { ebookSlug: string }) {
           form_name: "ebook_download",
           lead_source: "ebook_download",
           ebook_slug: ebookSlug,
+          utm_source: attribution.utm_source,
+          utm_campaign: attribution.utm_campaign,
         });
         form.reset({ ebookSlug, name: "", email: "", phone: "", consentGiven: false, company: "" });
       }

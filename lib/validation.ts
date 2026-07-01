@@ -13,6 +13,16 @@ const phoneOptionalSchema = z
     message: "Số điện thoại chưa hợp lệ",
   });
 
+const attributionFields = {
+  utm_source: z.string().max(200).optional(),
+  utm_medium: z.string().max(200).optional(),
+  utm_campaign: z.string().max(200).optional(),
+  utm_content: z.string().max(200).optional(),
+  utm_term: z.string().max(200).optional(),
+  landing_page: z.string().max(500).optional(),
+  referrer: z.string().max(500).optional(),
+};
+
 export const ebookDownloadSchema = z.object({
   ebookSlug: z.string().min(1),
   name: z.string().min(2, "Vui lòng nhập họ tên"),
@@ -20,6 +30,7 @@ export const ebookDownloadSchema = z.object({
   phone: phoneOptionalSchema,
   consentGiven: consentSchema,
   company: honeypotSchema,
+  ...attributionFields,
 });
 
 export const consultationSchema = z.object({
@@ -30,6 +41,7 @@ export const consultationSchema = z.object({
   message: z.string().min(10, "Hãy chia sẻ ngắn gọn nhu cầu của bạn"),
   consentGiven: consentSchema,
   company: honeypotSchema,
+  ...attributionFields,
 });
 
 export const cashflowSchema = z

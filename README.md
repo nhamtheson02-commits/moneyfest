@@ -71,3 +71,18 @@ Nếu đổi seed:
 ```bash
 npx prisma db seed
 ```
+
+## Phase 2: đo lường và tự động hóa lead
+
+Các tích hợp đều an toàn khi chưa có khóa: website vẫn build và form vẫn lưu dữ liệu vào PostgreSQL.
+
+- `NEXT_PUBLIC_GA_MEASUREMENT_ID`: Google Analytics 4.
+- `NEXT_PUBLIC_CLARITY_PROJECT_ID`: Microsoft Clarity.
+- `BREVO_API_KEY`: đồng bộ contact và gửi email giao dịch.
+- `BREVO_SENDER_EMAIL`: địa chỉ người gửi đã xác minh trong Brevo.
+- `BREVO_OWNER_EMAIL`: nhận thông báo khi có lead tư vấn mới.
+- `BREVO_LIST_ID`: danh sách contact MONEYFEST trong Brevo.
+- `NEXT_PUBLIC_SENTRY_DSN` và `SENTRY_DSN`: theo dõi lỗi trình duyệt và server.
+- `SENTRY_ORG`, `SENTRY_PROJECT`, `SENTRY_AUTH_TOKEN`: tải source map lên Sentry khi build.
+
+Form ebook và tư vấn ghi nhận nguồn UTM, đồng bộ contact vào Brevo, gửi email xác nhận và phát sự kiện GA4 `generate_lead`.

@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
+import { runLeadAutomation } from "@/lib/brevo";
 import {
   cashflowSchema,
   consultationSchema,
@@ -112,6 +113,14 @@ export async function submitEbookDownload(data: unknown): Promise<ActionState> {
   ]);
 
   safeRevalidate("/admin");
+  await runLeadAutomation({
+    name: parsed.data.name,
+    email: parsed.data.email,
+    phone: parsed.data.phone,
+    source: "ebook_download",
+    ebookTitle: ebook.title,
+    downloadUrl: ebook.fileUrl,
+  });
 
   if (ebook.fileUrl) {
     return {
@@ -144,9 +153,26 @@ export async function submitConsultation(data: unknown): Promise<ActionState> {
     consentGiven: parsed.data.consentGiven,
   });
 
-  const { consentGiven, ...consultationDataWithHoneypot } = parsed.data;
-  const { company, ...consultationData } = consultationDataWithHoneypot;
+  const {
+    consentGiven,
+    company,
+    utm_source,
+    utm_medium,
+    utm_campaign,
+    utm_content,
+    utm_term,
+    landing_page,
+    referrer,
+    ...consultationData
+  } = parsed.data;
   void company;
+  void utm_source;
+  void utm_medium;
+  void utm_campaign;
+  void utm_content;
+  void utm_term;
+  void landing_page;
+  void referrer;
   const consentAt = consentGiven ? new Date() : null;
 
   await prisma.$transaction([
@@ -167,6 +193,14 @@ export async function submitConsultation(data: unknown): Promise<ActionState> {
   ]);
 
   safeRevalidate("/admin");
+  await runLeadAutomation({
+    name: parsed.data.name,
+    email: parsed.data.email,
+    phone: parsed.data.phone,
+    source: "consultation",
+    financialGoal: parsed.data.financialGoal,
+    message: parsed.data.message,
+  });
   return {
     ok: true,
     message: "Đã nhận thông tin. MONEYFEST sẽ liên hệ để hẹn buổi tư vấn phù hợp.",

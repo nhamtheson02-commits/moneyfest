@@ -8,6 +8,7 @@ import Link from "next/link";
 import { submitConsultation } from "@/lib/actions";
 import { consultationSchema } from "@/lib/validation";
 import { trackEvent } from "@/lib/analytics";
+import { getMarketingAttribution } from "@/lib/attribution";
 import type { z } from "zod";
 
 type FormValues = z.infer<typeof consultationSchema>;
@@ -31,12 +32,15 @@ export function ConsultationForm() {
   function onSubmit(values: FormValues) {
     setMessage(null);
     startTransition(async () => {
-      const result = await submitConsultation(values);
+      const attribution = getMarketingAttribution();
+      const result = await submitConsultation({ ...values, ...attribution });
       setMessage(result.message);
       if (result.ok) {
         trackEvent("generate_lead", {
           form_name: "consultation",
           lead_source: "consultation",
+          utm_source: attribution.utm_source,
+          utm_campaign: attribution.utm_campaign,
         });
         form.reset();
       }
