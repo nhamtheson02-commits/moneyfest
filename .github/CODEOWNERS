@@ -1,0 +1,9 @@
+# Người duyệt mặc định cho toàn bộ website
+* @JasonBui1285
+
+# Các khu vực nhạy cảm phải được Owner xem lại
+/.github/ @JasonBui1285
+/prisma/ @JasonBui1285
+/proxy.ts @JasonBui1285
+/NETLIFY_DEPLOY_GUIDE.md @JasonBui1285
+

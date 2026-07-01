@@ -1,5 +1,16 @@
 # MONEYFEST
 
+Website chính thức dùng Next.js App Router, TypeScript, Tailwind CSS và Prisma/PostgreSQL.
+
+## Làm việc nhóm
+
+- Mỗi thay đổi dùng một nhánh riêng.
+- Mở Pull Request vào `main`.
+- Kiểm tra Deploy Preview của Netlify trước khi gộp.
+- Không commit file `.env` hoặc thông tin đăng nhập.
+
+Xem quy trình đầy đủ tại [`docs/TEAM_WORKFLOW.md`](docs/TEAM_WORKFLOW.md).
+
 MONEYFEST là website Phase 1 MVP xây bằng Next.js App Router, TypeScript, Tailwind CSS và Prisma.
 
 ## Chạy local
