@@ -8,6 +8,7 @@ const navItems: NavItem[] = [
   { href: "/tools", label: "Công cụ" },
   { href: "/services", label: "Dịch vụ" },
   { href: "/contact", label: "Liên hệ" },
+  { href: "/account", label: "Tài khoản" },
 ];
 
 export function Header() {

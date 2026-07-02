@@ -28,9 +28,10 @@ export default async function AdminPage() {
         />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard label="Tổng lead" value={data.leadCount} />
+          <StatCard label="Lead mới 7 ngày" value={data.recentLeadCount} />
           <StatCard label="Tổng lượt tải ebook" value={data.ebookDownloadCount} />
-          <StatCard label="Tổng bài viết" value={data.postCount} />
           <StatCard label="Yêu cầu tư vấn" value={data.consultationCount} />
+          <StatCard label="Users đăng ký" value={data.userCount} />
         </div>
         <div className="mt-8 grid gap-6 xl:grid-cols-3">
           <InternalTable title="Lead mới nhất" empty="Chưa có lead" hasRows={data.leads.length > 0}>
@@ -60,6 +61,26 @@ export default async function AdminPage() {
                 <td>{request.financialGoal}</td>
                 <td>{request.phone}</td>
                 <td>{formatDate(request.createdAt)}</td>
+              </tr>
+            ))}
+          </InternalTable>
+          <InternalTable title="Ebook hiệu quả nhất" empty="Chưa có lượt tải" hasRows={data.topEbooks.length > 0}>
+            {data.topEbooks.map((ebook) => (
+              <tr key={ebook.id}>
+                <td>{ebook.title}</td>
+                <td>{ebook.slug}</td>
+                <td>{ebook._count.downloads} lượt tải</td>
+                <td>{formatDate(ebook.updatedAt)}</td>
+              </tr>
+            ))}
+          </InternalTable>
+          <InternalTable title="Bài viết gần đây" empty="Chưa có bài viết" hasRows={data.recentPosts.length > 0}>
+            {data.recentPosts.map((post) => (
+              <tr key={post.id}>
+                <td>{post.title}</td>
+                <td>{post.category.name}</td>
+                <td>{post.status}</td>
+                <td>{formatDate(post.updatedAt)}</td>
               </tr>
             ))}
           </InternalTable>

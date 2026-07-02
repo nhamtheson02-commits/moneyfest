@@ -26,19 +26,26 @@ function paginationMeta(total: number, page: number, pageSize: number) {
 }
 
 export async function getAdminDashboardData() {
+  const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
   const [
     leadCount,
+    recentLeadCount,
     ebookDownloadCount,
     consultationCount,
     postCount,
+    userCount,
     leads,
     downloads,
     consultations,
+    topEbooks,
+    recentPosts,
   ] = await Promise.all([
     prisma.lead.count(),
+    prisma.lead.count({ where: { createdAt: { gte: sevenDaysAgo } } }),
     prisma.ebookDownload.count(),
     prisma.consultationRequest.count(),
     prisma.post.count(),
+    prisma.user.count(),
     prisma.lead.findMany({ orderBy: { createdAt: "desc" }, take: 6 }),
     prisma.ebookDownload.findMany({
       include: { lead: true, ebook: true },
@@ -46,12 +53,35 @@ export async function getAdminDashboardData() {
       take: 6,
     }),
     prisma.consultationRequest.findMany({
+      where: { status: { in: ["new", "contacted", "scheduled"] } },
       orderBy: { createdAt: "desc" },
       take: 6,
     }),
+    prisma.ebook.findMany({
+      include: { _count: { select: { downloads: true } } },
+      orderBy: { downloads: { _count: "desc" } },
+      take: 5,
+    }),
+    prisma.post.findMany({
+      include: { category: true },
+      orderBy: { updatedAt: "desc" },
+      take: 5,
+    }),
   ]);
 
-  return { leadCount, ebookDownloadCount, consultationCount, postCount, leads, downloads, consultations };
+  return {
+    leadCount,
+    recentLeadCount,
+    ebookDownloadCount,
+    consultationCount,
+    postCount,
+    userCount,
+    leads,
+    downloads,
+    consultations,
+    topEbooks,
+    recentPosts,
+  };
 }
 
 export async function getAdminLeads(params: AdminListParams) {
@@ -204,4 +234,53 @@ export async function getAdminSettings(params: AdminListParams) {
     prisma.setting.count({ where }),
   ]);
   return { items, meta: paginationMeta(total, page, pageSize) };
+}
+
+export async function getAdminUsers(params: AdminListParams) {
+  const { page, pageSize, skip, take } = pagination(params);
+  const search = params.q?.trim();
+  const where: Prisma.UserWhereInput = search
+    ? {
+        OR: [
+          { name: { contains: search, mode: "insensitive" } },
+          { email: { contains: search, mode: "insensitive" } },
+          { role: { contains: search, mode: "insensitive" } },
+          { accountType: { contains: search, mode: "insensitive" } },
+        ],
+      }
+    : {};
+  const [items, total, ebooks] = await Promise.all([
+    prisma.user.findMany({
+      where,
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        image: true,
+        role: true,
+        accountType: true,
+        createdAt: true,
+        lastLogin: true,
+        ebookAccess: {
+          select: {
+            id: true,
+            accessType: true,
+            ebook: { select: { title: true, slug: true } },
+          },
+          orderBy: { grantedAt: "desc" },
+          take: 4,
+        },
+        _count: { select: { sessions: true, ebookAccess: true } },
+      },
+      orderBy: { createdAt: "desc" },
+      skip,
+      take,
+    }),
+    prisma.user.count({ where }),
+    prisma.ebook.findMany({
+      select: { id: true, title: true, accessLevel: true },
+      orderBy: { title: "asc" },
+    }),
+  ]);
+  return { items, ebooks, meta: paginationMeta(total, page, pageSize) };
 }

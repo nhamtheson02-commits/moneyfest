@@ -57,10 +57,11 @@ export default async function AdminEbooksPage({ searchParams }: Props) {
                     </td>
                     <td>
                       <p>{ebook.pages} trang</p>
-                      <p className="mf-muted text-xs">{ebook.level}</p>
+                      <p className="mf-muted text-xs">{ebook.level} - {ebook.status}</p>
+                      <p className="mf-muted text-xs">{ebook.accessLevel}</p>
                       <p className="mf-muted text-xs">{formatDate(ebook.createdAt)}</p>
                     </td>
-                    <td className="min-w-[340px]">
+                    <td className="min-w-[380px]">
                       <EbookForm ebook={ebook} compact />
                     </td>
                     <td>
@@ -90,9 +91,14 @@ function EbookForm({
     slug: string;
     subtitle: string;
     description: string;
+    previewContent: string | null;
     level: string;
     pages: number;
     coverColor: string;
+    accessLevel: string;
+    status: string;
+    price: number | null;
+    fileUrl: string | null;
     isFree: boolean;
     isFeatured: boolean;
   };
@@ -108,8 +114,24 @@ function EbookForm({
         <Field label="Level" name="level" defaultValue={ebook?.level ?? "Người mới"} required />
         <Field label="Pages" name="pages" type="number" defaultValue={ebook?.pages ?? 24} required />
         <Field label="Cover color" name="coverColor" defaultValue={ebook?.coverColor ?? "obsidian"} required />
+        <label className="grid gap-1 text-sm font-semibold text-[var(--mf-midnight)]">
+          Access level
+          <select
+            name="accessLevel"
+            defaultValue={ebook?.accessLevel ?? "FREE"}
+            className="rounded-[var(--mf-radius-sm)] border border-[var(--mf-border)] bg-white px-3 py-2 text-base"
+          >
+            <option value="FREE">FREE</option>
+            <option value="PAID">PAID</option>
+            <option value="MEMBERSHIP">MEMBERSHIP</option>
+          </select>
+        </label>
+        <Field label="Status" name="status" defaultValue={ebook?.status ?? "draft"} required />
+        <Field label="Price" name="price" type="number" defaultValue={ebook?.price ?? 0} />
+        <Field label="File URL" name="fileUrl" defaultValue={ebook?.fileUrl ?? ""} />
       </div>
       <TextArea label="Description" name="description" defaultValue={ebook?.description} rows={compact ? 2 : 4} required />
+      <TextArea label="Preview content" name="previewContent" defaultValue={ebook?.previewContent ?? ""} rows={compact ? 2 : 3} />
       <div className="flex flex-wrap gap-4 text-sm font-semibold">
         <label><input type="checkbox" name="isFree" defaultChecked={ebook?.isFree ?? true} /> Miễn phí</label>
         <label><input type="checkbox" name="isFeatured" defaultChecked={ebook?.isFeatured ?? false} /> Featured</label>

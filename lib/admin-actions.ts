@@ -5,12 +5,14 @@ import { prisma } from "@/lib/prisma";
 import {
   categorySaveSchema,
   consultationUpdateSchema,
+  ebookAccessGrantSchema,
   ebookSaveSchema,
   idOnlySchema,
   leadUpdateSchema,
   postSaveSchema,
   settingSaveSchema,
   tagSaveSchema,
+  userAccountTypeUpdateSchema,
 } from "@/lib/admin-validation";
 
 type AdminActionResult = {
@@ -171,4 +173,40 @@ export async function deleteSettingAction(_state: AdminActionResult, formData: F
   await prisma.setting.delete({ where: { id: parsed.data.id } });
   refresh(["/admin/settings"]);
   return { ok: true, message: "Đã xóa setting." };
+}
+
+export async function updateUserAccountTypeAction(
+  _state: AdminActionResult,
+  formData: FormData,
+): Promise<AdminActionResult> {
+  const parsed = userAccountTypeUpdateSchema.safeParse(formToRecord(formData));
+  if (!parsed.success) return adminError();
+  await prisma.user.update({
+    where: { id: parsed.data.id },
+    data: {
+      accountType: parsed.data.accountType,
+      role: parsed.data.accountType === "ADMIN" ? "ADMIN" : "USER",
+    },
+  });
+  refresh(["/admin", "/admin/users"]);
+  return { ok: true, message: "Đã cập nhật loại tài khoản." };
+}
+
+export async function grantEbookAccessAction(
+  _state: AdminActionResult,
+  formData: FormData,
+): Promise<AdminActionResult> {
+  const parsed = ebookAccessGrantSchema.safeParse(formToRecord(formData));
+  if (!parsed.success) return adminError();
+  await prisma.ebookAccess.upsert({
+    where: { userId_ebookId: { userId: parsed.data.userId, ebookId: parsed.data.ebookId } },
+    update: { accessType: parsed.data.accessType, grantedAt: new Date(), expiresAt: null },
+    create: {
+      userId: parsed.data.userId,
+      ebookId: parsed.data.ebookId,
+      accessType: parsed.data.accessType,
+    },
+  });
+  refresh(["/admin/users"]);
+  return { ok: true, message: "Đã cấp quyền ebook." };
 }
