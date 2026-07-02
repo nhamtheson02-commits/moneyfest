@@ -58,6 +58,7 @@ export default async function AdminPostsPage({ searchParams }: Props) {
                     </td>
                     <td>
                       <p>{post.category.name}</p>
+                      <p className="mf-muted text-xs">{post.status}</p>
                       <p className="mf-muted max-w-48 whitespace-normal text-xs">
                         {post.tags.map((tag) => tag.name).join(", ") || "Chưa có tag"}
                       </p>
@@ -93,6 +94,9 @@ type PostFormPost = {
   categoryId: string;
   readTime: number;
   coverColor: string;
+  status: string;
+  seoTitle: string | null;
+  seoDescription: string | null;
   isFeatured: boolean;
   tags: TagOption[];
 };
@@ -117,7 +121,10 @@ function PostForm({
         <Field label="Slug" name="slug" defaultValue={post?.slug} />
         <Field label="Read time" name="readTime" type="number" defaultValue={post?.readTime ?? 5} required />
         <Field label="Cover color" name="coverColor" defaultValue={post?.coverColor ?? "midnight"} required />
+        <Field label="Status" name="status" defaultValue={post?.status ?? "draft"} required />
+        <Field label="SEO title" name="seoTitle" defaultValue={post?.seoTitle ?? ""} />
       </div>
+      <TextArea label="SEO description" name="seoDescription" defaultValue={post?.seoDescription} rows={2} />
       <label className="grid gap-1 text-sm font-semibold text-[var(--mf-midnight)]">
         Category
         <select name="categoryId" defaultValue={post?.categoryId ?? categories[0]?.id} required className="rounded-[var(--mf-radius-sm)] border border-[var(--mf-border)] bg-white px-3 py-2 text-base">

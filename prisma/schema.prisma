@@ -14,6 +14,7 @@ model Lead {
   source      String           @default("website")
   status      String           @default("new")
   note        String?
+  assignedTo  String?
   consentGiven Boolean          @default(false)
   consentAt    DateTime?
   createdAt   DateTime         @default(now())
@@ -37,6 +38,8 @@ model Ebook {
   coverColor  String          @default("obsidian")
   level       String          @default("Beginner")
   pages       Int             @default(24)
+  status      String          @default("draft")
+  price       Int?
   isFree      Boolean         @default(true)
   isFeatured  Boolean         @default(false)
   createdAt   DateTime        @default(now())
@@ -65,6 +68,9 @@ model Post {
   content     String
   coverColor  String    @default("midnight")
   readTime    Int       @default(5)
+  status      String    @default("draft")
+  seoTitle    String?
+  seoDescription String?
   isFeatured  Boolean   @default(false)
   publishedAt DateTime  @default(now())
   createdAt   DateTime  @default(now())
@@ -147,4 +153,32 @@ model Setting {
   group     String   @default("general")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model User {
+  id           String    @id @default(cuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         String    @default("user")
+  lastLogin    DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  sessions     Session[]
+
+  @@index([email])
+  @@index([role])
+  @@index([createdAt])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  createdAt    DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expires])
 }

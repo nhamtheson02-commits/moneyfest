@@ -18,9 +18,12 @@ export const ebookSaveSchema = z.object({
   slug: z.string().trim().optional(),
   subtitle: z.string().trim().min(2),
   description: z.string().trim().min(5),
+  fileUrl: z.string().trim().optional(),
   level: z.string().trim().min(2),
   pages: z.coerce.number().int().min(1).max(2000),
   coverColor: z.string().trim().min(2),
+  status: z.string().trim().min(2),
+  price: z.coerce.number().int().min(0).optional(),
   isFree: checkboxSchema,
   isFeatured: checkboxSchema,
 }).transform((value) => ({
@@ -44,6 +47,9 @@ export const postSaveSchema = z.object({
   tagIds: z.union([z.string(), z.array(z.string())]).optional(),
   readTime: z.coerce.number().int().min(1).max(120),
   coverColor: z.string().trim().min(2),
+  status: z.string().trim().min(2),
+  seoTitle: optionalText,
+  seoDescription: optionalText,
   isFeatured: checkboxSchema,
 }).transform((value) => ({
   ...value,
