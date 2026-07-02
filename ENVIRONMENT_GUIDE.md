@@ -1,6 +1,6 @@
 # MONEYFEST Environment Guide
 
-This guide classifies environment variables for local development, Netlify, and secret scanning.
+This guide classifies environment variables for local development, Vercel, and secret scanning.
 
 ## Public variables
 
@@ -9,7 +9,7 @@ Variables prefixed with `NEXT_PUBLIC_` are intentionally exposed to the browser 
 Current public variables:
 
 ```env
-NEXT_PUBLIC_SITE_URL="https://your-production-domain.netlify.app"
+NEXT_PUBLIC_SITE_URL="https://your-vercel-domain.vercel.app"
 NEXT_PUBLIC_GA_MEASUREMENT_ID=""
 NEXT_PUBLIC_CLARITY_PROJECT_ID=""
 NEXT_PUBLIC_SENTRY_DSN=""
@@ -47,9 +47,9 @@ SENTRY_AUTH_TOKEN=""
 
 Use a non-obvious username that does not duplicate public route names or public copy. Do not use a common value such as the route segment for the internal area.
 
-## Netlify guidance
+## Vercel guidance
 
-In Netlify, configure:
+In Vercel, configure:
 
 - Public variable: `NEXT_PUBLIC_SITE_URL`
 - Server secrets: `DATABASE_URL`, `ADMIN_PASSWORD`
