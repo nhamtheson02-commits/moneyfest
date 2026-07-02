@@ -1,6 +1,18 @@
 import Link from "next/link";
 import { Emblem } from "@/components/ui";
 
+const adminLinks = [
+  ["/admin", "Dashboard"],
+  ["/admin/leads", "Leads"],
+  ["/admin/ebooks", "Ebooks"],
+  ["/admin/posts", "Posts"],
+  ["/admin/categories", "Categories"],
+  ["/admin/tags", "Tags"],
+  ["/admin/consultations", "Consultations"],
+  ["/admin/tool-results", "Tool results"],
+  ["/admin/settings", "Settings"],
+] as const;
+
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <main className="min-h-screen bg-[var(--mf-surface)]">
@@ -14,7 +26,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </div>
           </div>
           <nav className="flex flex-wrap gap-3 text-sm font-bold" aria-label="Điều hướng quản trị">
-            <Link href="/admin" className="text-[var(--mf-champagne)] hover:text-[var(--mf-gold)]">Dashboard</Link>
+            {adminLinks.map(([href, label]) => (
+              <Link key={href} href={href} className="text-[var(--mf-champagne)] hover:text-[var(--mf-gold)]">
+                {label}
+              </Link>
+            ))}
             <Link href="/" className="text-[rgba(244,240,232,0.72)] hover:text-[var(--mf-champagne)]">Xem website</Link>
           </nav>
         </div>

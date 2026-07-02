@@ -12,6 +12,7 @@ model Lead {
   email       String
   phone       String?
   source      String           @default("website")
+  status      String           @default("new")
   note        String?
   consentGiven Boolean          @default(false)
   consentAt    DateTime?
@@ -22,6 +23,7 @@ model Lead {
   submissions FormSubmission[]
 
   @@index([email])
+  @@index([status])
   @@index([createdAt])
 }
 

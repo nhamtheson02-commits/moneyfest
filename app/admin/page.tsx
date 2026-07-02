@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { EmptyState, SectionHeader, StatCard } from "@/components/ui";
+import { AdminCard, AdminPageHeader, AdminTableShell } from "@/components/admin-ui";
+import { StatCard } from "@/components/ui";
 import { ensureAdminAccess } from "@/lib/admin-auth";
-import { getAdminData } from "@/lib/data";
+import { getAdminDashboardData } from "@/lib/admin-data";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -17,13 +18,11 @@ export const dynamic = "force-dynamic";
 
 export default async function AdminPage() {
   await ensureAdminAccess();
-  const data = await getAdminData();
+  const data = await getAdminDashboardData();
 
   return (
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <SectionHeader
-          as="h1"
-          eyebrow="Quản trị Phase 1"
+        <AdminPageHeader
           title="Dashboard tổng quan"
           description="Khu vực này được bảo vệ bằng Basic Auth phía server."
         />
@@ -34,7 +33,7 @@ export default async function AdminPage() {
           <StatCard label="Yêu cầu tư vấn" value={data.consultationCount} />
         </div>
         <div className="mt-8 grid gap-6 xl:grid-cols-3">
-          <InternalTable title="Lead mới nhất" empty="Chưa có lead">
+          <InternalTable title="Lead mới nhất" empty="Chưa có lead" hasRows={data.leads.length > 0}>
             {data.leads.map((lead) => (
               <tr key={lead.id}>
                 <td>{lead.name}</td>
@@ -44,7 +43,7 @@ export default async function AdminPage() {
               </tr>
             ))}
           </InternalTable>
-          <InternalTable title="Lượt tải ebook mới nhất" empty="Chưa có lượt tải">
+          <InternalTable title="Lượt tải ebook mới nhất" empty="Chưa có lượt tải" hasRows={data.downloads.length > 0}>
             {data.downloads.map((download) => (
               <tr key={download.id}>
                 <td>{download.lead.name}</td>
@@ -54,7 +53,7 @@ export default async function AdminPage() {
               </tr>
             ))}
           </InternalTable>
-          <InternalTable title="Yêu cầu tư vấn mới nhất" empty="Chưa có yêu cầu">
+          <InternalTable title="Yêu cầu tư vấn mới nhất" empty="Chưa có yêu cầu" hasRows={data.consultations.length > 0}>
             {data.consultations.map((request) => (
               <tr key={request.id}>
                 <td>{request.name}</td>
@@ -72,21 +71,17 @@ export default async function AdminPage() {
 function InternalTable({
   title,
   empty,
+  hasRows,
   children,
 }: {
   title: string;
   empty: string;
+  hasRows: boolean;
   children: React.ReactNode;
 }) {
-  const hasRows = Array.isArray(children) ? children.length > 0 : Boolean(children);
-
   return (
-    <div className="mf-card overflow-hidden">
-      <div className="border-b border-[var(--mf-border)] p-4">
-        <h2 className="font-bold text-[var(--mf-midnight)]">{title}</h2>
-      </div>
-      {hasRows ? (
-        <div className="overflow-x-auto">
+    <AdminCard title={title}>
+      <AdminTableShell emptyTitle={empty} emptyDescription="Submit form trên website hoặc chạy seed để có dữ liệu mẫu." hasRows={hasRows}>
           <table className="mf-table">
             <thead>
               <tr>
@@ -100,10 +95,7 @@ function InternalTable({
               {children}
             </tbody>
           </table>
-        </div>
-      ) : (
-        <div className="p-4"><EmptyState title={empty} description="Submit form trên website hoặc chạy seed để có dữ liệu mẫu." /></div>
-      )}
-    </div>
+      </AdminTableShell>
+    </AdminCard>
   );
 }
