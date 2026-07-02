@@ -2,7 +2,14 @@
 
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { createUserSession, destroyUserSession, hashPassword, requireUser, verifyPassword } from "@/lib/auth";
+import {
+  createUserSession,
+  destroyUserSession,
+  hashPassword,
+  requireUser,
+  safeCallbackPath,
+  verifyPassword,
+} from "@/lib/auth";
 import { forgotPasswordSchema, loginSchema, profileUpdateSchema, registerSchema } from "@/lib/auth-validation";
 import { revalidatePath } from "next/cache";
 
@@ -23,18 +30,20 @@ const invalidState: AuthActionState = {
 export async function loginAction(_state: AuthActionState, formData: FormData): Promise<AuthActionState> {
   const parsed = loginSchema.safeParse(formToObject(formData));
   if (!parsed.success) return invalidState;
+  const callbackUrl = safeCallbackPath(formData.get("callbackUrl"));
   const user = await prisma.user.findUnique({ where: { email: parsed.data.email } });
-  if (!user || !verifyPassword(parsed.data.password, user.passwordHash)) {
+  if (!user || !user.passwordHash || !verifyPassword(parsed.data.password, user.passwordHash)) {
     return { ok: false, message: "Email hoặc mật khẩu chưa đúng." };
   }
   await prisma.user.update({ where: { id: user.id }, data: { lastLogin: new Date() } });
   await createUserSession(user.id);
-  redirect("/account");
+  redirect(callbackUrl);
 }
 
 export async function registerAction(_state: AuthActionState, formData: FormData): Promise<AuthActionState> {
   const parsed = registerSchema.safeParse(formToObject(formData));
   if (!parsed.success) return invalidState;
+  const callbackUrl = safeCallbackPath(formData.get("callbackUrl"));
   const existing = await prisma.user.findUnique({ where: { email: parsed.data.email } });
   if (existing) {
     return { ok: false, message: "Email này đã có tài khoản. Vui lòng đăng nhập." };
@@ -47,7 +56,7 @@ export async function registerAction(_state: AuthActionState, formData: FormData
     },
   });
   await createUserSession(user.id);
-  redirect("/account");
+  redirect(callbackUrl);
 }
 
 export async function forgotPasswordAction(_state: AuthActionState, formData: FormData): Promise<AuthActionState> {

@@ -18,10 +18,12 @@ export const ebookSaveSchema = z.object({
   slug: z.string().trim().optional(),
   subtitle: z.string().trim().min(2),
   description: z.string().trim().min(5),
+  previewContent: z.string().trim().optional(),
   fileUrl: z.string().trim().optional(),
   level: z.string().trim().min(2),
   pages: z.coerce.number().int().min(1).max(2000),
   coverColor: z.string().trim().min(2),
+  accessLevel: z.enum(["FREE", "PAID", "MEMBERSHIP"]),
   status: z.string().trim().min(2),
   price: z.coerce.number().int().min(0).optional(),
   isFree: checkboxSchema,
@@ -87,4 +89,15 @@ export const settingSaveSchema = z.object({
   key: z.string().trim().min(2).regex(/^[a-zA-Z0-9_.-]+$/),
   value: z.string().trim().max(5000),
   group: z.string().trim().min(2),
+});
+
+export const userAccountTypeUpdateSchema = z.object({
+  id: idSchema,
+  accountType: z.enum(["FREE", "PAID", "MEMBER", "ADMIN"]),
+});
+
+export const ebookAccessGrantSchema = z.object({
+  userId: idSchema,
+  ebookId: idSchema,
+  accessType: z.enum(["FREE", "PURCHASED", "GRANTED", "MEMBERSHIP"]),
 });

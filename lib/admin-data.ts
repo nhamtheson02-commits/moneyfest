@@ -245,26 +245,42 @@ export async function getAdminUsers(params: AdminListParams) {
           { name: { contains: search, mode: "insensitive" } },
           { email: { contains: search, mode: "insensitive" } },
           { role: { contains: search, mode: "insensitive" } },
+          { accountType: { contains: search, mode: "insensitive" } },
         ],
       }
     : {};
-  const [items, total] = await Promise.all([
+  const [items, total, ebooks] = await Promise.all([
     prisma.user.findMany({
       where,
       select: {
         id: true,
         name: true,
         email: true,
+        image: true,
         role: true,
+        accountType: true,
         createdAt: true,
         lastLogin: true,
-        _count: { select: { sessions: true } },
+        ebookAccess: {
+          select: {
+            id: true,
+            accessType: true,
+            ebook: { select: { title: true, slug: true } },
+          },
+          orderBy: { grantedAt: "desc" },
+          take: 4,
+        },
+        _count: { select: { sessions: true, ebookAccess: true } },
       },
       orderBy: { createdAt: "desc" },
       skip,
       take,
     }),
     prisma.user.count({ where }),
+    prisma.ebook.findMany({
+      select: { id: true, title: true, accessLevel: true },
+      orderBy: { title: "asc" },
+    }),
   ]);
-  return { items, meta: paginationMeta(total, page, pageSize) };
+  return { items, ebooks, meta: paginationMeta(total, page, pageSize) };
 }

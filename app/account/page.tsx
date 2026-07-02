@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 
 export default async function AccountPage() {
   const user = await requireUser();
-  const [downloads, toolResults, consultations] = await Promise.all([
+  const [downloads, toolResults, consultations, accessGrants] = await Promise.all([
     prisma.ebookDownload.findMany({
       where: { lead: { email: user.email } },
       include: { ebook: true },
@@ -22,14 +22,20 @@ export default async function AccountPage() {
     }),
     prisma.toolResult.findMany({ where: { email: user.email }, orderBy: { createdAt: "desc" }, take: 5 }),
     prisma.consultationRequest.findMany({ where: { email: user.email }, orderBy: { createdAt: "desc" }, take: 5 }),
+    prisma.ebookAccess.findMany({
+      where: { userId: user.id },
+      include: { ebook: true },
+      orderBy: { grantedAt: "desc" },
+      take: 5,
+    }),
   ]);
 
   return (
     <div className="grid gap-6">
       <div className="grid gap-4 sm:grid-cols-3">
         <StatCard label="Ebook đã tải" value={downloads.length} />
+        <StatCard label="Loại tài khoản" value={user.accountType} />
         <StatCard label="Quiz/công cụ" value={toolResults.length} />
-        <StatCard label="Yêu cầu tư vấn" value={consultations.length} />
       </div>
       <div className="grid gap-6 lg:grid-cols-3">
         <AccountCard title="Ebook gần đây">
@@ -40,6 +46,14 @@ export default async function AccountPage() {
             </Link>
           )) : <p className="mf-muted text-sm">Chưa có ebook đã tải.</p>}
         </AccountCard>
+        <AccountCard title="Quyền truy cập">
+          {accessGrants.length ? accessGrants.map((item) => (
+            <Link key={item.id} href={`/ebooks/${item.ebook.slug}`} className="block border-b border-[var(--mf-border)] py-3 last:border-b-0">
+              <p className="font-bold">{item.ebook.title}</p>
+              <p className="mf-muted text-xs">{item.accessType} - {formatDate(item.grantedAt)}</p>
+            </Link>
+          )) : <p className="mf-muted text-sm">Chưa có ebook được cấp quyền riêng.</p>}
+        </AccountCard>
         <AccountCard title="Kết quả công cụ">
           {toolResults.length ? toolResults.map((item) => (
             <div key={item.id} className="border-b border-[var(--mf-border)] py-3 last:border-b-0">
@@ -48,7 +62,7 @@ export default async function AccountPage() {
             </div>
           )) : <p className="mf-muted text-sm">Chưa có kết quả đã lưu.</p>}
         </AccountCard>
-        <AccountCard title="Tư vấn">
+        <AccountCard title={`Tư vấn (${consultations.length})`}>
           {consultations.length ? consultations.map((item) => (
             <div key={item.id} className="border-b border-[var(--mf-border)] py-3 last:border-b-0">
               <p className="font-bold">{item.financialGoal}</p>

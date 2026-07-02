@@ -13,6 +13,8 @@ export type CurrentUser = {
   name: string;
   email: string;
   role: string;
+  accountType: string;
+  image: string | null;
 };
 
 export function hashPassword(password: string) {
@@ -49,6 +51,14 @@ export async function createUserSession(userId: string) {
   });
 }
 
+export function safeCallbackPath(value: FormDataEntryValue | string | null | undefined) {
+  if (typeof value !== "string" || !value.startsWith("/") || value.startsWith("//")) {
+    return "/account";
+  }
+  if (value.startsWith("/auth/")) return "/account";
+  return value;
+}
+
 export async function destroyUserSession() {
   const cookieStore = await cookies();
   const token = cookieStore.get(sessionCookieName)?.value;
@@ -75,11 +85,16 @@ export async function getCurrentUser(): Promise<CurrentUser | null> {
     name: session.user.name,
     email: session.user.email,
     role: session.user.role,
+    accountType: session.user.accountType,
+    image: session.user.image,
   };
 }
 
-export async function requireUser() {
+export async function requireUser(callbackUrl?: string) {
   const user = await getCurrentUser();
-  if (!user) redirect("/auth/login");
+  if (!user) {
+    const target = safeCallbackPath(callbackUrl);
+    redirect(`/auth/login?callbackUrl=${encodeURIComponent(target)}`);
+  }
   return user;
 }

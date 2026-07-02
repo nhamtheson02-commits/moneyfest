@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 type AuthState = {
@@ -25,23 +26,54 @@ function Submit({ label }: { label: string }) {
 export function AuthForm({
   action,
   submitLabel,
+  callbackUrl = "/account",
+  showOAuth = true,
   children,
 }: {
   action: AuthAction;
   submitLabel: string;
+  callbackUrl?: string;
+  showOAuth?: boolean;
   children: React.ReactNode;
 }) {
   const [state, formAction] = useActionState(action, initialState);
+  const encodedCallback = encodeURIComponent(callbackUrl);
   return (
-    <form action={formAction} className="mf-card grid gap-4 p-5">
-      {children}
-      <Submit label={submitLabel} />
-      {state.message ? (
-        <p className={cn("text-sm font-semibold", state.ok ? "text-emerald-700" : "text-[var(--mf-danger)]")}>
-          {state.message}
-        </p>
+    <div className="mf-card grid gap-4 p-5">
+      {showOAuth ? (
+        <>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Link
+              href={`/auth/oauth/google?callbackUrl=${encodedCallback}`}
+              className="mf-btn mf-btn-secondary justify-center"
+            >
+              Tiếp tục với Google
+            </Link>
+            <Link
+              href={`/auth/oauth/facebook?callbackUrl=${encodedCallback}`}
+              className="mf-btn mf-btn-secondary justify-center"
+            >
+              Tiếp tục với Facebook
+            </Link>
+          </div>
+          <div className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-[var(--mf-slate)]">
+            <span className="h-px flex-1 bg-[var(--mf-border)]" />
+            Hoặc dùng email
+            <span className="h-px flex-1 bg-[var(--mf-border)]" />
+          </div>
+        </>
       ) : null}
-    </form>
+      <form action={formAction} className="grid gap-4">
+        <input type="hidden" name="callbackUrl" value={callbackUrl} />
+        {children}
+        <Submit label={submitLabel} />
+        {state.message ? (
+          <p className={cn("text-sm font-semibold", state.ok ? "text-emerald-700" : "text-[var(--mf-danger)]")}>
+            {state.message}
+          </p>
+        ) : null}
+      </form>
+    </div>
   );
 }
 
