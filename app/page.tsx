@@ -1,5 +1,5 @@
 import { PageShell } from "@/components/site-shell";
-import { CTASection, GoldButton, HeroSection, IconBox, SectionTitle, Timeline, icons } from "@/components/marketing";
+import { CTASection, GoldButton, HeroSection, IconBox, ProblemCard, SectionTitle, Timeline, icons } from "@/components/marketing";
 import { products } from "@/data/products";
 
 const problems = [
@@ -16,17 +16,20 @@ export default function Home() {
         eyebrow="Moneyfest"
         title={<>Hiểu rõ tiền của bạn đang đi về đâu.</>}
         description="Moneyfest giúp bạn lập bản đồ dòng tiền, tài sản, rủi ro và mục tiêu tài chính — trước khi ra quyết định về tiết kiệm, nợ, bảo hiểm, đầu tư hay mua nhà."
-        image="/images/moneyfest/hero/homepage-right-sharp.jpg"
+        image="/images/moneyfest/hero/homepage-right-exact.jpg"
         primary={{ href: "/contact", label: "Đặt lịch soi dòng tiền 1:1" }}
         secondary={{ href: "/tools", label: "Làm quiz sức khỏe tài chính" }}
         badges={["Không FOMO", "Không phím hàng", "Không cam kết lợi nhuận", "Bắt đầu từ hoàn cảnh của bạn"]}
       />
 
-      <section className="mf-cream-section py-14">
+      <section className="mf-cream-section py-8">
         <div className="mf-container">
           <SectionTitle title="Bạn có đang gặp những vấn đề này?" />
-          <div className="mt-8 grid gap-5 md:grid-cols-4">
-            {problems.map(([title, desc]) => <IconBox key={title} icon={<icons.lightbulb />} title={title}>{desc}</IconBox>)}
+          <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {problems.map(([title, desc], index) => {
+              const Icon = [icons.briefcase, icons.target, icons.message, icons.trend][index] ?? icons.lightbulb;
+              return <ProblemCard key={title} icon={<Icon size={28} />} title={title}>{desc}</ProblemCard>;
+            })}
           </div>
         </div>
       </section>

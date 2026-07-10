@@ -99,36 +99,50 @@ export function HeroSection({
   badges?: string[];
 }) {
   return (
-    <section className="relative isolate overflow-hidden border-b border-[rgba(212,168,63,0.55)] bg-[var(--mf-obsidian)] text-[var(--mf-ivory)]">
-      <div className="absolute inset-y-0 left-0 -z-10 w-full bg-[var(--mf-obsidian)] lg:w-[52%]" />
-      <div className="absolute inset-y-0 right-0 -z-20 hidden w-[52%] lg:block">
-        <Image src={image} alt="" fill priority className="object-cover object-top opacity-[0.82]" sizes="(max-width: 1024px) 100vw, 58vw" />
-      </div>
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[rgba(7,7,7,1)] via-[rgba(7,21,33,1)] to-[rgba(7,7,7,0.04)]" />
-      <div className="absolute inset-x-0 bottom-0 h-px bg-[var(--mf-gold)] opacity-70" />
-      <div className="mf-container relative grid min-h-[390px] items-center py-10 lg:grid-cols-[0.95fr_1.05fr]">
-        <div>
+    <section className="border-b border-[rgba(212,168,63,0.72)] bg-[var(--mf-obsidian)] text-[var(--mf-ivory)]">
+      <div className="mx-auto grid w-full max-w-[1198px] overflow-hidden lg:min-h-[352px] lg:grid-cols-[50%_50%]">
+        <div className="relative z-10 flex items-center bg-[var(--mf-midnight)] px-6 py-10 sm:px-10 lg:px-[76px]">
+          <div className="w-full max-w-[520px]">
           <p className="mf-eyebrow">{eyebrow}</p>
-          <h1 className="mf-display mt-3 max-w-3xl text-[clamp(3rem,6.8vw,5.6rem)] font-bold leading-[0.98]">
+          <h1 className="mf-display mt-3 text-[clamp(3rem,5vw,4.45rem)] font-bold leading-[1.05]">
             {title}
           </h1>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-[rgba(244,240,232,0.82)]">{description}</p>
+          <p className="mt-5 text-[0.98rem] leading-7 text-[rgba(244,240,232,0.86)]">{description}</p>
           {(primary || secondary) ? (
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-4 sm:flex-row">
               {primary ? <GoldButton href={primary.href}>{primary.label}</GoldButton> : null}
               {secondary ? <OutlineButton href={secondary.href}>{secondary.label}</OutlineButton> : null}
             </div>
           ) : null}
           {badges.length ? (
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
               {badges.map((badge) => (
-                <span key={badge} className="mf-dark-chip"><CheckCircle2 size={16} />{badge}</span>
+                <span key={badge} className="mf-hero-badge"><CheckCircle2 size={16} />{badge}</span>
               ))}
             </div>
           ) : null}
+          </div>
+        </div>
+        <div className="relative hidden min-h-[352px] lg:block">
+          <Image src={image} alt="" fill priority className="object-cover object-center" sizes="599px" />
+          <div className="absolute inset-y-0 left-0 w-36 bg-gradient-to-r from-[var(--mf-midnight)] to-transparent" />
         </div>
       </div>
     </section>
+  );
+}
+
+export function ProblemCard({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
+  return (
+    <div className="flex min-h-[134px] items-center gap-5 rounded-[8px] border border-[rgba(212,168,63,0.28)] bg-[rgba(255,250,240,0.82)] px-6 py-5 shadow-[0_12px_34px_rgba(7,21,33,0.04)]">
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f5ead9] text-[var(--mf-midnight)]">
+        {icon}
+      </div>
+      <div>
+        <h3 className="text-[1.02rem] font-extrabold leading-snug text-[var(--mf-midnight)]">{title}</h3>
+        <p className="mt-3 text-[0.88rem] leading-6 text-[var(--mf-slate)]">{children}</p>
+      </div>
+    </div>
   );
 }
 
