@@ -54,7 +54,7 @@ export const icons = {
 
 export function GoldButton({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="mf-btn mf-btn-gold">
+    <Link href={href} className="mf-btn mf-btn-gold whitespace-nowrap">
       {children}
       <ArrowRight size={16} />
     </Link>
@@ -63,7 +63,7 @@ export function GoldButton({ href, children }: { href: string; children: ReactNo
 
 export function OutlineButton({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="mf-btn mf-btn-outline">
+    <Link href={href} className="mf-btn mf-btn-outline whitespace-nowrap">
       {children}
       <ArrowRight size={16} />
     </Link>
@@ -100,14 +100,14 @@ export function HeroSection({
 }) {
   return (
     <section className="border-b border-[rgba(212,168,63,0.72)] bg-[var(--mf-obsidian)] text-[var(--mf-ivory)]">
-      <div className="mx-auto grid w-full max-w-[1198px] overflow-hidden lg:min-h-[352px] lg:grid-cols-[50%_50%]">
-        <div className="relative z-10 flex items-center bg-[var(--mf-midnight)] px-6 py-10 sm:px-10 lg:px-[76px]">
+      <div className="grid w-full overflow-hidden lg:min-h-[382px] lg:grid-cols-[50%_50%]">
+        <div className="relative z-10 flex items-center bg-[var(--mf-midnight)] px-6 py-10 sm:px-10 lg:px-[6.3vw]">
           <div className="w-full max-w-[520px]">
           <p className="mf-eyebrow">{eyebrow}</p>
-          <h1 className="mf-display mt-3 text-[clamp(3rem,5vw,4.45rem)] font-bold leading-[1.05]">
+          <h1 className="mf-display mt-3 text-[clamp(3.1rem,4.45vw,4.55rem)] font-bold leading-[1.05]">
             {title}
           </h1>
-          <p className="mt-5 text-[0.98rem] leading-7 text-[rgba(244,240,232,0.86)]">{description}</p>
+          <p className="mt-4 max-w-[500px] text-[1rem] leading-7 text-[rgba(244,240,232,0.86)]">{description}</p>
           {(primary || secondary) ? (
             <div className="mt-7 flex flex-col gap-4 sm:flex-row">
               {primary ? <GoldButton href={primary.href}>{primary.label}</GoldButton> : null}
@@ -115,7 +115,7 @@ export function HeroSection({
             </div>
           ) : null}
           {badges.length ? (
-            <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-3">
               {badges.map((badge) => (
                 <span key={badge} className="mf-hero-badge"><CheckCircle2 size={16} />{badge}</span>
               ))}
@@ -123,9 +123,9 @@ export function HeroSection({
           ) : null}
           </div>
         </div>
-        <div className="relative hidden min-h-[352px] lg:block">
-          <Image src={image} alt="" fill priority className="object-cover object-center" sizes="599px" />
-          <div className="absolute inset-y-0 left-0 w-36 bg-gradient-to-r from-[var(--mf-midnight)] to-transparent" />
+        <div className="relative hidden min-h-[382px] lg:block">
+          <Image src={image} alt="" fill priority className="object-cover object-center" sizes="50vw" />
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--mf-midnight)] to-transparent" />
         </div>
       </div>
     </section>

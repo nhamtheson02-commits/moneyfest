@@ -16,7 +16,7 @@ export default function Home() {
         eyebrow="Moneyfest"
         title={<>Hiểu rõ tiền của bạn đang đi về đâu.</>}
         description="Moneyfest giúp bạn lập bản đồ dòng tiền, tài sản, rủi ro và mục tiêu tài chính — trước khi ra quyết định về tiết kiệm, nợ, bảo hiểm, đầu tư hay mua nhà."
-        image="/images/moneyfest/hero/homepage-right-exact.jpg"
+        image="/images/moneyfest/hero/homepage-right-native.png"
         primary={{ href: "/contact", label: "Đặt lịch soi dòng tiền 1:1" }}
         secondary={{ href: "/tools", label: "Làm quiz sức khỏe tài chính" }}
         badges={["Không FOMO", "Không phím hàng", "Không cam kết lợi nhuận", "Bắt đầu từ hoàn cảnh của bạn"]}

@@ -324,6 +324,10 @@ button {
   border-bottom: 1px solid rgba(212, 168, 63, 0.22);
 }
 
+.mf-btn svg {
+  flex-shrink: 0;
+}
+
 .mf-hero-badge {
   display: inline-flex;
   align-items: center;
