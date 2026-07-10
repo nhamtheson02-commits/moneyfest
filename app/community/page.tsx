@@ -16,7 +16,7 @@ export default function CommunityPage() {
         eyebrow="Cộng đồng Moneyfest"
         title={<>Đi cùng những người đang học cách hiểu luật chơi của tiền bạc.</>}
         description="Moneyfest Community là nơi bạn kết nối, học hỏi và áp dụng góc nhìn tài chính một cách bình tĩnh, thực tế và có hệ thống."
-        image="/images/moneyfest/community/community-moneyfest.jpg"
+        image="/images/moneyfest/community/community-hero-right-native.png"
         primary={{ href: "#channels", label: "Tham gia ngay" }}
         secondary={{ href: "#how", label: "Xem hoạt động cộng đồng" }}
         badges={["Học hỏi có chọn lọc", "Không FOMO", "Có framework", "Có cộng đồng đồng hành"]}
