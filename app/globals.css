@@ -324,6 +324,41 @@ button {
   border-bottom: 1px solid rgba(212, 168, 63, 0.22);
 }
 
+.mf-problem-section {
+  background: #f4f0e8;
+  border-bottom: 1px solid rgba(212, 168, 63, 0.24);
+  border-top: 1px solid rgba(212, 168, 63, 0.3);
+  padding-block: 1.55rem 1.65rem;
+}
+
+.mf-title-rule {
+  display: inline-flex;
+  width: 72px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--mf-gold));
+  position: relative;
+}
+
+.mf-title-rule::before {
+  content: "✦";
+  color: var(--mf-gold);
+  font-size: 0.95rem;
+  line-height: 1;
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mf-title-rule-right {
+  background: linear-gradient(90deg, var(--mf-gold), transparent);
+}
+
+.mf-title-rule-right::before {
+  left: -2px;
+  right: auto;
+}
+
 .mf-btn svg {
   flex-shrink: 0;
 }

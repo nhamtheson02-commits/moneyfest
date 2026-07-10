@@ -1,5 +1,5 @@
 import { PageShell } from "@/components/site-shell";
-import { CTASection, GoldButton, HeroSection, IconBox, ProblemCard, SectionTitle, Timeline, icons } from "@/components/marketing";
+import { CTASection, GoldButton, HeroSection, IconBox, ProblemCard, ProblemSectionTitle, SectionTitle, Timeline, icons } from "@/components/marketing";
 import { products } from "@/data/products";
 
 const problems = [
@@ -22,10 +22,12 @@ export default function Home() {
         badges={["Không FOMO", "Không phím hàng", "Không cam kết lợi nhuận", "Bắt đầu từ hoàn cảnh của bạn"]}
       />
 
-      <section className="mf-cream-section py-8">
-        <div className="mf-container">
-          <SectionTitle title="Bạn có đang gặp những vấn đề này?" />
-          <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <section className="mf-problem-section">
+        <div className="mx-auto w-[min(100%-2rem,1200px)]">
+          <ProblemSectionTitle>
+            Bạn có đang gặp những vấn đề này?
+          </ProblemSectionTitle>
+          <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {problems.map(([title, desc], index) => {
               const Icon = [icons.briefcase, icons.target, icons.message, icons.trend][index] ?? icons.lightbulb;
               return <ProblemCard key={title} icon={<Icon size={28} />} title={title}>{desc}</ProblemCard>;

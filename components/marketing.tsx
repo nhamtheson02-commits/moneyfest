@@ -134,14 +134,26 @@ export function HeroSection({
 
 export function ProblemCard({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
   return (
-    <div className="flex min-h-[134px] items-center gap-5 rounded-[8px] border border-[rgba(212,168,63,0.28)] bg-[rgba(255,250,240,0.82)] px-6 py-5 shadow-[0_12px_34px_rgba(7,21,33,0.04)]">
-      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f5ead9] text-[var(--mf-midnight)]">
+    <div className="flex min-h-[160px] items-center gap-5 rounded-[7px] border border-[rgba(212,168,63,0.28)] bg-[rgba(255,250,240,0.5)] px-6 py-5 shadow-[0_10px_28px_rgba(7,21,33,0.03)]">
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f1e6d6] text-[var(--mf-midnight)]">
         {icon}
       </div>
       <div>
-        <h3 className="text-[1.02rem] font-extrabold leading-snug text-[var(--mf-midnight)]">{title}</h3>
-        <p className="mt-3 text-[0.88rem] leading-6 text-[var(--mf-slate)]">{children}</p>
+        <h3 className="text-[0.98rem] font-black leading-[1.22] text-[var(--mf-midnight)]">{title}</h3>
+        <p className="mt-4 text-[0.78rem] leading-6 text-[var(--mf-slate)]">{children}</p>
       </div>
+    </div>
+  );
+}
+
+export function ProblemSectionTitle({ children }: { children: ReactNode }) {
+  return (
+    <div className="mx-auto flex max-w-5xl items-center justify-center gap-5 text-center">
+      <span className="mf-title-rule" aria-hidden="true" />
+      <h2 className="mf-display whitespace-nowrap text-[clamp(1.45rem,2.05vw,2.1rem)] font-bold leading-none text-[var(--mf-midnight)]">
+        {children}
+      </h2>
+      <span className="mf-title-rule mf-title-rule-right" aria-hidden="true" />
     </div>
   );
 }
