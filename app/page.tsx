@@ -38,8 +38,8 @@ export default function Home() {
       </section>
 
       <section className="money-map-service-section">
-        <div className="mx-auto grid w-[min(100%-2rem,1200px)] items-center gap-6 lg:grid-cols-[1.05fr_180px_0.95fr]">
-          <div className="py-9">
+        <div className="money-map-service-inner">
+          <div className="money-map-service-copy">
             <p className="mf-eyebrow">Dịch vụ chủ lực</p>
             <h2 className="mf-display mt-2 max-w-[520px] text-[clamp(1.8rem,2.35vw,2.45rem)] font-bold leading-[1.12] text-[var(--mf-ivory)]">
               Money Map 1:1 – Lập bản đồ tài chính cá nhân
@@ -60,8 +60,8 @@ export default function Home() {
               ["Phù hợp với", "Người đi làm, gia đình trẻ, muốn tối ưu tài chính", icons.users],
               ["Đầu tư", "Từ 1.500.000đ / buổi", icons.dollar],
             ].map(([title, desc, Icon]) => (
-              <div key={title as string} className="flex gap-3 border-b border-[rgba(212,168,63,0.16)] pb-3 last:border-b-0 last:pb-0">
-                <Icon className="mt-1 shrink-0 text-[var(--mf-gold)]" size={19} />
+              <div key={title as string} className="money-map-service-row">
+                <Icon className="money-map-service-icon" size={18} />
                 <div>
                   <p className="text-[0.82rem] font-black text-[var(--mf-ivory)]">{title as string}</p>
                   <p className="mt-1 text-[0.72rem] leading-5 text-[rgba(244,240,232,0.68)]">{desc as string}</p>
@@ -70,9 +70,9 @@ export default function Home() {
             ))}
             <GoldButton href="/contact">Đặt lịch ngay</GoldButton>
           </div>
-          <div className="relative hidden min-h-[252px] overflow-hidden lg:block">
-            <Image src="/images/moneyfest/hero/money-map-service-native.png" alt="" fill className="object-cover object-center" sizes="40vw" />
-            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[var(--mf-midnight)] to-transparent" />
+          <div className="money-map-service-art">
+            <Image src="/images/moneyfest/hero/money-map-service-native.png" alt="" fill className="object-cover object-center" sizes="44vw" />
+            <div className="money-map-service-art-fade" />
           </div>
         </div>
       </section>
