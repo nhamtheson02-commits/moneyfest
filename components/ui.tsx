@@ -122,7 +122,7 @@ export function EbookCover({
 export function BrandMark({ className, priority = false }: { className?: string; priority?: boolean }) {
   return (
     <Image
-      src="/brand/logo/moneyfest-logo-horizontal.png"
+      src="/brand/logo/moneyfest-logo-horizontal-dark-bg.png"
       alt="MONEYFEST"
       width={707}
       height={353}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { PageShell } from "@/components/site-shell";
-import { CTASection, GoldButton, HeroSection, IconBox, ProblemCard, ProblemChatIcon, ProblemGrowthIcon, ProblemMoneyIcon, ProblemPriorityIcon, ProblemSectionTitle, icons } from "@/components/marketing";
+import { GoldButton, HeroSection, OutlineButton, ProblemCard, ProblemChatIcon, ProblemGrowthIcon, ProblemMoneyIcon, ProblemPriorityIcon, ProblemSectionTitle, icons } from "@/components/marketing";
 import { products } from "@/data/products";
 
 const problems = [
@@ -146,15 +146,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mf-dark-section py-12">
-        <div className="mf-container grid gap-6 md:grid-cols-4">
-          {["Độc lập", "Minh bạch", "Cá nhân hóa", "Đồng hành"].map((title) => (
-            <IconBox key={title} dark icon={<icons.shield />} title={title}>Đặt lợi ích của bạn lên trước và giúp bạn ra quyết định bình tĩnh hơn.</IconBox>
-          ))}
+      <section className="home-principles-section">
+        <div className="mf-container">
+          <div className="home-principles-grid">
+            {[
+              [icons.shield, "Độc lập", "Không bán sản phẩm tài chính"],
+              [icons.calendar, "Minh bạch", "Rõ ràng về chi phí và quy trình"],
+              [icons.users, "Cá nhân hóa", "Giải pháp phù hợp với bạn"],
+              [icons.compass, "Đồng hành", "Hỗ trợ bạn trên hành trình dài hạn"],
+            ].map(([Icon, title, desc]) => (
+              <div key={title as string} className="home-principle-item">
+                <Icon size={30} />
+                <div>
+                  <h3>{title as string}</h3>
+                  <p>{desc as string}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <CTASection title="Sẵn sàng nhìn rõ bức tranh tài chính và làm chủ tương lai của bạn?" description="Bắt đầu bằng quiz miễn phí hoặc một buổi tư vấn để có bước tiếp theo rõ ràng." />
+      <section className="home-final-cta">
+        <div className="mf-container home-final-cta-inner">
+          <div>
+            <h2>Sẵn sàng nhìn rõ bức tranh tài chính và làm chủ tương lai của bạn?</h2>
+            <p>Bắt đầu bằng quiz miễn phí hoặc một buổi tư vấn để có bước tiếp theo rõ ràng.</p>
+          </div>
+          <div className="home-final-cta-actions">
+            <GoldButton href="/contact">Đặt lịch tư vấn 1:1</GoldButton>
+            <OutlineButton href="/ebooks">Nhận ebook miễn phí</OutlineButton>
+          </div>
+        </div>
+      </section>
     </PageShell>
   );
 }
