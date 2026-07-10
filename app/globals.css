@@ -321,12 +321,14 @@ button {
 
 .mf-cream-section {
   background: linear-gradient(180deg, var(--mf-ivory), #fffaf0);
+  border-bottom: 1px solid rgba(212, 168, 63, 0.22);
 }
 
 .mf-dark-section {
   background:
     radial-gradient(circle at top right, rgba(212, 168, 63, 0.16), transparent 30rem),
     var(--mf-midnight);
+  border-bottom: 1px solid rgba(212, 168, 63, 0.28);
   color: var(--mf-ivory);
 }
 

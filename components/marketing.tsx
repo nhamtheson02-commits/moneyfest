@@ -99,10 +99,13 @@ export function HeroSection({
   badges?: string[];
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-[rgba(212,168,63,0.45)] bg-[var(--mf-obsidian)] text-[var(--mf-ivory)]">
-      <Image src={image} alt="" fill priority className="object-cover opacity-60" sizes="100vw" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[rgba(7,7,7,0.96)] via-[rgba(7,21,33,0.78)] to-[rgba(7,7,7,0.2)]" />
-      <div className="mf-container relative grid min-h-[470px] items-center py-14 lg:grid-cols-[0.95fr_1.05fr]">
+    <section className="relative isolate overflow-hidden border-b border-[rgba(212,168,63,0.55)] bg-[var(--mf-obsidian)] text-[var(--mf-ivory)]">
+      <div className="absolute inset-y-0 right-0 -z-10 w-full lg:w-[58%]">
+        <Image src={image} alt="" fill priority className="object-cover object-top opacity-[0.82]" sizes="(max-width: 1024px) 100vw, 58vw" />
+      </div>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[rgba(7,7,7,0.98)] via-[rgba(7,21,33,0.9)] to-[rgba(7,7,7,0.18)]" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-[var(--mf-gold)] opacity-70" />
+      <div className="mf-container relative grid min-h-[390px] items-center py-10 lg:grid-cols-[0.95fr_1.05fr]">
         <div>
           <p className="mf-eyebrow">{eyebrow}</p>
           <h1 className="mf-display mt-3 max-w-3xl text-[clamp(3rem,6.8vw,5.6rem)] font-bold leading-[0.98]">
