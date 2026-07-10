@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { PageShell } from "@/components/site-shell";
-import { CTASection, GoldButton, HeroSection, IconBox, ProblemCard, ProblemChatIcon, ProblemGrowthIcon, ProblemMoneyIcon, ProblemPriorityIcon, ProblemSectionTitle, SectionTitle, Timeline, icons } from "@/components/marketing";
+import { CTASection, GoldButton, HeroSection, IconBox, ProblemCard, ProblemChatIcon, ProblemGrowthIcon, ProblemMoneyIcon, ProblemPriorityIcon, ProblemSectionTitle, icons } from "@/components/marketing";
 import { products } from "@/data/products";
 
 const problems = [
@@ -77,25 +77,71 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mf-cream-section py-14">
+      <section className="home-flow-section">
         <div className="mf-container">
-          <SectionTitle eyebrow="Quy trình làm việc" title="Đơn giản – Rõ ràng – Hiệu quả" />
-          <div className="mt-8"><Timeline items={["Đăng ký", "Chuẩn bị", "Buổi tư vấn 1:1", "Nhận Money Map"]} /></div>
+          <div className="home-compact-title">
+            <p>Quy trình làm việc</p>
+            <h2>Đơn giản – Rõ ràng – Hiệu quả</h2>
+          </div>
+          <div className="home-process-strip">
+            {[
+              ["Đăng ký", "Chọn lịch phù hợp và điền thông tin cơ bản"],
+              ["Chuẩn bị", "Điền bảng câu hỏi tài chính trước buổi tư vấn"],
+              ["Buổi tư vấn 1:1", "Soi dòng tiền, phân tích và xác định ưu tiên"],
+              ["Nhận Money Map", "Nhận bản đồ 90 ngày và hướng dẫn triển khai"],
+            ].map(([title, desc], index) => (
+              <div key={title} className="home-process-step">
+                <span>{index + 1}</span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mf-cream-section py-14 mf-soft-divider">
+      <section className="home-tools-products-section">
         <div className="mf-container">
-          <SectionTitle eyebrow="Sản phẩm & dịch vụ" title="Hệ sinh thái Moneyfest" />
-          <div className="mt-8 grid gap-4 md:grid-cols-4">
-            {products.map((product) => (
-              <div key={product.title} className="mf-card p-6">
-                <icons.compass className="text-[var(--mf-gold)]" />
-                <h3 className="mt-4 font-bold text-[var(--mf-midnight)]">{product.title}</h3>
-                <p className="mf-muted mt-2 text-sm leading-6">{product.description}</p>
-                <p className="mt-4 font-bold text-[var(--mf-gold)]">{product.price}</p>
+          <p className="home-section-kicker">Công cụ miễn phí nổi bật</p>
+          <div className="home-tools-grid">
+            <div className="home-tool-feature">
+              <div>
+                <h3>Tự kiểm tra sức khỏe tài chính của bạn trong 2 phút</h3>
+                <p>Làm quiz miễn phí để biết bạn đang ở đâu trên hành trình tự do tài chính.</p>
+                <GoldButton href="/tools">Làm quiz ngay</GoldButton>
+              </div>
+            </div>
+            {[
+              ["Bảng tính dòng tiền cá nhân", "Theo dõi thu nhập, chi tiêu, tiết kiệm.", icons.map],
+              ["Máy tính mục tiêu tài chính", "Tính số tiền và thời gian để đạt mục tiêu.", icons.target],
+              ["So sánh phương án đầu tư", "So sánh kịch bản và đánh giá rủi ro.", icons.scale],
+            ].map(([title, desc, Icon]) => (
+              <div key={title as string} className="home-mini-tool">
+                <Icon size={30} />
+                <h3>{title as string}</h3>
+                <p>{desc as string}</p>
+                <span>Xem ngay →</span>
               </div>
             ))}
+          </div>
+
+          <p className="home-section-kicker mt-6">Sản phẩm & dịch vụ</p>
+          <div className="home-products-grid">
+            {products.map((product, index) => {
+              const ProductIcon = [icons.compass, icons.briefcase, icons.users, icons.book][index] ?? icons.compass;
+              return (
+                <div key={product.title} className={index === 1 ? "home-product-card is-featured" : "home-product-card"}>
+                  <ProductIcon size={34} />
+                  <div>
+                    <h3>{product.title}</h3>
+                    <p>{product.description}</p>
+                    <span>{product.price}</span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
