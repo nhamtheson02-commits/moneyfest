@@ -17,7 +17,7 @@ export default function EbooksPage() {
         eyebrow="Thư viện ebook"
         title={<>Thư viện ebook giúp bạn hiểu luật chơi <span className="text-[var(--mf-gold)]">trước khi ra quyết định.</span></>}
         description="Kho ebook được biên soạn bởi đội ngũ Moneyfest, giúp bạn xây nền tảng tài chính vững chắc: tư duy, quản lý tiền, phân bổ tài sản và lựa chọn sản phẩm phù hợp."
-        image="/images/moneyfest/ebook/ebook-hero-right-native.png"
+        image="/images/moneyfest/ebook/ebook-hero-ai.png"
         badges={["Thực tế & dễ hiểu", "Dựa trên nguyên tắc", "Cập nhật liên tục"]}
       />
 

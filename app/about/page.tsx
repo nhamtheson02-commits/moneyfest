@@ -23,7 +23,7 @@ export default function AboutPage() {
         eyebrow="Về chúng tôi"
         title={<>Hiểu luật chơi để <span className="text-[var(--mf-gold)]">làm chủ cuộc đời.</span></>}
         description="Moneyfest là hệ sinh thái tri thức, tư vấn và kết nối giải pháp tài chính, giúp cá nhân, gia đình và doanh nghiệp hiểu rõ lựa chọn, so sánh nhiều phương án và ra quyết định phù hợp với mục tiêu dài hạn."
-        image="/images/moneyfest/about/about-hero-right-native.png"
+        image="/images/moneyfest/about/about-hero-ai.png"
         primary={{ href: "#ecosystem", label: "Khám phá hệ sinh thái" }}
         secondary={{ href: "#values", label: "Xem giá trị cốt lõi" }}
       />
