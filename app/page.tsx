@@ -41,7 +41,7 @@ export default function Home() {
         <div className="money-map-service-inner">
           <div className="money-map-service-copy">
             <p className="mf-eyebrow">Dịch vụ chủ lực</p>
-            <h2 className="mf-display mt-2 max-w-[520px] text-[clamp(1.8rem,2.35vw,2.45rem)] font-bold leading-[1.12] text-[var(--mf-ivory)]">
+            <h2 className="mf-display mt-2 max-w-[520px] text-[clamp(1.8rem,2.35vw,2.45rem)] font-semibold leading-[1.12] text-[var(--mf-ivory)]">
               Money Map 1:1 – Lập bản đồ tài chính cá nhân
             </h2>
             <p className="mt-3 max-w-[560px] text-[0.92rem] leading-6 text-[rgba(244,240,232,0.8)]">
@@ -63,7 +63,7 @@ export default function Home() {
               <div key={title as string} className="money-map-service-row">
                 <Icon className="money-map-service-icon" size={18} />
                 <div>
-                  <p className="text-[0.82rem] font-black text-[var(--mf-ivory)]">{title as string}</p>
+                  <p className="text-[0.82rem] font-semibold text-[var(--mf-ivory)]">{title as string}</p>
                   <p className="mt-1 text-[0.72rem] leading-5 text-[rgba(244,240,232,0.68)]">{desc as string}</p>
                 </div>
               </div>

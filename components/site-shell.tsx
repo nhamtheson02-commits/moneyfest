@@ -12,7 +12,7 @@ export function Header() {
           <BrandMark priority className="hidden w-48 sm:block" />
           <Emblem className="sm:hidden" />
         </Link>
-        <nav className="hidden items-center gap-7 text-sm font-semibold lg:flex">
+        <nav className="hidden items-center gap-7 text-sm font-medium lg:flex">
           {navigationItems.map((item) => (
             <Link key={item.href} href={item.href} className="relative py-7 transition hover:text-[var(--mf-gold)]">
               {item.label}
@@ -48,14 +48,14 @@ export function Footer() {
           </p>
           <div className="mt-5 flex gap-3 text-[var(--mf-gold)]">
             {["f", "▶", "in", "◎"].map((item) => (
-              <span key={item} className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border-gold)] text-xs font-bold">{item}</span>
+              <span key={item} className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--border-gold)] text-xs font-semibold">{item}</span>
             ))}
           </div>
         </div>
         <div className="grid gap-8 sm:grid-cols-4">
           {footerGroups.map((group) => (
             <div key={group.title}>
-              <p className="font-bold text-[var(--mf-champagne)]">{group.title}</p>
+              <p className="font-semibold text-[var(--mf-champagne)]">{group.title}</p>
               <div className="mt-4 grid gap-2 text-sm text-[rgba(244,240,232,0.68)]">
                 {group.links.map((link) => <span key={link}>{link}</span>)}
               </div>
@@ -63,7 +63,7 @@ export function Footer() {
           ))}
         </div>
         <div>
-          <p className="font-bold text-[var(--mf-champagne)]">Kết nối với chúng tôi</p>
+          <p className="font-semibold text-[var(--mf-champagne)]">Kết nối với chúng tôi</p>
           <div className="mt-4 grid gap-3 text-sm text-[rgba(244,240,232,0.72)]">
             <span className="flex items-center gap-2"><Phone size={16} />1900 633 398</span>
             <span className="flex items-center gap-2"><Mail size={16} />hello@moneyfest.vn</span>

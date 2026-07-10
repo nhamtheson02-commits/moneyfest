@@ -140,12 +140,13 @@ button {
 .mf-display {
   font-family: var(--mf-font-display);
   letter-spacing: 0;
+  font-weight: 600;
 }
 
 .mf-eyebrow {
   color: var(--mf-gold);
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -195,7 +196,7 @@ button {
   border-radius: var(--mf-radius-sm);
   padding: 0.75rem 1.1rem;
   font-size: 0.92rem;
-  font-weight: 800;
+  font-weight: 600;
   text-decoration: none;
   transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
@@ -413,7 +414,7 @@ nav,
 .mf-problem-card-title {
   color: #071521;
   font-size: 1rem;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.23;
   letter-spacing: -0.01em;
 }
@@ -493,7 +494,7 @@ nav,
 .money-map-service-row p {
   color: var(--mf-ivory) !important;
   font-size: 0.84rem !important;
-  font-weight: 900 !important;
+  font-weight: 600 !important;
   line-height: 1.25;
 }
 
@@ -564,7 +565,7 @@ nav,
 .home-section-kicker {
   color: var(--mf-gold);
   font-size: 0.72rem;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: 0.22em;
   line-height: 1;
   text-align: center;
@@ -576,7 +577,7 @@ nav,
   color: var(--mf-midnight);
   font-family: var(--mf-font-display);
   font-size: clamp(1.65rem, 3vw, 2.35rem);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.05;
 }
 
@@ -616,7 +617,7 @@ nav,
   background: var(--mf-gold);
   color: var(--mf-obsidian);
   font-size: 0.83rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .home-process-step h3,
@@ -624,7 +625,7 @@ nav,
 .home-mini-tool h3 {
   color: var(--mf-midnight);
   font-size: 0.88rem;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.35;
 }
 
@@ -674,7 +675,7 @@ nav,
   color: var(--mf-ivory);
   font-family: var(--mf-font-display);
   font-size: clamp(1.15rem, 2vw, 1.45rem);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.18;
 }
 
@@ -713,7 +714,7 @@ nav,
   margin-top: 0.62rem;
   color: var(--mf-gold);
   font-size: 0.78rem;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .home-products-grid {
@@ -777,7 +778,7 @@ nav,
   color: var(--mf-ivory);
   font-family: var(--mf-font-display);
   font-size: clamp(1.05rem, 1.55vw, 1.28rem);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.15;
 }
 
@@ -824,7 +825,7 @@ nav,
   max-width: 58rem;
   font-family: var(--mf-font-display);
   font-size: clamp(1.65rem, 3vw, 2.55rem);
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.13;
 }
 

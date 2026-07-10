@@ -38,7 +38,7 @@ export function MobileMenu({ items }: { items: NavItem[] }) {
             <Link
               href="/"
               onClick={closeMenu}
-              className="rounded-[var(--mf-radius-sm)] px-3 py-3 text-sm font-bold text-[var(--mf-ivory)] transition hover:bg-[rgba(244,240,232,0.08)]"
+              className="rounded-[var(--mf-radius-sm)] px-3 py-3 text-sm font-medium text-[var(--mf-ivory)] transition hover:bg-[rgba(244,240,232,0.08)]"
               aria-current={pathname === "/" ? "page" : undefined}
             >
               Trang chủ
@@ -48,7 +48,7 @@ export function MobileMenu({ items }: { items: NavItem[] }) {
                 key={item.href}
                 href={item.href}
                 onClick={closeMenu}
-                className="rounded-[var(--mf-radius-sm)] px-3 py-3 text-sm font-bold text-[var(--mf-ivory)] transition hover:bg-[rgba(244,240,232,0.08)]"
+                className="rounded-[var(--mf-radius-sm)] px-3 py-3 text-sm font-medium text-[var(--mf-ivory)] transition hover:bg-[rgba(244,240,232,0.08)]"
                 aria-current={pathname === item.href ? "page" : undefined}
               >
                 {item.label}
