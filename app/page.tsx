@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PageShell } from "@/components/site-shell";
 import { CTASection, GoldButton, HeroSection, IconBox, ProblemCard, ProblemChatIcon, ProblemGrowthIcon, ProblemMoneyIcon, ProblemPriorityIcon, ProblemSectionTitle, SectionTitle, Timeline, icons } from "@/components/marketing";
 import { products } from "@/data/products";
@@ -36,23 +37,42 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mf-dark-section py-16">
-        <div className="mf-container grid items-center gap-8 lg:grid-cols-[1fr_0.72fr]">
-          <div>
+      <section className="money-map-service-section">
+        <div className="mx-auto grid w-[min(100%-2rem,1200px)] items-center gap-6 lg:grid-cols-[1.05fr_180px_0.95fr]">
+          <div className="py-9">
             <p className="mf-eyebrow">Dịch vụ chủ lực</p>
-            <h2 className="mf-display mt-3 text-[clamp(2.4rem,4vw,4rem)] font-bold leading-tight">Money Map 1:1 – Lập bản đồ tài chính cá nhân</h2>
-            <p className="mt-4 max-w-3xl text-[rgba(244,240,232,0.75)]">Một buổi làm việc riêng giúp bạn nhìn rõ bức tranh tài chính và xác định 3–5 bước ưu tiên trong 90 ngày tới.</p>
-            <ul className="mt-6 grid gap-2 text-sm text-[rgba(244,240,232,0.82)]">
+            <h2 className="mf-display mt-2 max-w-[520px] text-[clamp(1.8rem,2.35vw,2.45rem)] font-bold leading-[1.12] text-[var(--mf-ivory)]">
+              Money Map 1:1 – Lập bản đồ tài chính cá nhân
+            </h2>
+            <p className="mt-3 max-w-[560px] text-[0.92rem] leading-6 text-[rgba(244,240,232,0.8)]">
+              Một buổi làm việc riêng giúp bạn nhìn rõ bức tranh tài chính và xác định 3–5 bước ưu tiên trong 90 ngày tới.
+            </p>
+            <div className="mt-4 h-px max-w-[520px] bg-[rgba(212,168,63,0.45)]" />
+            <ul className="mt-4 grid gap-2 text-[0.82rem] font-medium text-[rgba(244,240,232,0.9)]">
               {["Bản đồ dòng tiền: thu nhập – chi tiêu – tiết kiệm – nợ", "Chẩn đoán sức khỏe tài chính: điểm mạnh, điểm yếu, rủi ro", "Thứ tự ưu tiên 90 ngày: việc nào làm trước, việc nào chưa nên làm", "Gợi ý giải pháp và công cụ phù hợp với bạn"].map((item) => (
-                <li key={item} className="flex items-start gap-2"><icons.check className="mt-1 text-[var(--mf-gold)]" size={16} />{item}</li>
+                <li key={item} className="flex items-start gap-2"><icons.check className="mt-0.5 text-[var(--mf-gold)]" size={15} />{item}</li>
               ))}
             </ul>
           </div>
-          <div className="mf-card-dark p-6">
-            <p className="mf-display text-4xl font-bold text-[var(--mf-gold)]">60 – 90 phút</p>
-            <p className="mt-3 text-sm text-[rgba(244,240,232,0.75)]">Online 1:1 với chuyên gia, phù hợp người đi làm và gia đình trẻ muốn tối ưu tài chính.</p>
-            <p className="mt-5 text-2xl font-bold">Từ 1.500.000đ / buổi</p>
-            <div className="mt-6"><GoldButton href="/contact">Đặt lịch ngay</GoldButton></div>
+          <div className="money-map-service-card">
+            {[
+              ["60 – 90 phút", "Online 1:1 với chuyên gia", icons.calendar],
+              ["Phù hợp với", "Người đi làm, gia đình trẻ, muốn tối ưu tài chính", icons.users],
+              ["Đầu tư", "Từ 1.500.000đ / buổi", icons.dollar],
+            ].map(([title, desc, Icon]) => (
+              <div key={title as string} className="flex gap-3 border-b border-[rgba(212,168,63,0.16)] pb-3 last:border-b-0 last:pb-0">
+                <Icon className="mt-1 shrink-0 text-[var(--mf-gold)]" size={19} />
+                <div>
+                  <p className="text-[0.82rem] font-black text-[var(--mf-ivory)]">{title as string}</p>
+                  <p className="mt-1 text-[0.72rem] leading-5 text-[rgba(244,240,232,0.68)]">{desc as string}</p>
+                </div>
+              </div>
+            ))}
+            <GoldButton href="/contact">Đặt lịch ngay</GoldButton>
+          </div>
+          <div className="relative hidden min-h-[252px] overflow-hidden lg:block">
+            <Image src="/images/moneyfest/hero/money-map-service-native.png" alt="" fill className="object-cover object-center" sizes="40vw" />
+            <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[var(--mf-midnight)] to-transparent" />
           </div>
         </div>
       </section>
