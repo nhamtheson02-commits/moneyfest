@@ -1,5 +1,5 @@
 import { PageShell } from "@/components/site-shell";
-import { CTASection, GoldButton, HeroSection, IconBox, ProblemCard, ProblemSectionTitle, SectionTitle, Timeline, icons } from "@/components/marketing";
+import { CTASection, GoldButton, HeroSection, IconBox, ProblemCard, ProblemChatIcon, ProblemGrowthIcon, ProblemMoneyIcon, ProblemPriorityIcon, ProblemSectionTitle, SectionTitle, Timeline, icons } from "@/components/marketing";
 import { products } from "@/data/products";
 
 const problems = [
@@ -29,8 +29,8 @@ export default function Home() {
           </ProblemSectionTitle>
           <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {problems.map(([title, desc], index) => {
-              const Icon = [icons.briefcase, icons.target, icons.message, icons.trend][index] ?? icons.lightbulb;
-              return <ProblemCard key={title} icon={<Icon size={28} />} title={title}>{desc}</ProblemCard>;
+              const problemIcons = [<ProblemMoneyIcon key="money" />, <ProblemPriorityIcon key="priority" />, <ProblemChatIcon key="chat" />, <ProblemGrowthIcon key="growth" />];
+              return <ProblemCard key={title} icon={problemIcons[index]} title={title}>{desc}</ProblemCard>;
             })}
           </div>
         </div>

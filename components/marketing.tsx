@@ -134,13 +134,13 @@ export function HeroSection({
 
 export function ProblemCard({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
   return (
-    <div className="flex min-h-[160px] items-center gap-5 rounded-[7px] border border-[rgba(212,168,63,0.28)] bg-[rgba(255,250,240,0.5)] px-6 py-5 shadow-[0_10px_28px_rgba(7,21,33,0.03)]">
-      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f1e6d6] text-[var(--mf-midnight)]">
+    <div className="mf-problem-card">
+      <div className="mf-problem-icon">
         {icon}
       </div>
       <div>
-        <h3 className="text-[0.98rem] font-black leading-[1.22] text-[var(--mf-midnight)]">{title}</h3>
-        <p className="mt-4 text-[0.78rem] leading-6 text-[var(--mf-slate)]">{children}</p>
+        <h3 className="mf-problem-card-title">{title}</h3>
+        <p className="mf-problem-card-copy">{children}</p>
       </div>
     </div>
   );
@@ -150,11 +150,52 @@ export function ProblemSectionTitle({ children }: { children: ReactNode }) {
   return (
     <div className="mx-auto flex max-w-5xl items-center justify-center gap-5 text-center">
       <span className="mf-title-rule" aria-hidden="true" />
-      <h2 className="mf-display whitespace-nowrap text-[clamp(1.45rem,2.05vw,2.1rem)] font-bold leading-none text-[var(--mf-midnight)]">
+      <h2 className="mf-display whitespace-nowrap text-[clamp(1.38rem,1.7vw,1.62rem)] font-bold leading-none text-[var(--mf-midnight)]">
         {children}
       </h2>
       <span className="mf-title-rule mf-title-rule-right" aria-hidden="true" />
     </div>
+  );
+}
+
+export function ProblemMoneyIcon() {
+  return (
+    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" aria-hidden="true">
+      <path d="M9.2 11.4H20c1.3 0 2.3 1 2.3 2.3v6.6c0 1.3-1 2.3-2.3 2.3H8.2c-1.3 0-2.3-1-2.3-2.3v-6.6c0-1.3 1-2.3 2.3-2.3h1Z" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M10.4 11.2c.2-2.6 1.7-4 3.7-4s3.5 1.4 3.7 4" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round"/>
+      <path d="M6.4 16.2h15.4" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round"/>
+      <path d="M14.1 14.7v3.2" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round"/>
+      <path d="M11.8 5.9c.7-.9 1.5-1.3 2.4-1.3.8 0 1.5.3 2.1.9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+export function ProblemPriorityIcon() {
+  return (
+    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" aria-hidden="true">
+      <path d="M14.5 4.8v19.4" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round"/>
+      <path d="M8.2 8.2h11.5l2.2 2.4-2.2 2.4H8.2L6 10.6l2.2-2.4Z" stroke="currentColor" strokeWidth="2.1" strokeLinejoin="round"/>
+      <path d="M20.8 16H9.3l-2.2 2.4 2.2 2.4h11.5l2.2-2.4-2.2-2.4Z" stroke="currentColor" strokeWidth="2.1" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+export function ProblemChatIcon() {
+  return (
+    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" aria-hidden="true">
+      <path d="M10.4 18.6h-.9l-4 3.1.9-4.1A8.2 8.2 0 0 1 5 13c0-4.4 3.8-7.8 8.6-7.8 4.9 0 8.7 3.4 8.7 7.8s-3.8 7.8-8.7 7.8c-1.1 0-2.2-.2-3.2-.6Z" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M14.2 20.8c1.1.8 2.5 1.2 4 1.2h.7l3.6 2.6-.8-3.4a6 6 0 0 0 2.3-4.7c0-1.6-.7-3.1-1.9-4.2" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
+export function ProblemGrowthIcon() {
+  return (
+    <svg width="29" height="29" viewBox="0 0 29 29" fill="none" aria-hidden="true">
+      <path d="M5.7 20.8 11 15.5l4 4L23.4 11" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M17.8 10.8h5.8v5.8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M5.7 23.2h18" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round"/>
+    </svg>
   );
 }
 
