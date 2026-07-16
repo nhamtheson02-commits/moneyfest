@@ -8,13 +8,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-[rgba(212,168,63,0.55)] bg-[rgba(7,7,7,0.96)] text-[var(--mf-ivory)] backdrop-blur">
       <div className="mf-container flex min-h-20 items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-3" aria-label="Moneyfest trang chủ">
+        <Link href="/" className="mf-logo-link flex items-center gap-3" aria-label="Moneyfest trang chủ">
           <BrandMark priority className="hidden w-48 sm:block" />
           <Emblem className="sm:hidden" />
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium lg:flex">
           {navigationItems.map((item) => (
-            <Link key={item.href} href={item.href} className="relative py-7 transition hover:text-[var(--mf-gold)]">
+            <Link key={item.href} href={item.href} className="group relative py-7 transition hover:text-[var(--mf-gold)]">
               {item.label}
               <span className="absolute inset-x-0 bottom-5 h-px origin-left scale-x-0 bg-[var(--mf-gold)] transition group-hover:scale-x-100" />
             </Link>
@@ -85,7 +85,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="mf-page-enter flex-1">{children}</main>
       <Footer />
     </>
   );

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { PageShell } from "@/components/site-shell";
 import { GoldButton, HeroSection, OutlineButton, ProblemCard, ProblemChatIcon, ProblemGrowthIcon, ProblemMoneyIcon, ProblemPriorityIcon, ProblemSectionTitle, icons } from "@/components/marketing";
+import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { products } from "@/data/products";
 
 const problems = [
@@ -23,7 +24,7 @@ export default function Home() {
         badges={["Không FOMO", "Không phím hàng", "Không cam kết lợi nhuận", "Bắt đầu từ hoàn cảnh của bạn"]}
       />
 
-      <section className="mf-problem-section">
+      <RevealOnScroll as="section" className="mf-problem-section">
         <div className="mx-auto w-[min(100%-2rem,1200px)]">
           <ProblemSectionTitle>
             Bạn có đang gặp những vấn đề này?
@@ -35,9 +36,9 @@ export default function Home() {
             })}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="money-map-service-section">
+      <RevealOnScroll as="section" className="money-map-service-section" direction="up">
         <div className="money-map-service-inner">
           <div className="money-map-service-copy">
             <p className="mf-eyebrow">Dịch vụ chủ lực</p>
@@ -75,9 +76,9 @@ export default function Home() {
             <div className="money-map-service-art-fade" />
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="home-flow-section">
+      <RevealOnScroll as="section" className="home-flow-section">
         <div className="mf-container">
           <div className="home-compact-title">
             <p>Quy trình làm việc</p>
@@ -100,9 +101,9 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="home-tools-products-section">
+      <RevealOnScroll as="section" className="home-tools-products-section">
         <div className="mf-container">
           <p className="home-section-kicker">Công cụ miễn phí nổi bật</p>
           <div className="home-tools-grid">
@@ -144,9 +145,9 @@ export default function Home() {
             })}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="home-principles-section">
+      <RevealOnScroll as="section" className="home-principles-section">
         <div className="mf-container">
           <div className="home-principles-grid">
             {[
@@ -165,9 +166,9 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="home-final-cta">
+      <RevealOnScroll as="section" className="home-final-cta">
         <div className="mf-container home-final-cta-inner">
           <div>
             <h2>Sẵn sàng nhìn rõ bức tranh tài chính và làm chủ tương lai của bạn?</h2>
@@ -178,7 +179,7 @@ export default function Home() {
             <OutlineButton href="/ebooks">Nhận ebook miễn phí</OutlineButton>
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
     </PageShell>
   );
 }

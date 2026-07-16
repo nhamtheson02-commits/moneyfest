@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/site-shell";
+import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { CashflowTool, FinancialQuiz } from "@/components/tool-forms";
 import { SectionHeader } from "@/components/ui";
 
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 export default function ToolsPage() {
   return (
     <PageShell>
-      <section className="mf-container mf-section-compact">
+      <RevealOnScroll as="section" className="mf-container mf-section-compact">
         <SectionHeader
           as="h1"
           eyebrow="Công cụ"
@@ -23,7 +24,7 @@ export default function ToolsPage() {
           <CashflowTool />
           <FinancialQuiz />
         </div>
-      </section>
+      </RevealOnScroll>
     </PageShell>
   );
 }

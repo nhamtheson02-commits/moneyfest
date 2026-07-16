@@ -66,6 +66,12 @@
   --mf-font-display: "Noto Serif MF", "SVN Georgia", Georgia, "Times New Roman", serif;
   --mf-font-body: var(--font-inter), Inter, Aptos, "Segoe UI", Arial, Helvetica, sans-serif;
   --mf-font-ui: var(--font-source-sans), "Source Sans 3", "Source Sans Pro", Inter, Arial, sans-serif;
+  --motion-fast: 180ms;
+  --motion-base: 280ms;
+  --motion-slow: 520ms;
+  --motion-hero: 800ms;
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
@@ -143,6 +149,177 @@ button {
   font-weight: 600;
 }
 
+.mf-page-enter {
+  animation: mfPageEnter var(--motion-hero) var(--ease-premium) both;
+}
+
+.mf-reveal {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    transform var(--motion-slow) var(--ease-premium),
+    opacity var(--motion-slow) var(--ease-premium);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: transform, opacity;
+}
+
+.mf-reveal-left {
+  transform: translate3d(-18px, 0, 0);
+}
+
+.mf-reveal-right {
+  transform: translate3d(18px, 0, 0);
+}
+
+.mf-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.mf-reveal .mf-problem-card,
+.mf-reveal .home-process-step,
+.mf-reveal .home-mini-tool,
+.mf-reveal .home-product-card,
+.mf-reveal .home-principle-item,
+.mf-reveal .mf-editorial-card,
+.mf-reveal .mf-card,
+.mf-reveal .mf-card-dark {
+  transition-delay: calc(var(--stagger-index, 0) * 70ms);
+}
+
+.mf-reveal.is-visible .mf-problem-card:nth-child(1),
+.mf-reveal.is-visible .home-process-step:nth-child(1),
+.mf-reveal.is-visible .home-mini-tool:nth-child(1),
+.mf-reveal.is-visible .home-product-card:nth-child(1),
+.mf-reveal.is-visible .home-principle-item:nth-child(1),
+.mf-reveal.is-visible .mf-editorial-card:nth-child(1),
+.mf-reveal.is-visible .mf-card:nth-child(1),
+.mf-reveal.is-visible .mf-card-dark:nth-child(1) { --stagger-index: 0; }
+
+.mf-reveal.is-visible .mf-problem-card:nth-child(2),
+.mf-reveal.is-visible .home-process-step:nth-child(2),
+.mf-reveal.is-visible .home-mini-tool:nth-child(2),
+.mf-reveal.is-visible .home-product-card:nth-child(2),
+.mf-reveal.is-visible .home-principle-item:nth-child(2),
+.mf-reveal.is-visible .mf-editorial-card:nth-child(2),
+.mf-reveal.is-visible .mf-card:nth-child(2),
+.mf-reveal.is-visible .mf-card-dark:nth-child(2) { --stagger-index: 1; }
+
+.mf-reveal.is-visible .mf-problem-card:nth-child(3),
+.mf-reveal.is-visible .home-process-step:nth-child(3),
+.mf-reveal.is-visible .home-mini-tool:nth-child(3),
+.mf-reveal.is-visible .home-product-card:nth-child(3),
+.mf-reveal.is-visible .home-principle-item:nth-child(3),
+.mf-reveal.is-visible .mf-editorial-card:nth-child(3),
+.mf-reveal.is-visible .mf-card:nth-child(3),
+.mf-reveal.is-visible .mf-card-dark:nth-child(3) { --stagger-index: 2; }
+
+.mf-reveal.is-visible .mf-problem-card:nth-child(4),
+.mf-reveal.is-visible .home-process-step:nth-child(4),
+.mf-reveal.is-visible .home-mini-tool:nth-child(4),
+.mf-reveal.is-visible .home-product-card:nth-child(4),
+.mf-reveal.is-visible .home-principle-item:nth-child(4),
+.mf-reveal.is-visible .mf-editorial-card:nth-child(4),
+.mf-reveal.is-visible .mf-card:nth-child(4),
+.mf-reveal.is-visible .mf-card-dark:nth-child(4) { --stagger-index: 3; }
+
+.mf-hero-reveal {
+  opacity: 0;
+  animation: mfHeroReveal 720ms var(--ease-premium) both;
+}
+
+.mf-hero-reveal-1 { animation-delay: 80ms; }
+.mf-hero-reveal-2 { animation-delay: 180ms; }
+.mf-hero-reveal-3 { animation-delay: 300ms; }
+.mf-hero-reveal-4 { animation-delay: 420ms; }
+.mf-hero-reveal-5 { animation-delay: 540ms; }
+
+.mf-hero-image img {
+  animation: mfHeroImageReveal 900ms var(--ease-premium) both;
+}
+
+.mf-logo-link {
+  opacity: 0.92;
+  transition:
+    opacity var(--motion-base) var(--ease-premium),
+    transform var(--motion-base) var(--ease-premium);
+}
+
+.mf-logo-link:hover {
+  opacity: 1;
+  transform: scale(1.015);
+}
+
+nav a {
+  transition: color var(--motion-base) var(--ease-premium);
+}
+
+nav a > span {
+  transition: transform var(--motion-base) var(--ease-premium);
+}
+
+@keyframes mfPageEnter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes mfHeroReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes mfHeroImageReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes mfCompassSettle {
+  from {
+    opacity: 0;
+    transform: rotate(-4deg) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .mf-reveal,
+  .mf-hero-reveal,
+  .mf-page-enter {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 .mf-eyebrow {
   color: var(--mf-gold);
   font-size: 0.78rem;
@@ -166,6 +343,11 @@ button {
   border: 1px solid var(--mf-border);
   border-radius: var(--mf-radius-lg);
   box-shadow: var(--mf-shadow-card);
+  transition:
+    transform var(--motion-base) var(--ease-premium),
+    border-color var(--motion-base) var(--ease-premium),
+    background var(--motion-base) var(--ease-premium),
+    box-shadow var(--motion-base) var(--ease-premium);
 }
 
 .mf-card-dark {
@@ -175,6 +357,11 @@ button {
   border: 1px solid rgba(212, 168, 63, 0.32);
   border-radius: var(--mf-radius-lg);
   color: var(--mf-ivory);
+  transition:
+    transform var(--motion-base) var(--ease-premium),
+    border-color var(--motion-base) var(--ease-premium),
+    background var(--motion-base) var(--ease-premium),
+    box-shadow var(--motion-base) var(--ease-premium);
 }
 
 .mf-editorial-card {
@@ -185,6 +372,88 @@ button {
   border-radius: var(--mf-radius-lg);
   box-shadow: 0 22px 60px rgba(7, 7, 7, 0.18);
   color: var(--mf-ivory);
+  transition:
+    transform var(--motion-base) var(--ease-premium),
+    border-color var(--motion-base) var(--ease-premium),
+    background var(--motion-base) var(--ease-premium),
+    box-shadow var(--motion-base) var(--ease-premium);
+}
+
+.mf-card:hover,
+.mf-card-dark:hover,
+.mf-editorial-card:hover,
+.mf-problem-card:hover,
+.home-mini-tool:hover,
+.home-product-card:hover,
+.home-process-step:hover,
+.home-principle-item:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212, 168, 63, 0.75);
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(212, 168, 63, 0.18);
+}
+
+.mf-editorial-card img,
+.mf-card img,
+.mf-card-dark img {
+  transition: transform var(--motion-slow) var(--ease-premium), opacity var(--motion-slow) var(--ease-premium);
+}
+
+.mf-editorial-card:hover img,
+.mf-card:hover img,
+.mf-card-dark:hover img {
+  transform: scale(1.04);
+}
+
+.mf-editorial-card:hover h3 {
+  color: var(--mf-champagne);
+}
+
+.mf-editorial-card:hover .mf-tag-dark {
+  border-color: rgba(232, 207, 139, 0.85);
+  color: var(--mf-champagne);
+}
+
+.mf-editorial-card > div:first-child {
+  transform-origin: left center;
+  transition: transform var(--motion-slow) var(--ease-premium);
+}
+
+.mf-editorial-card:hover > div:first-child {
+  transform: perspective(900px) rotateY(-3deg) translateY(-3px);
+}
+
+.mf-editorial-card:hover span svg {
+  transform: translateX(4px);
+}
+
+.mf-card:hover .mf-display,
+.mf-card-dark:hover .mf-display {
+  color: var(--mf-gold);
+}
+
+.mf-card svg,
+.mf-card-dark svg,
+.mf-editorial-card svg,
+.mf-problem-card svg,
+.home-mini-tool svg,
+.home-product-card svg,
+.home-principle-item svg {
+  transition:
+    transform var(--motion-base) var(--ease-premium),
+    color var(--motion-base) var(--ease-premium);
+}
+
+.mf-card:hover svg,
+.mf-card-dark:hover svg,
+.mf-editorial-card:hover svg,
+.mf-problem-card:hover svg,
+.home-mini-tool:hover svg,
+.home-product-card:hover svg,
+.home-principle-item:hover svg {
+  color: var(--mf-gold);
+  transform: scale(1.08);
 }
 
 .mf-btn {
@@ -198,11 +467,28 @@ button {
   font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+  transition:
+    transform var(--motion-base) var(--ease-premium),
+    background-color var(--motion-base) var(--ease-premium),
+    border-color var(--motion-base) var(--ease-premium),
+    color var(--motion-base) var(--ease-premium),
+    box-shadow var(--motion-base) var(--ease-premium);
 }
 
 .mf-btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.mf-btn:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.mf-btn svg {
+  transition: transform var(--motion-base) var(--ease-premium);
+}
+
+.mf-btn:hover svg {
+  transform: translateX(4px);
 }
 
 .mf-btn-primary {
@@ -235,6 +521,7 @@ button {
 
 .mf-btn-outline:hover {
   background: rgba(212, 168, 63, 0.12);
+  border-color: rgba(232, 207, 139, 0.9);
   color: var(--mf-champagne);
 }
 
@@ -246,6 +533,7 @@ button {
 
 .mf-btn-gold:hover {
   background: var(--mf-champagne);
+  box-shadow: 0 10px 30px rgba(212, 168, 63, 0.18);
 }
 
 .mf-btn:disabled {
@@ -263,12 +551,18 @@ button {
   padding: 0.65rem 0.78rem;
   color: var(--mf-obsidian);
   outline: none;
-  transition: border-color 160ms ease, box-shadow 160ms ease;
+  transition:
+    border-color var(--motion-fast) var(--ease-premium),
+    background var(--motion-fast) var(--ease-premium),
+    box-shadow var(--motion-fast) var(--ease-premium);
 }
 
 .mf-field:focus {
   border-color: var(--mf-gold);
-  box-shadow: 0 0 0 3px rgba(212, 168, 63, 0.25);
+  background: rgba(255, 250, 240, 0.96);
+  box-shadow:
+    0 0 0 3px rgba(212, 168, 63, 0.18),
+    0 10px 30px rgba(7, 21, 33, 0.06);
 }
 
 .mf-label {
@@ -618,6 +912,11 @@ nav,
   color: var(--mf-obsidian);
   font-size: 0.83rem;
   font-weight: 700;
+  transition: transform var(--motion-base) var(--ease-premium);
+}
+
+.home-process-step:hover > span {
+  transform: scale(1.07);
 }
 
 .home-process-step h3,

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CheckCircle2, Clock } from "lucide-react";
 import { PageShell } from "@/components/site-shell";
+import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { CTAButton, SectionHeader } from "@/components/ui";
 import { services } from "@/lib/data";
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <PageShell>
-      <section className="mf-container mf-section-compact">
+      <RevealOnScroll as="section" className="mf-container mf-section-compact">
         <SectionHeader
           as="h1"
           eyebrow="Dịch vụ"
@@ -40,7 +41,7 @@ export default function ServicesPage() {
           <p className="mt-3 max-w-2xl text-[rgba(244,240,232,0.76)]">Gửi mục tiêu tài chính của bạn, MONEYFEST sẽ phân loại nhu cầu và gợi ý bước tiếp theo.</p>
           <div className="mt-6"><CTAButton href="/contact" variant="gold">Đăng ký tư vấn 1:1</CTAButton></div>
         </div>
-      </section>
+      </RevealOnScroll>
     </PageShell>
   );
 }

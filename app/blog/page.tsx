@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageShell } from "@/components/site-shell";
 import { ArticleCard, CTASection, GoldButton, HeroSection, SectionTitle, icons } from "@/components/marketing";
+import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { articles, blogCategories, series } from "@/data/blog";
 
 export const metadata: Metadata = {
@@ -25,7 +26,7 @@ export default function BlogPage() {
         badges={["Phân tích dễ hiểu", "Không FOMO", "Có framework", "Ứng dụng được"]}
       />
 
-      <section id="featured" className="mf-dark-section py-14">
+      <RevealOnScroll as="section" id="featured" className="mf-dark-section py-14">
         <div className="mf-container grid overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--border-gold)] lg:grid-cols-[0.85fr_1.15fr]">
           <div className="relative min-h-80"><Image src="/images/moneyfest/blog/blog-moneyfest.jpg" alt="" fill className="object-cover" /></div>
           <div className="p-8">
@@ -36,9 +37,9 @@ export default function BlogPage() {
             <div className="mt-6"><GoldButton href="/blog">Đọc bài viết</GoldButton></div>
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="mf-cream-section py-12">
+      <RevealOnScroll as="section" className="mf-cream-section py-12">
         <div className="mf-container">
           <div className="flex flex-wrap gap-3">
             {blogCategories.map((category, index) => (
@@ -65,9 +66,9 @@ export default function BlogPage() {
             </aside>
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="mf-cream-section py-12">
+      <RevealOnScroll as="section" className="mf-cream-section py-12">
         <div className="mf-container">
           <SectionTitle title="Series nổi bật" />
           <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -80,7 +81,7 @@ export default function BlogPage() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
       <CTASection title="Nhận bản tin Moneyfest mỗi tuần" description="Nhận góc nhìn chọn lọc, checklist thực hành và cập nhật bài viết mới nhất." primary="Đăng ký nhận tin" />
     </PageShell>

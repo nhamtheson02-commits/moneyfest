@@ -99,23 +99,23 @@ export function HeroSection({
   badges?: string[];
 }) {
   return (
-    <section className="border-b border-[rgba(212,168,63,0.72)] bg-[var(--mf-obsidian)] text-[var(--mf-ivory)]">
+    <section className="mf-hero-section border-b border-[rgba(212,168,63,0.72)] bg-[var(--mf-obsidian)] text-[var(--mf-ivory)]">
       <div className="grid w-full overflow-hidden lg:min-h-[382px] lg:grid-cols-[50%_50%]">
         <div className="relative z-10 flex items-center bg-[var(--mf-midnight)] px-6 py-10 sm:px-10 lg:px-[6.3vw]">
           <div className="w-full max-w-[520px]">
-          <p className="mf-eyebrow">{eyebrow}</p>
-          <h1 className="mf-display mt-3 text-[clamp(3.1rem,4.45vw,4.55rem)] font-semibold leading-[1.05]">
+          <p className="mf-eyebrow mf-hero-reveal mf-hero-reveal-1">{eyebrow}</p>
+          <h1 className="mf-display mf-hero-reveal mf-hero-reveal-2 mt-3 text-[clamp(3.1rem,4.45vw,4.55rem)] font-semibold leading-[1.05]">
             {title}
           </h1>
-          <p className="mt-4 max-w-[500px] text-[1rem] leading-7 text-[rgba(244,240,232,0.86)]">{description}</p>
+          <p className="mf-hero-reveal mf-hero-reveal-3 mt-4 max-w-[500px] text-[1rem] leading-7 text-[rgba(244,240,232,0.86)]">{description}</p>
           {(primary || secondary) ? (
-            <div className="mt-7 flex flex-col gap-4 sm:flex-row">
+            <div className="mf-hero-reveal mf-hero-reveal-4 mt-7 flex flex-col gap-4 sm:flex-row">
               {primary ? <GoldButton href={primary.href}>{primary.label}</GoldButton> : null}
               {secondary ? <OutlineButton href={secondary.href}>{secondary.label}</OutlineButton> : null}
             </div>
           ) : null}
           {badges.length ? (
-            <div className="mt-7 flex flex-wrap items-center gap-x-4 gap-y-3">
+            <div className="mf-hero-reveal mf-hero-reveal-5 mt-7 flex flex-wrap items-center gap-x-4 gap-y-3">
               {badges.map((badge) => (
                 <span key={badge} className="mf-hero-badge"><CheckCircle2 size={16} />{badge}</span>
               ))}
@@ -123,7 +123,7 @@ export function HeroSection({
           ) : null}
           </div>
         </div>
-        <div className="relative hidden min-h-[382px] lg:block">
+        <div className="mf-hero-image relative hidden min-h-[382px] overflow-hidden lg:block">
           <Image src={image} alt="" fill priority className="object-cover object-center" sizes="50vw" />
           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--mf-midnight)] to-transparent" />
         </div>
