@@ -90,12 +90,12 @@ const ebooks = [
 ];
 
 const posts = [
-  ["vi-sao-luong-tang-van-het-tien", "Vì sao lương tăng vẫn hết tiền?", "cashflow", ["beginner", "planning"]],
+  ["vi-sao-luong-tang-van-het-tien", "Vì sao thu nhập tăng nhưng tiền vẫn khó tích lũy?", "cashflow", ["beginner", "planning"]],
   ["quy-du-phong-bao-nhieu-la-du", "Quỹ dự phòng bao nhiêu là đủ?", "budgeting", ["saving", "beginner"]],
   ["snowball-hay-avalanche-tra-no", "Trả nợ Snowball hay Avalanche?", "debt", ["debt-free", "90-days"]],
   ["ngan-sach-50-30-20-co-hop-voi-ban", "Ngân sách 50/30/20 có hợp với bạn?", "budgeting", ["worksheet", "beginner"]],
-  ["bat-dau-dau-tu-khi-chua-giau", "Bắt đầu đầu tư khi chưa giàu", "investing", ["beginner", "planning"]],
-  ["5-dau-hieu-tai-chinh-dang-canh-bao", "5 dấu hiệu tài chính đang cảnh báo", "mindset", ["90-days", "planning"]],
+  ["bat-dau-dau-tu-khi-chua-giau", "Bắt đầu đầu tư khi tài chính còn khiêm tốn", "investing", ["beginner", "planning"]],
+  ["5-dau-hieu-tai-chinh-dang-canh-bao", "5 dấu hiệu nên xem lại tình hình tài chính", "mindset", ["90-days", "planning"]],
   ["lap-ke-hoach-tien-bac-cho-cap-doi", "Lập kế hoạch tiền bạc cho cặp đôi", "budgeting", ["worksheet", "saving"]],
   ["kiem-tra-dong-tien-moi-chu-nhat", "Kiểm tra dòng tiền mỗi Chủ nhật", "cashflow", ["90-days", "worksheet"]],
 ] as const;

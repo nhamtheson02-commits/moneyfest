@@ -8,7 +8,7 @@ import { freeEbooks, paidEbooks } from "@/data/ebooks";
 export const metadata: Metadata = {
   title: "Ebook",
   alternates: { canonical: "/ebooks" },
-  description: "Thư viện ebook Moneyfest giúp bạn hiểu luật chơi trước khi ra quyết định.",
+  description: "Thư viện ebook Moneyfest giúp bạn hiểu rõ nền tảng trước khi ra quyết định.",
 };
 
 export default function EbooksPage() {
@@ -16,7 +16,7 @@ export default function EbooksPage() {
     <PageShell>
       <HeroSection
         eyebrow="Thư viện ebook"
-        title={<>Thư viện ebook giúp bạn hiểu luật chơi <span className="text-[var(--mf-gold)]">trước khi ra quyết định.</span></>}
+        title={<>Thư viện ebook giúp bạn hiểu rõ nền tảng <span className="text-[var(--mf-gold)]">trước khi ra quyết định.</span></>}
         description="Kho ebook được biên soạn bởi đội ngũ Moneyfest, giúp bạn xây nền tảng tài chính vững chắc: tư duy, quản lý tiền, phân bổ tài sản và lựa chọn sản phẩm phù hợp."
         image="/images/moneyfest/ebook/ebook-hero-ai.png"
         badges={["Thực tế & dễ hiểu", "Dựa trên nguyên tắc", "Cập nhật liên tục"]}
@@ -39,7 +39,7 @@ export default function EbooksPage() {
             <h2 className="mf-display mt-3 text-[clamp(2.3rem,4vw,4rem)] font-bold leading-tight">Bản đồ phân bổ tiền nhàn rỗi – 7 bước trước khi đầu tư</h2>
             <p className="mt-4 text-[rgba(244,240,232,0.76)]">Ebook miễn phí giúp bạn nhìn rõ toàn cảnh tài chính cá nhân và biết nên bắt đầu từ đâu trước khi đưa tiền vào bất kỳ kênh đầu tư nào.</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {["Hiểu rõ bức tranh tài chính hiện tại", "7 bước phân bổ tiền nhàn rỗi hiệu quả", "Xác định mục tiêu và mức độ ưu tiên", "Tránh 5 sai lầm phổ biến của nhà đầu tư mới"].map((item) => (
+              {["Hiểu rõ bức tranh tài chính hiện tại", "7 bước phân bổ tiền nhàn rỗi hiệu quả", "Xác định mục tiêu và mức độ ưu tiên", "Nhận diện 5 điểm cần lưu ý thường gặp khi mới đầu tư"].map((item) => (
                 <span key={item} className="flex gap-2 text-sm"><icons.check className="text-[var(--mf-gold)]" size={16} />{item}</span>
               ))}
             </div>
@@ -69,12 +69,12 @@ export default function EbooksPage() {
       <RevealOnScroll as="section" className="mf-cream-section py-10">
         <div className="mf-container grid overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--mf-border)] bg-white md:grid-cols-[1fr_auto_1fr]">
           <div className="p-8"><h3 className="mf-display text-3xl font-bold">Ebook miễn phí</h3><p className="mf-muted mt-3">Kiến thức nền tảng, dễ hiểu và thực tế. Giúp bạn bắt đầu đúng.</p></div>
-          <div className="flex items-center justify-center border-y border-[var(--mf-border)] p-6 text-2xl font-bold text-[var(--mf-gold)] md:border-x md:border-y-0">VS</div>
+          <div className="flex items-center justify-center border-y border-[var(--mf-border)] p-6 text-2xl font-bold text-[var(--mf-gold)] md:border-x md:border-y-0" aria-hidden="true">&amp;</div>
           <div className="p-8"><h3 className="mf-display text-3xl font-bold">Ebook trả phí</h3><p className="mf-muted mt-3">Nội dung chuyên sâu, có framework, công cụ và workbook ứng dụng.</p></div>
         </div>
       </RevealOnScroll>
 
-      <CTASection title="Bắt đầu hành trình hiểu – làm chủ – tự do tài chính của bạn." description="Tải ebook miễn phí để bắt đầu hoặc đặt lịch tư vấn 1:1 với chuyên gia Moneyfest." />
+      <CTASection title="Bắt đầu hành trình hiểu rõ và chủ động hơn với tài chính của bạn." description="Tải ebook miễn phí để bắt đầu hoặc đặt lịch tư vấn 1:1 với chuyên gia Moneyfest." />
     </PageShell>
   );
 }

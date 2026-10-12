@@ -33,7 +33,7 @@ export const services = [
   {
     title: "Tư vấn 1:1",
     price: "Theo nhu cầu",
-    description: "Buổi làm việc riêng để soi dòng tiền, mục tiêu và lập kế hoạch 90 ngày.",
+    description: "Buổi làm việc riêng để cùng xem xét dòng tiền, mục tiêu và lập kế hoạch 90 ngày.",
     status: "Mở form đăng ký",
   },
   {

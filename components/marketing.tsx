@@ -75,7 +75,7 @@ export function SectionTitle({ eyebrow, title, light = false }: { eyebrow?: stri
     <div className="mx-auto max-w-4xl text-center">
       {eyebrow ? <p className="mf-eyebrow">{eyebrow}</p> : null}
       <h2 className={cn("mf-display mt-2 text-[clamp(2rem,4vw,3rem)] font-semibold leading-tight", light ? "text-[var(--mf-ivory)]" : "text-[var(--mf-midnight)]")}>
-        <span className="text-[var(--mf-gold)]">✦</span> {title} <span className="text-[var(--mf-gold)]">✦</span>
+        <span className="text-[var(--mf-gold)]" aria-hidden="true">✦</span> {title} <span className="text-[var(--mf-gold)]" aria-hidden="true">✦</span>
       </h2>
     </div>
   );
@@ -150,7 +150,7 @@ export function ProblemSectionTitle({ children }: { children: ReactNode }) {
   return (
     <div className="mx-auto flex max-w-5xl items-center justify-center gap-5 text-center">
       <span className="mf-title-rule" aria-hidden="true" />
-      <h2 className="mf-display whitespace-nowrap text-[clamp(1.38rem,1.7vw,1.62rem)] font-semibold leading-none text-[var(--mf-midnight)]">
+      <h2 className="mf-display text-[clamp(1.38rem,1.7vw,1.62rem)] sm:whitespace-nowrap font-semibold leading-none text-[var(--mf-midnight)]">
         {children}
       </h2>
       <span className="mf-title-rule mf-title-rule-right" aria-hidden="true" />

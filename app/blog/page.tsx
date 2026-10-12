@@ -8,7 +8,7 @@ import { articles, blogCategories, series } from "@/data/blog";
 export const metadata: Metadata = {
   title: "Blog",
   alternates: { canonical: "/blog" },
-  description: "Góc nhìn Moneyfest giúp bạn hiểu luật chơi trước khi ra quyết định tài chính.",
+  description: "Góc nhìn Moneyfest giúp bạn hiểu rõ bối cảnh trước khi ra quyết định tài chính.",
 };
 
 export default function BlogPage() {
@@ -18,12 +18,12 @@ export default function BlogPage() {
     <PageShell>
       <HeroSection
         eyebrow="Blog Moneyfest"
-        title={<>Góc nhìn giúp bạn hiểu luật chơi trước khi <span className="text-[var(--mf-gold)]">ra quyết định.</span></>}
-        description="Moneyfest Blog chia sẻ những phân tích sâu nhưng dễ hiểu về tiền, sản phẩm tài chính, tâm lý tài chính và các quy tắc vận hành thị trường."
+        title={<>Góc nhìn giúp bạn hiểu rõ bối cảnh trước khi <span className="text-[var(--mf-gold)]">ra quyết định.</span></>}
+        description="Moneyfest Blog chia sẻ những phân tích sâu nhưng dễ hiểu về tiền, sản phẩm tài chính, tâm lý tài chính và các nguyên tắc vận hành của thị trường."
         image="/images/moneyfest/blog/blog-hero-ai.png"
         primary={{ href: "#featured", label: "Đọc bài nổi bật" }}
         secondary={{ href: "/ebooks", label: "Nhận ebook miễn phí" }}
-        badges={["Phân tích dễ hiểu", "Không FOMO", "Có framework", "Ứng dụng được"]}
+        badges={["Phân tích dễ hiểu", "Bình tĩnh, không thúc giục", "Có khung tham chiếu", "Ứng dụng được"]}
       />
 
       <RevealOnScroll as="section" id="featured" className="mf-dark-section py-14">

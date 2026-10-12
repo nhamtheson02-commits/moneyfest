@@ -110,10 +110,10 @@ export function FinancialQuiz() {
         </div>
       </div>
       <QuizSelect label="Quỹ dự phòng của bạn" register={form.register("emergencyFund")} />
-      <QuizSelect label="Bạn có theo dõi chi tiêu hằng tháng" register={form.register("tracking")} />
+      <QuizSelect label="Mức độ theo dõi chi tiêu hằng tháng" register={form.register("tracking")} />
       <QuizSelect label="Tình trạng nợ hiện tại" register={form.register("debt")} />
-      <QuizSelect label="Bạn đã bắt đầu đầu tư dài hạn" register={form.register("investing")} />
-      <QuizSelect label="Mục tiêu tài chính có rõ ràng" register={form.register("goal")} />
+      <QuizSelect label="Mức độ bắt đầu đầu tư dài hạn" register={form.register("investing")} />
+      <QuizSelect label="Mức độ rõ ràng của mục tiêu tài chính" register={form.register("goal")} />
       <label className="mf-label">
         Email (không bắt buộc)
         <input className="mf-field mt-1" type="email" {...form.register("email")} />

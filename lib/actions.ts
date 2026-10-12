@@ -220,8 +220,8 @@ export async function submitCashflow(data: unknown): Promise<ActionState & { res
   const savingRate = income > 0 ? Math.round((saving / income) * 100) : 0;
   const result =
     net >= 0
-      ? `Dòng tiền dương ${net.toLocaleString("vi-VN")} VND/tháng. Tỷ lệ tiết kiệm hiện tại ${savingRate}%.`
-      : `Dòng tiền âm ${Math.abs(net).toLocaleString("vi-VN")} VND/tháng. Nên cắt giảm chi phí linh hoạt hoặc tái cấu trúc nợ.`;
+      ? `Mỗi tháng bạn còn dư khoảng ${net.toLocaleString("vi-VN")} VND. Tỷ lệ tiết kiệm hiện tại là ${savingRate}%.`
+      : `Mỗi tháng đang thâm hụt khoảng ${Math.abs(net).toLocaleString("vi-VN")} VND. Bạn có thể cân nhắc điều chỉnh chi phí linh hoạt hoặc xem lại cơ cấu nợ.`;
 
   let leadId: string | undefined;
   if (email) {
@@ -265,10 +265,10 @@ export async function submitFinancialQuiz(
   const score = emergencyFund + tracking + debt + investing + goal;
   const result =
     score >= 12
-      ? "Sức khỏe tài chính tốt. Bạn nên tối ưu đầu tư và mục tiêu dài hạn."
+      ? "Nền tảng tài chính của bạn khá vững. Bạn có thể tiếp tục hoàn thiện kế hoạch đầu tư và mục tiêu dài hạn."
       : score >= 8
-        ? "Nên có kế hoạch 90 ngày để tăng quỹ dự phòng và kiểm soát chi tiêu."
-        : "Cần ưu tiên ngân sách cơ bản, quỹ khẩn cấp và xử lý nợ trước.";
+        ? "Bạn có thể cân nhắc lập kế hoạch 90 ngày để củng cố quỹ dự phòng và kiểm soát chi tiêu."
+        : "Bạn có thể bắt đầu từ ngân sách cơ bản, quỹ dự phòng và kế hoạch xử lý nợ.";
 
   let leadId: string | undefined;
   if (email) {
