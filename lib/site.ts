@@ -6,9 +6,9 @@ export const siteUrl = (
 
 export const siteConfig = {
   name: "MONEYFEST",
-  title: "MONEYFEST - Hiểu luật chơi, làm chủ cuộc đời",
+  title: "MONEYFEST - Thấu hiểu tài chính, chủ động tương lai",
   description:
-    "MONEYFEST giúp bạn hiểu tiền, hiểu bản thân và hiểu thế giới để ra quyết định tài chính bình tĩnh hơn.",
+    "MONEYFEST giúp bạn hiểu tiền, hiểu bản thân và hiểu bối cảnh xung quanh để ra quyết định tài chính bình tĩnh hơn.",
   url: siteUrl,
   locale: "vi_VN",
 };

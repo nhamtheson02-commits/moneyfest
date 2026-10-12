@@ -8,13 +8,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-[rgba(212,168,63,0.55)] bg-[rgba(7,7,7,0.96)] text-[var(--mf-ivory)] backdrop-blur">
       <div className="mf-container flex min-h-20 items-center justify-between gap-6">
-        <Link href="/" className="flex items-center gap-3" aria-label="Moneyfest trang chủ">
+        <Link href="/" className="mf-logo-link flex items-center gap-3" aria-label="Moneyfest trang chủ">
           <BrandMark priority className="hidden w-48 sm:block" />
           <Emblem className="sm:hidden" />
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium lg:flex">
           {navigationItems.map((item) => (
-            <Link key={item.href} href={item.href} className="relative py-7 transition hover:text-[var(--mf-gold)]">
+            <Link key={item.href} href={item.href} className="group relative py-7 transition hover:text-[var(--mf-gold)]">
               {item.label}
               <span className="absolute inset-x-0 bottom-5 h-px origin-left scale-x-0 bg-[var(--mf-gold)] transition group-hover:scale-x-100" />
             </Link>
@@ -31,10 +31,39 @@ export function Header() {
 }
 
 const footerGroups = [
-  { title: "Về Moneyfest", links: ["Về chúng tôi", "Giá trị cốt lõi", "Hệ sinh thái", "Liên hệ"] },
-  { title: "Khám phá", links: ["Blog", "Ebook", "Sản phẩm"] },
-  { title: "Cộng đồng", links: ["Cộng đồng", "Sự kiện", "Chương trình"] },
-  { title: "Công cụ", links: ["Money Map", "Tài nguyên", "Công cụ tính toán"] },
+  {
+    title: "Về Moneyfest",
+    links: [
+      { label: "Về chúng tôi", href: "/about" },
+      { label: "Giá trị cốt lõi", href: "/about#values" },
+      { label: "Hệ sinh thái", href: "/about#ecosystem" },
+      { label: "Liên hệ", href: "/contact" },
+    ],
+  },
+  {
+    title: "Khám phá",
+    links: [
+      { label: "Blog", href: "/blog" },
+      { label: "Ebook", href: "/ebooks" },
+      { label: "Sản phẩm", href: "/services" },
+    ],
+  },
+  {
+    title: "Cộng đồng",
+    links: [
+      { label: "Cộng đồng", href: "/community" },
+      { label: "Sự kiện", href: "/community#how" },
+      { label: "Chương trình", href: "/community#channels" },
+    ],
+  },
+  {
+    title: "Công cụ",
+    links: [
+      { label: "Money Map", href: "/services" },
+      { label: "Tài nguyên", href: "/ebooks" },
+      { label: "Công cụ tính toán", href: "/tools" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -44,7 +73,7 @@ export function Footer() {
         <div>
           <BrandMark className="w-52" />
           <p className="mt-5 text-sm leading-7 text-[rgba(244,240,232,0.7)]">
-            Hệ sinh thái tri thức, tư vấn và kết nối giải pháp tài chính giúp bạn hiểu luật chơi và làm chủ tương lai dài hạn.
+            Hệ sinh thái tri thức, tư vấn và kết nối giải pháp tài chính giúp bạn hiểu rõ lựa chọn và chủ động hơn cho tương lai dài hạn.
           </p>
           <div className="mt-5 flex gap-3 text-[var(--mf-gold)]">
             {["f", "▶", "in", "◎"].map((item) => (
@@ -57,7 +86,9 @@ export function Footer() {
             <div key={group.title}>
               <p className="font-semibold text-[var(--mf-champagne)]">{group.title}</p>
               <div className="mt-4 grid gap-2 text-sm text-[rgba(244,240,232,0.68)]">
-                {group.links.map((link) => <span key={link}>{link}</span>)}
+                {group.links.map((link) => (
+                  <Link key={link.label} href={link.href} className="transition hover:text-[var(--mf-gold)]">{link.label}</Link>
+                ))}
               </div>
             </div>
           ))}
@@ -73,8 +104,14 @@ export function Footer() {
       </div>
       <div className="border-t border-[rgba(212,168,63,0.18)] py-5 text-xs text-[rgba(244,240,232,0.58)]">
         <div className="mf-container flex flex-col justify-between gap-3 md:flex-row">
-          <span>© 2024 Moneyfest. All rights reserved.</span>
-          <span>Chính sách bảo mật · Điều khoản sử dụng</span>
+          <span>© {new Date().getFullYear()} Moneyfest. Bảo lưu mọi quyền.</span>
+          <span className="flex flex-wrap gap-x-3">
+            <Link href="/privacy" className="transition hover:text-[var(--mf-gold)]">Chính sách bảo mật</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/terms" className="transition hover:text-[var(--mf-gold)]">Điều khoản sử dụng</Link>
+            <span aria-hidden="true">·</span>
+            <Link href="/disclaimer" className="transition hover:text-[var(--mf-gold)]">Miễn trừ trách nhiệm</Link>
+          </span>
         </div>
       </div>
     </footer>
@@ -85,7 +122,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="mf-page-enter flex-1">{children}</main>
       <Footer />
     </>
   );

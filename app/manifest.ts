@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "MONEYFEST",
     short_name: "MONEYFEST",
-    description: "Hiểu luật chơi, làm chủ cuộc đời.",
+    description: "Thấu hiểu tài chính, chủ động tương lai.",
     start_url: "/",
     display: "standalone",
     background_color: "#070707",

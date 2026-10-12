@@ -1,12 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 import { PageShell } from "@/components/site-shell";
 import { GoldButton, HeroSection, OutlineButton, ProblemCard, ProblemChatIcon, ProblemGrowthIcon, ProblemMoneyIcon, ProblemPriorityIcon, ProblemSectionTitle, icons } from "@/components/marketing";
+import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { products } from "@/data/products";
 
 const problems = [
-  ["Thu nhập ổn định nhưng tài sản mơ hồ", "Đi làm nhiều năm nhưng chưa rõ mình đã tích lũy được gì và sẽ đạt tự do tài chính khi nào."],
-  ["Không biết nên ưu tiên điều gì trước", "Nên trả nợ, tiết kiệm, mua bảo hiểm, đầu tư hay mua nhà trước? Làm sao để không hối tiếc?"],
-  ["Nhiều thông tin nhưng rối hơn", "Nghe ai cũng có lý. Nhưng quyết định sai thì mình phải chịu."],
+  ["Thu nhập ổn định nhưng bức tranh tài sản chưa rõ nét", "Đi làm nhiều năm nhưng chưa rõ mình đã tích lũy được những gì và khi nào có thể chủ động hơn về tài chính."],
+  ["Chưa biết nên ưu tiên điều gì trước", "Nên trả nợ, tiết kiệm, mua bảo hiểm, đầu tư hay mua nhà trước? Làm sao để cân nhắc thấu đáo và yên tâm hơn?"],
+  ["Nhiều thông tin nhưng càng đọc càng phân vân", "Mỗi nguồn đều có lập luận riêng, trong khi quyết định cuối cùng vẫn thuộc về bạn."],
   ["Cần một kế hoạch phù hợp với mình", "Không phải công thức chung. Bạn cần một lộ trình phù hợp với thu nhập, mục tiêu và hoàn cảnh."],
 ];
 
@@ -18,12 +20,12 @@ export default function Home() {
         title={<>Hiểu rõ tiền của bạn đang đi về đâu.</>}
         description="Moneyfest giúp bạn lập bản đồ dòng tiền, tài sản, rủi ro và mục tiêu tài chính — trước khi ra quyết định về tiết kiệm, nợ, bảo hiểm, đầu tư hay mua nhà."
         image="/images/moneyfest/hero/homepage-hero-ai.png"
-        primary={{ href: "/contact", label: "Đặt lịch soi dòng tiền 1:1" }}
+        primary={{ href: "/contact", label: "Đặt lịch trao đổi 1:1" }}
         secondary={{ href: "/tools", label: "Làm quiz sức khỏe tài chính" }}
-        badges={["Không FOMO", "Không phím hàng", "Không cam kết lợi nhuận", "Bắt đầu từ hoàn cảnh của bạn"]}
+        badges={["Thông tin khách quan, bình tĩnh", "Không khuyến nghị sản phẩm cụ thể", "Không cam kết lợi nhuận", "Bắt đầu từ hoàn cảnh của bạn"]}
       />
 
-      <section className="mf-problem-section">
+      <RevealOnScroll as="section" className="mf-problem-section">
         <div className="mx-auto w-[min(100%-2rem,1200px)]">
           <ProblemSectionTitle>
             Bạn có đang gặp những vấn đề này?
@@ -35,9 +37,9 @@ export default function Home() {
             })}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="money-map-service-section">
+      <RevealOnScroll as="section" className="money-map-service-section" direction="up">
         <div className="money-map-service-inner">
           <div className="money-map-service-copy">
             <p className="mf-eyebrow">Dịch vụ chủ lực</p>
@@ -49,7 +51,7 @@ export default function Home() {
             </p>
             <div className="mt-4 h-px max-w-[520px] bg-[rgba(212,168,63,0.45)]" />
             <ul className="mt-4 grid gap-2 text-[0.82rem] font-medium text-[rgba(244,240,232,0.9)]">
-              {["Bản đồ dòng tiền: thu nhập – chi tiêu – tiết kiệm – nợ", "Chẩn đoán sức khỏe tài chính: điểm mạnh, điểm yếu, rủi ro", "Thứ tự ưu tiên 90 ngày: việc nào làm trước, việc nào chưa nên làm", "Gợi ý giải pháp và công cụ phù hợp với bạn"].map((item) => (
+              {["Bản đồ dòng tiền: thu nhập – chi tiêu – tiết kiệm – nợ", "Đánh giá sức khỏe tài chính: điểm mạnh, điểm cần cải thiện, rủi ro", "Thứ tự ưu tiên 90 ngày: việc nào làm trước, việc nào chưa nên làm", "Gợi ý giải pháp và công cụ phù hợp với bạn"].map((item) => (
                 <li key={item} className="flex items-start gap-2"><icons.check className="mt-0.5 text-[var(--mf-gold)]" size={15} />{item}</li>
               ))}
             </ul>
@@ -58,7 +60,7 @@ export default function Home() {
             {[
               ["60 – 90 phút", "Online 1:1 với chuyên gia", icons.calendar],
               ["Phù hợp với", "Người đi làm, gia đình trẻ, muốn tối ưu tài chính", icons.users],
-              ["Đầu tư", "Từ 1.500.000đ / buổi", icons.dollar],
+              ["Chi phí", "Từ 1.500.000đ / buổi", icons.dollar],
             ].map(([title, desc, Icon]) => (
               <div key={title as string} className="money-map-service-row">
                 <Icon className="money-map-service-icon" size={18} />
@@ -75,9 +77,9 @@ export default function Home() {
             <div className="money-map-service-art-fade" />
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="home-flow-section">
+      <RevealOnScroll as="section" className="home-flow-section">
         <div className="mf-container">
           <div className="home-compact-title">
             <p>Quy trình làm việc</p>
@@ -87,7 +89,7 @@ export default function Home() {
             {[
               ["Đăng ký", "Chọn lịch phù hợp và điền thông tin cơ bản"],
               ["Chuẩn bị", "Điền bảng câu hỏi tài chính trước buổi tư vấn"],
-              ["Buổi tư vấn 1:1", "Soi dòng tiền, phân tích và xác định ưu tiên"],
+              ["Buổi tư vấn 1:1", "Cùng xem xét dòng tiền, phân tích và xác định ưu tiên"],
               ["Nhận Money Map", "Nhận bản đồ 90 ngày và hướng dẫn triển khai"],
             ].map(([title, desc], index) => (
               <div key={title} className="home-process-step">
@@ -100,16 +102,16 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="home-tools-products-section">
+      <RevealOnScroll as="section" className="home-tools-products-section">
         <div className="mf-container">
           <p className="home-section-kicker">Công cụ miễn phí nổi bật</p>
           <div className="home-tools-grid">
             <div className="home-tool-feature">
               <div>
                 <h3>Tự kiểm tra sức khỏe tài chính của bạn trong 2 phút</h3>
-                <p>Làm quiz miễn phí để biết bạn đang ở đâu trên hành trình tự do tài chính.</p>
+                <p>Làm quiz miễn phí để nhìn rõ mình đang ở đâu trên hành trình tài chính của mình.</p>
                 <GoldButton href="/tools">Làm quiz ngay</GoldButton>
               </div>
             </div>
@@ -118,12 +120,12 @@ export default function Home() {
               ["Máy tính mục tiêu tài chính", "Tính số tiền và thời gian để đạt mục tiêu.", icons.target],
               ["So sánh phương án đầu tư", "So sánh kịch bản và đánh giá rủi ro.", icons.scale],
             ].map(([title, desc, Icon]) => (
-              <div key={title as string} className="home-mini-tool">
+              <Link key={title as string} href="/tools" className="home-mini-tool">
                 <Icon size={30} />
                 <h3>{title as string}</h3>
                 <p>{desc as string}</p>
-                <span>Xem ngay →</span>
-              </div>
+                <span>Xem chi tiết →</span>
+              </Link>
             ))}
           </div>
 
@@ -131,22 +133,23 @@ export default function Home() {
           <div className="home-products-grid">
             {products.map((product, index) => {
               const ProductIcon = [icons.compass, icons.briefcase, icons.users, icons.book][index] ?? icons.compass;
+              const productHref = ["/tools", "/contact", "/services", "/services"][index] ?? "/services";
               return (
-                <div key={product.title} className={index === 1 ? "home-product-card is-featured" : "home-product-card"}>
+                <Link key={product.title} href={productHref} className={index === 1 ? "home-product-card is-featured" : "home-product-card"}>
                   <ProductIcon size={34} />
                   <div>
                     <h3>{product.title}</h3>
                     <p>{product.description}</p>
                     <span>{product.price}</span>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="home-principles-section">
+      <RevealOnScroll as="section" className="home-principles-section">
         <div className="mf-container">
           <div className="home-principles-grid">
             {[
@@ -165,12 +168,12 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="home-final-cta">
+      <RevealOnScroll as="section" className="home-final-cta">
         <div className="mf-container home-final-cta-inner">
           <div>
-            <h2>Sẵn sàng nhìn rõ bức tranh tài chính và làm chủ tương lai của bạn?</h2>
+            <h2>Sẵn sàng nhìn rõ bức tranh tài chính và chủ động hơn cho tương lai của bạn?</h2>
             <p>Bắt đầu bằng quiz miễn phí hoặc một buổi tư vấn để có bước tiếp theo rõ ràng.</p>
           </div>
           <div className="home-final-cta-actions">
@@ -178,7 +181,7 @@ export default function Home() {
             <OutlineButton href="/ebooks">Nhận ebook miễn phí</OutlineButton>
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
     </PageShell>
   );
 }

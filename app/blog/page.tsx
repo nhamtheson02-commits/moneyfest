@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageShell } from "@/components/site-shell";
 import { ArticleCard, CTASection, GoldButton, HeroSection, SectionTitle, icons } from "@/components/marketing";
+import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { articles, blogCategories, series } from "@/data/blog";
 
 export const metadata: Metadata = {
   title: "Blog",
   alternates: { canonical: "/blog" },
-  description: "Góc nhìn Moneyfest giúp bạn hiểu luật chơi trước khi ra quyết định tài chính.",
+  description: "Góc nhìn Moneyfest giúp bạn hiểu rõ bối cảnh trước khi ra quyết định tài chính.",
 };
 
 export default function BlogPage() {
@@ -17,15 +18,15 @@ export default function BlogPage() {
     <PageShell>
       <HeroSection
         eyebrow="Blog Moneyfest"
-        title={<>Góc nhìn giúp bạn hiểu luật chơi trước khi <span className="text-[var(--mf-gold)]">ra quyết định.</span></>}
-        description="Moneyfest Blog chia sẻ những phân tích sâu nhưng dễ hiểu về tiền, sản phẩm tài chính, tâm lý tài chính và các quy tắc vận hành thị trường."
+        title={<>Góc nhìn giúp bạn hiểu rõ bối cảnh trước khi <span className="text-[var(--mf-gold)]">ra quyết định.</span></>}
+        description="Moneyfest Blog chia sẻ những phân tích sâu nhưng dễ hiểu về tiền, sản phẩm tài chính, tâm lý tài chính và các nguyên tắc vận hành của thị trường."
         image="/images/moneyfest/blog/blog-hero-ai.png"
         primary={{ href: "#featured", label: "Đọc bài nổi bật" }}
         secondary={{ href: "/ebooks", label: "Nhận ebook miễn phí" }}
-        badges={["Phân tích dễ hiểu", "Không FOMO", "Có framework", "Ứng dụng được"]}
+        badges={["Phân tích dễ hiểu", "Bình tĩnh, không thúc giục", "Có khung tham chiếu", "Ứng dụng được"]}
       />
 
-      <section id="featured" className="mf-dark-section py-14">
+      <RevealOnScroll as="section" id="featured" className="mf-dark-section py-14">
         <div className="mf-container grid overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--border-gold)] lg:grid-cols-[0.85fr_1.15fr]">
           <div className="relative min-h-80"><Image src="/images/moneyfest/blog/blog-moneyfest.jpg" alt="" fill className="object-cover" /></div>
           <div className="p-8">
@@ -36,9 +37,9 @@ export default function BlogPage() {
             <div className="mt-6"><GoldButton href="/blog">Đọc bài viết</GoldButton></div>
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="mf-cream-section py-12">
+      <RevealOnScroll as="section" className="mf-cream-section py-12">
         <div className="mf-container">
           <div className="flex flex-wrap gap-3">
             {blogCategories.map((category, index) => (
@@ -65,9 +66,9 @@ export default function BlogPage() {
             </aside>
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
-      <section className="mf-cream-section py-12">
+      <RevealOnScroll as="section" className="mf-cream-section py-12">
         <div className="mf-container">
           <SectionTitle title="Series nổi bật" />
           <div className="mt-8 grid gap-5 md:grid-cols-3">
@@ -80,7 +81,7 @@ export default function BlogPage() {
             ))}
           </div>
         </div>
-      </section>
+      </RevealOnScroll>
 
       <CTASection title="Nhận bản tin Moneyfest mỗi tuần" description="Nhận góc nhìn chọn lọc, checklist thực hành và cập nhật bài viết mới nhất." primary="Đăng ký nhận tin" />
     </PageShell>
