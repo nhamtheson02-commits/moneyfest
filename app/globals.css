@@ -694,8 +694,23 @@ nav,
 }
 
 .home-mini-tool {
+  display: block;
   min-height: 116px;
   padding: 1rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.home-mini-tool:hover,
+.home-product-card:hover {
+  border-color: rgba(212, 168, 63, 0.7);
+  transform: translateY(-2px);
+}
+
+.home-mini-tool:focus-visible,
+.home-product-card:focus-visible {
+  outline: 2px solid var(--mf-gold);
+  outline-offset: 3px;
 }
 
 .home-mini-tool svg,
@@ -723,6 +738,8 @@ nav,
 
 .home-product-card {
   display: flex;
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease;
   min-height: 104px;
   gap: 0.9rem;
   align-items: flex-start;

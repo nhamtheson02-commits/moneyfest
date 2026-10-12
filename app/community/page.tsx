@@ -6,7 +6,7 @@ import { communityChannels, communityRules } from "@/data/community";
 export const metadata: Metadata = {
   title: "Cộng đồng",
   alternates: { canonical: "/community" },
-  description: "Cộng đồng Moneyfest dành cho những người đang học cách hiểu luật chơi của tiền bạc.",
+  description: "Cộng đồng Moneyfest dành cho những người đang học cách hiểu rõ và quản lý tiền bạc một cách bình tĩnh.",
 };
 
 export default function CommunityPage() {
@@ -14,12 +14,12 @@ export default function CommunityPage() {
     <PageShell>
       <HeroSection
         eyebrow="Cộng đồng Moneyfest"
-        title={<>Đi cùng những người đang học cách hiểu luật chơi của tiền bạc.</>}
+        title={<>Đi cùng những người đang học cách hiểu rõ và quản lý tiền bạc.</>}
         description="Moneyfest Community là nơi bạn kết nối, học hỏi và áp dụng góc nhìn tài chính một cách bình tĩnh, thực tế và có hệ thống."
         image="/images/moneyfest/community/community-hero-ai.png"
         primary={{ href: "#channels", label: "Tham gia ngay" }}
         secondary={{ href: "#how", label: "Xem hoạt động cộng đồng" }}
-        badges={["Học hỏi có chọn lọc", "Không FOMO", "Có framework", "Có cộng đồng đồng hành"]}
+        badges={["Học hỏi có chọn lọc", "Bình tĩnh, không thúc giục", "Có khung tham chiếu", "Có cộng đồng đồng hành"]}
       />
 
       <section id="channels" className="mf-dark-section py-14">
@@ -65,7 +65,7 @@ export default function CommunityPage() {
         </div>
       </section>
 
-      <CTASection title="Bắt đầu từ một cộng đồng, đi tới những quyết định tốt hơn." description="Chọn kênh phù hợp với bạn và tham gia Moneyfest Community ngay hôm nay." primary="Tham gia cộng đồng" />
+      <CTASection title="Bắt đầu từ một cộng đồng, đi tới những quyết định tốt hơn." description="Chọn kênh phù hợp với bạn và tham gia Moneyfest Community vào lúc bạn sẵn sàng." primary="Tham gia cộng đồng" />
     </PageShell>
   );
 }

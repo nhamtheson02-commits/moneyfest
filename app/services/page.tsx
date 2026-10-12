@@ -18,7 +18,7 @@ export default function ServicesPage() {
           as="h1"
           eyebrow="Dịch vụ"
           title="Sản phẩm và dịch vụ MONEYFEST"
-          description="Phase 1 tập trung xác thực nhu cầu: ebook, tư vấn 1:1 và các gói sắp ra mắt. Chưa tích hợp thanh toán thật."
+          description="Ebook, tư vấn 1:1 và các gói sắp ra mắt, được xây dựng để đồng hành cùng bạn từng bước. Thanh toán trực tuyến sẽ được cập nhật trong thời gian tới."
         />
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {services.map((service) => (

@@ -1,4 +1,4 @@
-export const blogCategories = ["Tất cả", "Hiểu tiền", "Hiểu sản phẩm", "Hiểu bản thân", "Hiểu luật chơi", "Case study", "Advisory"];
+export const blogCategories = ["Tất cả", "Hiểu tiền", "Hiểu sản phẩm", "Hiểu bản thân", "Hiểu thị trường", "Tình huống thực tế", "Tư vấn"];
 
 export const articles = [
   {
@@ -23,8 +23,8 @@ export const articles = [
     readTime: "7 phút đọc",
   },
   {
-    title: "5 thiên kiến khiến bạn ra quyết định tài chính sai",
-    description: "Nhận diện phản ứng thiên kiến phổ biến để tránh các quyết định cảm tính.",
+    title: "5 thiên kiến thường ảnh hưởng đến quyết định tài chính",
+    description: "Nhận diện những thiên kiến phổ biến để cân nhắc bình tĩnh hơn thay vì quyết định theo cảm tính.",
     category: "Hiểu bản thân",
     date: "08/05/2024",
     readTime: "6 phút đọc",
@@ -32,14 +32,14 @@ export const articles = [
   {
     title: "Một gia đình trẻ nên phân bổ 500 triệu như thế nào?",
     description: "Khung phân bổ mẫu cho gia đình trẻ với mục tiêu an toàn, tăng trưởng và linh hoạt.",
-    category: "Case study",
+    category: "Tình huống thực tế",
     date: "07/05/2024",
     readTime: "8 phút đọc",
   },
   {
     title: "Khi nào nên tái cân bằng danh mục tài sản?",
-    description: "Tái cân bằng không phải là bán phá lỗi thời, mà là kỷ luật để kiểm soát rủi ro.",
-    category: "Hiểu luật chơi",
+    description: "Tái cân bằng không phải là mua bán liên tục, mà là sự kỷ luật để kiểm soát rủi ro.",
+    category: "Hiểu thị trường",
     date: "06/05/2024",
     readTime: "6 phút đọc",
   },
@@ -48,6 +48,6 @@ export const articles = [
 export const series = [
   { title: "Hiểu tiền", description: "Dòng tiền, lãi suất, lạm phát, nợ và cách quản trị tài chính cá nhân." },
   { title: "Hiểu sản phẩm", description: "Tiết kiệm, bảo hiểm, quỹ, BĐS và cách lựa chọn phù hợp mục tiêu." },
-  { title: "Hiểu luật chơi", description: "Chu kỳ kinh tế, thanh khoản, đòn bẩy và các quy tắc thị trường." },
+  { title: "Hiểu thị trường", description: "Chu kỳ kinh tế, thanh khoản, đòn bẩy và các nguyên tắc vận hành của thị trường." },
 ];
 

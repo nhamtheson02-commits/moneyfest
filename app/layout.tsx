@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MONEYFEST - Hiểu luật chơi, làm chủ cuộc đời",
+    title: siteConfig.title,
     description:
       "Hệ sinh thái tri thức và tư vấn tài chính giúp bạn có nhiều lựa chọn hơn trong cuộc sống.",
     images: ["/brand/logo/moneyfest-og.png"],
