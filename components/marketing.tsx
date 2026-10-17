@@ -90,7 +90,7 @@ export function HeroSection({
   secondary,
   badges = [],
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: ReactNode;
   description: string;
   image: string;
@@ -103,8 +103,8 @@ export function HeroSection({
       <div className="grid w-full overflow-hidden lg:min-h-[382px] lg:grid-cols-[50%_50%]">
         <div className="relative z-10 flex items-center bg-[var(--mf-midnight)] px-6 py-10 sm:px-10 lg:px-[6.3vw]">
           <div className="w-full max-w-[520px]">
-          <p className="mf-eyebrow">{eyebrow}</p>
-          <h1 className="mf-display mt-3 text-[clamp(3.1rem,4.45vw,4.55rem)] font-semibold leading-[1.05]">
+          {eyebrow ? <p className="mf-eyebrow">{eyebrow}</p> : null}
+          <h1 className={`mf-display ${eyebrow ? "mt-3" : ""} text-[clamp(3.1rem,4.45vw,4.55rem)] font-semibold leading-[1.05]`}>
             {title}
           </h1>
           <p className="mt-4 max-w-[500px] text-[1rem] leading-7 text-[rgba(244,240,232,0.86)]">{description}</p>

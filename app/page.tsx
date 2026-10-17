@@ -14,13 +14,11 @@ export default function Home() {
   return (
     <PageShell>
       <HeroSection
-        eyebrow="Moneyfest"
         title={<>Hiểu rõ tiền của bạn đang đi về đâu.</>}
         description="Moneyfest giúp bạn lập bản đồ dòng tiền, tài sản, rủi ro và mục tiêu tài chính — trước khi ra quyết định về tiết kiệm, nợ, bảo hiểm, đầu tư hay mua nhà."
         image="/images/moneyfest/hero/homepage-hero-ai.png"
-        primary={{ href: "/contact", label: "Đặt lịch soi dòng tiền 1:1" }}
-        secondary={{ href: "/tools", label: "Làm quiz sức khỏe tài chính" }}
-        badges={["Không FOMO", "Không phím hàng", "Không cam kết lợi nhuận", "Bắt đầu từ hoàn cảnh của bạn"]}
+        primary={{ href: "/contact", label: "Tư vấn miễn phí" }}
+        secondary={{ href: "/tools", label: "Đánh giá khả năng quản lý tài chính" }}
       />
 
       <section className="mf-problem-section">
