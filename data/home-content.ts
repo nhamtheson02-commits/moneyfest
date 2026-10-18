@@ -56,7 +56,7 @@ export const processSteps: HomeCard[] = [
     description: "Nhìn rõ dòng tiền, phân tích và xác định ưu tiên",
     detail: {
       kicker: "Bước 3",
-      title: "Buổi làm việc riêng 60–90 phút",
+      title: "Buổi làm việc riêng 30–60 phút",
       lead: "Chuyên gia cùng bạn xem lại bức tranh tài chính hiện tại và sắp xếp việc nào nên làm trước.",
       points: [
         "Nhìn rõ dòng tiền: thu nhập, chi tiêu, tiết kiệm và nợ.",
@@ -169,7 +169,7 @@ export const productCards: HomeCard[] = [
       kicker: "Dịch vụ chủ lực",
       title: "Money Map 1:1",
       badge: "Miễn phí",
-      lead: "Một buổi làm việc riêng 60–90 phút để lập bản đồ tài chính cá nhân và 3–5 bước ưu tiên trong 90 ngày.",
+      lead: "Một buổi làm việc riêng 30–60 phút để lập bản đồ tài chính cá nhân và 3–5 bước ưu tiên trong 90 ngày.",
       points: ["Bản đồ dòng tiền: thu nhập, chi tiêu, tiết kiệm, nợ.", "Đánh giá điểm mạnh, điểm yếu và rủi ro.", "Gợi ý giải pháp và công cụ phù hợp."],
       cta: { href: "/contact", label: "Đặt lịch ngay" },
     },

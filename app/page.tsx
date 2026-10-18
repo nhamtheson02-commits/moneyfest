@@ -55,7 +55,7 @@ export default function Home() {
           </div>
           <div className="money-map-service-card">
             {[
-              ["60 – 90 phút", "Online 1:1 với chuyên gia", icons.calendar],
+              ["30 – 60 phút", "Online 1:1 với chuyên gia", icons.calendar],
               ["Phù hợp với", "Người đi làm, gia đình trẻ, muốn tối ưu tài chính", icons.users],
               ["Chi phí", "Miễn phí", icons.dollar],
             ].map(([title, desc, Icon]) => (
