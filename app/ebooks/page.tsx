@@ -31,7 +31,7 @@ export default function EbooksPage() {
       <section className="mf-dark-section py-14">
         <div className="mf-container grid items-center gap-8 lg:grid-cols-[0.75fr_1.25fr]">
           <div className="relative mx-auto aspect-[2/3] w-full max-w-sm overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--border-gold)]">
-            <Image src="/images/moneyfest/thumbnails/ebooks/ebook-01-ban-do-phan-bo-tien-nhan-roi.jpg" alt="Ebook Bản đồ phân bổ tiền nhàn rỗi" fill className="object-cover" sizes="(max-width: 1024px) 384px, 30vw" />
+            <Image src="/images/moneyfest/thumbnails/ebooks/ebook-01-ban-do-phan-bo-tien-nhan-roi-v2.jpg" alt="Ebook Bản đồ phân bổ tiền nhàn rỗi" fill className="object-cover" sizes="(max-width: 1024px) 384px, 30vw" />
           </div>
           <div>
             <p className="mf-eyebrow">Ebook nổi bật</p>

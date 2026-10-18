@@ -232,12 +232,13 @@ export function ArticleCard({ article, image }: { article: { title: string; desc
 export function EbookCard({ ebook, paid = false }: { ebook: { title: string; description: string; category: string; price: string; image?: string }; paid?: boolean }) {
   return (
     <div className="mf-editorial-card group overflow-hidden">
-      {/* Bìa ebook tỷ lệ 2:3, không crop vì tiêu đề nằm trên ảnh */}
+      {/* Bìa ebook tỷ lệ 2:3 */}
       <div className="relative aspect-[2/3] bg-[var(--mf-obsidian)]">
         <Image src={ebook.image ?? "/images/moneyfest/ebook/ebook-moneyfest.jpg"} alt={ebook.title} fill className="object-cover transition duration-500 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" />
       </div>
       <div className="p-5">
-        <h3 className="mf-display text-xl font-semibold leading-tight text-[var(--mf-ivory)]">{ebook.title}</h3>
+        <p className="mf-tag-dark">{ebook.category}</p>
+        <h3 className="mf-display mt-3 text-xl font-semibold leading-tight text-[var(--mf-ivory)]">{ebook.title}</h3>
         <p className="mt-3 text-sm leading-6 text-[rgba(244,240,232,0.74)]">{ebook.description}</p>
         <p className="mt-4 text-2xl font-semibold text-[var(--mf-gold)]">{ebook.price}</p>
         <GoldButton href="/ebooks">{paid ? "Xem chi tiết" : "Tải miễn phí"}</GoldButton>
