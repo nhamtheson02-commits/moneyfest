@@ -39,8 +39,7 @@ export default function Home() {
       <section className="money-map-service-section">
         <div className="money-map-service-inner">
           <div className="money-map-service-copy">
-            <p className="mf-eyebrow">Dịch vụ chủ lực</p>
-            <h2 className="mf-display mt-2 max-w-[520px] text-[clamp(1.8rem,2.35vw,2.45rem)] font-semibold leading-[1.12] text-[var(--mf-ivory)]">
+            <h2 className="mf-display max-w-[520px] text-[clamp(1.8rem,2.35vw,2.45rem)] font-semibold leading-[1.12] text-[var(--mf-ivory)]">
               Money Map 1:1 – Lập bản đồ tài chính cá nhân
             </h2>
             <p className="mt-3 max-w-[560px] text-[0.92rem] leading-6 text-[rgba(244,240,232,0.8)]">

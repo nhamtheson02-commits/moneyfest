@@ -14,7 +14,6 @@ export default function EbooksPage() {
   return (
     <PageShell>
       <HeroSection
-        eyebrow="Thư viện ebook"
         title={<>Thư viện ebook giúp bạn hiểu luật chơi <span className="text-[var(--mf-gold)]">trước khi ra quyết định.</span></>}
         description="Kho ebook được biên soạn bởi đội ngũ Moneyfest, giúp bạn xây nền tảng tài chính vững chắc: tư duy, quản lý tiền, phân bổ tài sản và lựa chọn sản phẩm phù hợp."
         image="/images/moneyfest/ebook/ebook-hero-ai.png"
@@ -34,8 +33,7 @@ export default function EbooksPage() {
             <Image src="/images/moneyfest/thumbnails/ebooks/ebook-01-ban-do-phan-bo-tien-nhan-roi-v4.jpg" alt="Ebook Bản đồ phân bổ tiền nhàn rỗi" fill className="object-cover" sizes="(max-width: 1024px) 384px, 30vw" />
           </div>
           <div>
-            <p className="mf-eyebrow">Ebook nổi bật</p>
-            <h2 className="mf-display mt-3 text-[clamp(2.3rem,4vw,4rem)] font-bold leading-tight">Bản đồ phân bổ tiền nhàn rỗi – 7 bước trước khi đầu tư</h2>
+            <h2 className="mf-display text-[clamp(2.3rem,4vw,4rem)] font-bold leading-tight">Bản đồ phân bổ tiền nhàn rỗi – 7 bước trước khi đầu tư</h2>
             <p className="mt-4 text-[rgba(244,240,232,0.76)]">Ebook miễn phí giúp bạn nhìn rõ toàn cảnh tài chính cá nhân và biết nên bắt đầu từ đâu trước khi đưa tiền vào bất kỳ kênh đầu tư nào.</p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               {["Hiểu rõ bức tranh tài chính hiện tại", "7 bước phân bổ tiền nhàn rỗi hiệu quả", "Xác định mục tiêu và mức độ ưu tiên", "Tránh 5 sai lầm phổ biến của nhà đầu tư mới"].map((item) => (

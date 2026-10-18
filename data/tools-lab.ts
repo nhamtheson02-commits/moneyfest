@@ -26,7 +26,7 @@ export const personas: Record<PersonaKey, Persona> = {
     key: "tham-hiem",
     name: "Nhà thám hiểm",
     tagline: "Bạn nhìn thấy cơ hội nhanh và không ngại thử điều mới. Tiền với bạn là công cụ để mở rộng.",
-    image: "/images/moneyfest/thumbnails/blog/blog-01-ban-do-phan-bo-tien-nhan-roi-v4.jpg",
+    image: "/images/moneyfest/thumbnails/blog/blog-01-ban-do-phan-bo-tien-nhan-roi-v5.jpg",
     strengths: "Nhạy bén, chủ động học hỏi và sẵn sàng bắt đầu sớm hơn nhiều người.",
     watch: "Dễ bị cuốn theo xu hướng. Một tấm bản đồ phân bổ rõ ràng sẽ giúp mỗi quyết định có điểm tựa.",
     next: { label: "Đọc ebook Bản đồ phân bổ tiền nhàn rỗi", href: "/ebooks" },

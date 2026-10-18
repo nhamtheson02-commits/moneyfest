@@ -16,7 +16,6 @@ export default function ServicesPage() {
       <section className="mf-container mf-section-compact">
         <SectionHeader
           as="h1"
-          eyebrow="Dịch vụ"
           title="Sản phẩm và dịch vụ MONEYFEST"
           description="Ebook, buổi tư vấn 1:1 miễn phí và những sản phẩm mới đang được chuẩn bị để đồng hành cùng bạn trên hành trình tài chính."
         />

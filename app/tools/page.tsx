@@ -21,7 +21,6 @@ export default function ToolsPage() {
   return (
     <PageShell>
       <HeroSection
-        eyebrow="Công cụ miễn phí"
         title={<>Nhìn rõ tiền của mình <span className="text-[var(--mf-gold)]">chỉ trong vài phút.</span></>}
         description="Bốn công cụ ngắn gọn giúp bạn hiểu dòng tiền, nền tảng tài chính, cách mình ứng xử với tiền và con số cần có cho mục tiêu."
         image="/images/moneyfest/about/about-hero-ai.png"
@@ -32,7 +31,7 @@ export default function ToolsPage() {
 
       <section className="mf-cream-section py-12">
         <div className="mf-container">
-          <SectionHeader eyebrow="Cách hoạt động" title="Ba bước đơn giản" />
+          <SectionHeader title="Ba bước đơn giản" />
           <ol className="tl-steps mt-8">
             {steps.map((step, index) => (
               <li key={step.title} className="tl-step-item">
@@ -53,7 +52,6 @@ export default function ToolsPage() {
       <section id="lab" className="mf-dark-section scroll-mt-20 py-14">
         <div className="mf-container">
           <SectionHeader
-            eyebrow="Phòng công cụ"
             title="Bạn muốn làm rõ điều gì?"
             description="Chọn một thẻ để bắt đầu."
             tone="light"

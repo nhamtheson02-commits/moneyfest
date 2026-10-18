@@ -20,7 +20,6 @@ export default function AboutPage() {
   return (
     <PageShell>
       <HeroSection
-        eyebrow="Về chúng tôi"
         title={<>Hiểu luật chơi để <span className="text-[var(--mf-gold)]">làm chủ cuộc đời.</span></>}
         description="Moneyfest là hệ sinh thái tri thức, tư vấn và kết nối giải pháp tài chính, giúp cá nhân, gia đình và doanh nghiệp hiểu rõ lựa chọn, so sánh nhiều phương án và ra quyết định phù hợp với mục tiêu dài hạn."
         image="/images/moneyfest/about/about-hero-ai.png"
@@ -62,8 +61,7 @@ export default function AboutPage() {
       <section className="mf-dark-section py-14">
         <div className="mf-container grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="mf-eyebrow">Triết lý thương hiệu</p>
-            <blockquote className="mf-display mt-4 text-[clamp(2rem,4vw,3.7rem)] italic leading-tight text-[var(--mf-champagne)]">“Tự do không đến từ việc có nhiều tiền hơn. Tự do đến từ việc hiểu rõ cuộc chơi mình đang tham gia.”</blockquote>
+            <blockquote className="mf-display text-[clamp(2rem,4vw,3.7rem)] italic leading-tight text-[var(--mf-champagne)]">“Tự do không đến từ việc có nhiều tiền hơn. Tự do đến từ việc hiểu rõ cuộc chơi mình đang tham gia.”</blockquote>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {["Biến sự phức tạp thành sáng tỏ", "Biến sáng tỏ thành quyết định", "Biến quyết định đúng thành cuộc đời chủ động hơn"].map((item, index) => <div key={item} className="mf-card-dark p-6"><p className="mf-display text-3xl text-[var(--mf-gold)]">0{index + 1}</p><h3 className="mt-4 font-bold">{item}</h3></div>)}

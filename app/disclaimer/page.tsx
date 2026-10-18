@@ -11,8 +11,7 @@ export default function DisclaimerPage() {
   return (
     <PageShell>
       <article className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
-        <p className="mf-eyebrow">Legal</p>
-        <h1 className="mf-display mt-3 text-[clamp(2.3rem,6vw,4rem)] font-bold leading-tight text-[var(--mf-midnight)]">
+        <h1 className="mf-display text-[clamp(2.3rem,6vw,4rem)] font-bold leading-tight text-[var(--mf-midnight)]">
           Tuyên bố miễn trừ trách nhiệm
         </h1>
         <div className="prose-moneyfest mt-8">

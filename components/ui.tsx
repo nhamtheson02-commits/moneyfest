@@ -24,7 +24,8 @@ export function SectionHeader({
     <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center")}>
       {eyebrow ? <p className="mf-eyebrow">{eyebrow}</p> : null}
       <HeadingTag className={cn(
-        "mf-display mt-3 text-[clamp(2rem,5vw,3.3rem)] font-bold leading-tight",
+        "mf-display text-[clamp(2rem,5vw,3.3rem)] font-bold leading-tight",
+        eyebrow && "mt-3",
         tone === "light" ? "text-[var(--mf-ivory)]" : "text-[var(--mf-midnight)]",
       )}>
         {title}

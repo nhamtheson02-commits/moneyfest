@@ -13,7 +13,6 @@ export default function CommunityPage() {
   return (
     <PageShell>
       <HeroSection
-        eyebrow="Cộng đồng Moneyfest"
         title={<>Đi cùng những người đang học cách hiểu luật chơi của tiền bạc.</>}
         description="Moneyfest Community là nơi bạn kết nối, học hỏi và áp dụng góc nhìn tài chính một cách bình tĩnh, thực tế và có hệ thống."
         image="/images/moneyfest/community/community-hero-ai.png"

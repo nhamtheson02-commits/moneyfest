@@ -16,7 +16,6 @@ export default function ContactPage() {
         <div>
           <SectionHeader
             as="h1"
-            eyebrow="Tư vấn"
             title="Đăng ký tư vấn 1:1"
             description="Hãy cho MONEYFEST biết bạn đang muốn làm rõ điều gì. Buổi tư vấn hoàn toàn miễn phí."
           />

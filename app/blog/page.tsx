@@ -16,7 +16,6 @@ export default function BlogPage() {
   return (
     <PageShell>
       <HeroSection
-        eyebrow="Blog Moneyfest"
         title={<>Góc nhìn giúp bạn hiểu luật chơi trước khi <span className="text-[var(--mf-gold)]">ra quyết định.</span></>}
         description="Moneyfest Blog chia sẻ những phân tích sâu nhưng dễ hiểu về tiền, sản phẩm tài chính, tâm lý tài chính và các quy tắc vận hành thị trường."
         image="/images/moneyfest/blog/blog-hero-ai.png"
@@ -26,8 +25,8 @@ export default function BlogPage() {
       />
 
       <section id="featured" className="mf-dark-section py-14">
-        <div className="mf-container grid overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--border-gold)] lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="relative aspect-video overflow-hidden lg:aspect-auto lg:min-h-full"><Image src={featured.image} alt={featured.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 45vw" /></div>
+        <div className="mf-container grid overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--border-gold)] lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative aspect-video overflow-hidden lg:aspect-auto lg:min-h-full"><Image src={featured.image} alt={featured.title} fill quality={92} className="object-cover" sizes="(max-width: 1024px) 100vw, 700px" /></div>
           <div className="flex flex-col justify-center p-8 lg:p-10">
             <p className="mf-tag-dark w-fit">Bài viết nổi bật</p>
             <h2 className="mf-display mt-4 text-[clamp(2.2rem,4vw,4rem)] font-bold leading-tight">{featured.title}</h2>
