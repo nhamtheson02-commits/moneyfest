@@ -68,8 +68,8 @@ export function MotionProvider() {
       (entries) => {
         // Hiện khi cuộn tới, ẩn lại khi ra khỏi màn hình để lần sau cuộn tới lại có hiệu ứng.
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("is-in");
-          else entry.target.classList.remove("is-in");
+          if (entry.isIntersecting) entry.target.setAttribute("data-in", "");
+          else entry.target.removeAttribute("data-in");
         });
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
@@ -109,7 +109,7 @@ export function MotionProvider() {
       heroObserver?.disconnect();
       items.forEach((el) => {
         el.removeAttribute("data-reveal");
-        el.classList.remove("is-in");
+        el.removeAttribute("data-in");
         el.style.removeProperty("--reveal-delay");
       });
     };
