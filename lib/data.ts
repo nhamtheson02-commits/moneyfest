@@ -26,7 +26,7 @@ export type AdminDashboardData = {
 export const services = [
   {
     title: "Ebook trả phí",
-    price: "Từ 99.000 VND",
+    price: "20.000 VND",
     description: "Bộ workbook thực hành ngân sách, xử lý nợ và lập kế hoạch đầu tư cá nhân.",
     status: "Đang mở bán",
   },

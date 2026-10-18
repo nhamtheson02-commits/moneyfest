@@ -59,7 +59,7 @@ const ebooks = [
     level: "Trung cấp",
     pages: 40,
     accessLevel: "PAID",
-    price: 199000,
+    price: 20000,
     isFeatured: true,
   },
   {

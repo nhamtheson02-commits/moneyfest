@@ -5,9 +5,9 @@ export const freeEbooks = [
 ];
 
 export const paidEbooks = [
-  { title: "Hiểu đúng bảo hiểm trước khi xuống tiền", description: "Hiểu đúng bản chất bảo hiểm và chọn sản phẩm phù hợp nhu cầu.", category: "Bảo hiểm", price: "99.000đ" },
-  { title: "Cẩm nang ra quyết định tài chính cho gia đình trẻ", description: "Khung quyết định 5 bước cho những lựa chọn tài chính quan trọng.", category: "Gia đình trẻ", price: "149.000đ" },
-  { title: "Khung phân bổ tài sản cho người đi làm", description: "Xây dựng danh mục cân bằng giữa an toàn, tăng trưởng và linh hoạt.", category: "Đầu tư & tài sản", price: "129.000đ" },
-  { title: "Money Map Workbook", description: "Workbook thực hành lập kế hoạch tài chính cá nhân từng bước.", category: "Workbook", price: "199.000đ" },
+  { title: "Hiểu đúng bảo hiểm trước khi xuống tiền", description: "Hiểu đúng bản chất bảo hiểm và chọn sản phẩm phù hợp nhu cầu.", category: "Bảo hiểm", price: "20.000đ" },
+  { title: "Cẩm nang ra quyết định tài chính cho gia đình trẻ", description: "Khung quyết định 5 bước cho những lựa chọn tài chính quan trọng.", category: "Gia đình trẻ", price: "20.000đ" },
+  { title: "Khung phân bổ tài sản cho người đi làm", description: "Xây dựng danh mục cân bằng giữa an toàn, tăng trưởng và linh hoạt.", category: "Đầu tư & tài sản", price: "20.000đ" },
+  { title: "Money Map Workbook", description: "Workbook thực hành lập kế hoạch tài chính cá nhân từng bước.", category: "Workbook", price: "20.000đ" },
 ];
 
