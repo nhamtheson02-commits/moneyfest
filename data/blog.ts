@@ -7,7 +7,7 @@ export const articles = [
     category: "Hiểu tiền",
     date: "12/05/2024",
     readTime: "10 phút đọc",
-    image: "/images/moneyfest/thumbnails/blog/blog-01-ban-do-phan-bo-tien-nhan-roi-v3.jpg",
+    image: "/images/moneyfest/thumbnails/blog/blog-01-ban-do-phan-bo-tien-nhan-roi-v4.jpg",
   },
   {
     title: "Gửi tiết kiệm an toàn, nhưng có an toàn cho sức mua?",
@@ -15,7 +15,7 @@ export const articles = [
     category: "Hiểu tiền",
     date: "10/05/2024",
     readTime: "6 phút đọc",
-    image: "/images/moneyfest/thumbnails/blog/blog-02-gui-tiet-kiem-va-suc-mua-v3.jpg",
+    image: "/images/moneyfest/thumbnails/blog/blog-02-gui-tiet-kiem-va-suc-mua-v4.jpg",
   },
   {
     title: "Nên ưu tiên quỹ dự phòng, bảo hiểm hay đầu tư trước?",
@@ -23,7 +23,7 @@ export const articles = [
     category: "Hiểu sản phẩm",
     date: "09/05/2024",
     readTime: "7 phút đọc",
-    image: "/images/moneyfest/thumbnails/blog/blog-03-thu-tu-uu-tien-tai-chinh-v3.jpg",
+    image: "/images/moneyfest/thumbnails/blog/blog-03-thu-tu-uu-tien-tai-chinh-v4.jpg",
   },
   {
     title: "5 thiên kiến khiến bạn ra quyết định tài chính sai",
@@ -31,7 +31,7 @@ export const articles = [
     category: "Hiểu bản thân",
     date: "08/05/2024",
     readTime: "6 phút đọc",
-    image: "/images/moneyfest/thumbnails/blog/blog-04-5-thien-kien-tai-chinh-v3.jpg",
+    image: "/images/moneyfest/thumbnails/blog/blog-04-5-thien-kien-tai-chinh-v4.jpg",
   },
   {
     title: "Một gia đình trẻ nên phân bổ 500 triệu như thế nào?",
@@ -39,7 +39,7 @@ export const articles = [
     category: "Case study",
     date: "07/05/2024",
     readTime: "8 phút đọc",
-    image: "/images/moneyfest/thumbnails/blog/blog-05-gia-dinh-tre-500-trieu-v3.jpg",
+    image: "/images/moneyfest/thumbnails/blog/blog-05-gia-dinh-tre-500-trieu-v4.jpg",
   },
   {
     title: "Khi nào nên tái cân bằng danh mục tài sản?",
@@ -47,7 +47,7 @@ export const articles = [
     category: "Hiểu luật chơi",
     date: "06/05/2024",
     readTime: "6 phút đọc",
-    image: "/images/moneyfest/thumbnails/blog/blog-06-tai-can-bang-danh-muc-v3.jpg",
+    image: "/images/moneyfest/thumbnails/blog/blog-06-tai-can-bang-danh-muc-v4.jpg",
   },
 ];
 
