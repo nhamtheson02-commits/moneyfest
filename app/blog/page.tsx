@@ -26,7 +26,7 @@ export default function BlogPage() {
 
       <section id="featured" className="mf-dark-section py-14">
         <div className="mf-container grid overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--border-gold)] lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="relative aspect-video overflow-hidden lg:aspect-auto lg:min-h-full"><Image src={featured.image} alt={featured.title} fill quality={92} className="object-cover" sizes="(max-width: 1024px) 100vw, 700px" /></div>
+          <div className="relative aspect-video overflow-hidden lg:aspect-auto lg:min-h-full"><Image src={featured.image} alt={featured.title} fill quality={92} className="object-cover" sizes="(max-width: 1024px) 100vw, 1920px" /></div>
           <div className="flex flex-col justify-center p-8 lg:p-10">
             <p className="mf-tag-dark w-fit">Bài viết nổi bật</p>
             <h2 className="mf-display mt-4 text-[clamp(2.2rem,4vw,4rem)] font-bold leading-tight">{featured.title}</h2>
