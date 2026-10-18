@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Globe, Mail } from "lucide-react";
 import { MotionProvider } from "@/components/motion";
 import { navigationItems } from "@/data/navigation";
-import { BrandMark, Emblem } from "@/components/ui";
+import { BrandMark } from "@/components/ui";
 import { MobileMenu } from "@/components/mobile-menu";
 
 export function Header() {
@@ -10,8 +10,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-[rgba(212,168,63,0.55)] bg-[rgba(7,7,7,0.96)] text-[var(--mf-ivory)] backdrop-blur">
       <div className="mf-container flex min-h-20 items-center justify-between gap-6">
         <Link href="/" className="flex items-center gap-3" aria-label="Moneyfest trang chủ">
-          <BrandMark priority className="hidden w-48 sm:block" />
-          <Emblem className="sm:hidden" />
+          <BrandMark priority className="w-36 sm:w-48" />
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium lg:flex">
           {navigationItems.map((item) => (
