@@ -27,7 +27,7 @@ export default function BlogPage() {
 
       <section id="featured" className="mf-dark-section py-14">
         <div className="mf-container grid overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--border-gold)] lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="relative min-h-80"><Image src="/images/moneyfest/blog/blog-moneyfest.jpg" alt="" fill className="object-cover" /></div>
+          <div className="relative aspect-video overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--border-gold)]"><Image src={featured.image} alt={featured.title} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 45vw" /></div>
           <div className="p-8">
             <p className="mf-tag-dark">Bài viết nổi bật</p>
             <h2 className="mf-display mt-4 text-[clamp(2.2rem,4vw,4rem)] font-bold leading-tight">{featured.title}</h2>
@@ -47,7 +47,7 @@ export default function BlogPage() {
           </div>
           <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_320px]">
             <div className="grid gap-5 md:grid-cols-2">
-              {articles.slice(1).map((article) => <ArticleCard key={article.title} article={article} image="/images/moneyfest/blog/blog-moneyfest.jpg" />)}
+              {articles.slice(1).map((article) => <ArticleCard key={article.title} article={article} />)}
             </div>
             <aside className="mf-card p-6">
               <h3 className="font-bold uppercase tracking-[0.12em] text-[var(--mf-midnight)]">Đọc nhiều tuần này</h3>

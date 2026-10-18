@@ -212,7 +212,7 @@ export function IconBox({ icon, title, children, dark = false }: { icon: ReactNo
 export function EditorialCard({ image, eyebrow, title, description, href = "#" }: { image?: string; eyebrow?: string; title: string; description: string; href?: string }) {
   return (
     <Link href={href} className="mf-editorial-card group block overflow-hidden">
-      {image ? <div className="relative h-56"><Image src={image} alt="" fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" /></div> : null}
+      {image ? <div className="relative aspect-video overflow-hidden"><Image src={image} alt={title} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(max-width: 768px) 100vw, 33vw" /></div> : null}
       <div className="p-5">
         {eyebrow ? <p className="mf-tag-dark">{eyebrow}</p> : null}
         <h3 className="mf-display mt-3 text-2xl font-semibold leading-tight text-[var(--mf-ivory)]">{title}</h3>
@@ -223,22 +223,21 @@ export function EditorialCard({ image, eyebrow, title, description, href = "#" }
   );
 }
 
-export function ArticleCard({ article, image }: { article: { title: string; description: string; category: string; date: string; readTime: string }; image: string }) {
+export function ArticleCard({ article, image }: { article: { title: string; description: string; category: string; date: string; readTime: string; image?: string }; image?: string }) {
   return (
-    <EditorialCard image={image} eyebrow={article.category} title={article.title} description={`${article.description} · ${article.readTime} · ${article.date}`} href="/blog" />
+    <EditorialCard image={article.image ?? image} eyebrow={article.category} title={article.title} description={`${article.description} · ${article.readTime} · ${article.date}`} href="/blog" />
   );
 }
 
-export function EbookCard({ ebook, paid = false }: { ebook: { title: string; description: string; category: string; price: string }; paid?: boolean }) {
+export function EbookCard({ ebook, paid = false }: { ebook: { title: string; description: string; category: string; price: string; image?: string }; paid?: boolean }) {
   return (
-    <div className="mf-editorial-card overflow-hidden">
-      <div className="relative h-52 bg-[var(--mf-obsidian)]">
-        <Image src="/images/moneyfest/ebook/ebook-moneyfest.jpg" alt="" fill className="object-cover opacity-70" sizes="(max-width: 768px) 100vw, 25vw" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--mf-obsidian)] to-transparent" />
-        <span className="absolute left-4 top-4 mf-tag-dark">{ebook.category}</span>
+    <div className="mf-editorial-card group overflow-hidden">
+      {/* Bìa ebook tỷ lệ 2:3, không crop vì tiêu đề nằm trên ảnh */}
+      <div className="relative aspect-[2/3] bg-[var(--mf-obsidian)]">
+        <Image src={ebook.image ?? "/images/moneyfest/ebook/ebook-moneyfest.jpg"} alt={ebook.title} fill className="object-cover transition duration-500 group-hover:scale-[1.03]" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw" />
       </div>
       <div className="p-5">
-        <h3 className="mf-display text-2xl font-semibold leading-tight text-[var(--mf-ivory)]">{ebook.title}</h3>
+        <h3 className="mf-display text-xl font-semibold leading-tight text-[var(--mf-ivory)]">{ebook.title}</h3>
         <p className="mt-3 text-sm leading-6 text-[rgba(244,240,232,0.74)]">{ebook.description}</p>
         <p className="mt-4 text-2xl font-semibold text-[var(--mf-gold)]">{ebook.price}</p>
         <GoldButton href="/ebooks">{paid ? "Xem chi tiết" : "Tải miễn phí"}</GoldButton>
