@@ -124,7 +124,7 @@ export function HeroSection({
           </div>
         </div>
         <div className="relative hidden min-h-[382px] lg:block">
-          <Image src={image} alt="" fill priority className="object-cover object-center" sizes="50vw" />
+          <Image src={image} alt="" fill priority className="mf-hero-img object-cover object-center" sizes="50vw" />
           <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[var(--mf-midnight)] to-transparent" />
         </div>
       </div>

@@ -1239,3 +1239,178 @@ nav,
     display: none;
   }
 }
+
+/* ===== Chuyển động ===== */
+@keyframes mf-rise {
+  from {
+    opacity: 0;
+    translate: 0 32px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes mf-reveal-up {
+  from {
+    opacity: 0;
+    translate: 0 30px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes mf-reveal-right {
+  from {
+    opacity: 0;
+    translate: 48px 0;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes mf-zoom-out {
+  from {
+    scale: 1.1;
+  }
+
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes mf-rule-grow {
+  from {
+    scale: 0 1;
+  }
+
+  to {
+    scale: 1 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Vào trang: tiêu đề, mô tả, nút trượt lên lần lượt */
+  .mf-hero-copy > div > *,
+  main > section:first-child:not(:has(.mf-hero-copy)) :is(.mf-eyebrow, h1, h1 ~ p, h1 ~ div) {
+    animation: mf-rise 800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .mf-hero-copy > div > :nth-child(1) {
+    animation-delay: 80ms;
+  }
+
+  .mf-hero-copy > div > :nth-child(2) {
+    animation-delay: 220ms;
+  }
+
+  .mf-hero-copy > div > :nth-child(3) {
+    animation-delay: 360ms;
+  }
+
+  .mf-hero-copy > div > :nth-child(4) {
+    animation-delay: 500ms;
+  }
+
+  main > section:first-child:not(:has(.mf-hero-copy)) .mf-eyebrow {
+    animation-delay: 60ms;
+  }
+
+  main > section:first-child:not(:has(.mf-hero-copy)) h1 {
+    animation-delay: 160ms;
+  }
+
+  main > section:first-child:not(:has(.mf-hero-copy)) h1 ~ p {
+    animation-delay: 300ms;
+  }
+
+  .mf-hero-img {
+    animation: mf-zoom-out 1800ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .mf-title-rule {
+    transform-origin: right center;
+    animation: mf-rule-grow 900ms 300ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .mf-title-rule-right {
+    transform-origin: left center;
+  }
+
+  /* Cuộn tới: hiện dần (MotionProvider gắn data-reveal / is-in) */
+  [data-reveal] {
+    opacity: 0;
+    translate: 0 30px;
+  }
+
+  [data-reveal="right"] {
+    translate: 48px 0;
+  }
+
+  [data-reveal].is-in {
+    animation: mf-reveal-up 700ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms) both;
+  }
+
+  [data-reveal="right"].is-in {
+    animation-name: mf-reveal-right;
+  }
+
+  /* Rê chuột */
+  .mf-problem-card,
+  .mf-editorial-card,
+  .mf-card,
+  .mf-card-dark,
+  .home-principle-item,
+  .money-map-service-row {
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background-color 220ms ease;
+  }
+
+  .mf-problem-icon,
+  .home-principle-item svg {
+    transition: transform 260ms ease, background-color 260ms ease;
+  }
+
+  .mf-btn svg:last-child {
+    transition: translate 200ms ease;
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .mf-problem-card:hover,
+  .mf-editorial-card:hover,
+  .mf-card-dark:hover,
+  .mf-card:not(:has(form, input, textarea, select)):hover {
+    transform: translateY(-4px);
+    border-color: var(--mf-gold);
+    box-shadow: 0 18px 40px rgba(31, 25, 13, 0.14);
+  }
+
+  .mf-problem-card:hover .mf-problem-icon {
+    transform: scale(1.1) rotate(-4deg);
+    background: #ead9b8;
+  }
+
+  .home-principle-item:hover svg {
+    transform: translateY(-3px) scale(1.12);
+  }
+
+  .home-principle-item:hover {
+    background: rgba(212, 168, 63, 0.07);
+  }
+
+  .money-map-service-row:hover {
+    transform: translateX(4px);
+  }
+
+  .mf-btn:hover svg:last-child {
+    translate: 4px 0;
+  }
+}

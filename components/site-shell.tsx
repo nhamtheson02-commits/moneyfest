@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Globe, Mail, Phone } from "lucide-react";
+import { Globe, Mail } from "lucide-react";
+import { MotionProvider } from "@/components/motion";
 import { navigationItems } from "@/data/navigation";
 import { BrandMark, Emblem } from "@/components/ui";
 import { MobileMenu } from "@/components/mobile-menu";
@@ -14,7 +15,7 @@ export function Header() {
         </Link>
         <nav className="hidden items-center gap-7 text-sm font-medium lg:flex">
           {navigationItems.map((item) => (
-            <Link key={item.href} href={item.href} className="relative py-7 transition hover:text-[var(--mf-gold)]">
+            <Link key={item.href} href={item.href} className="group relative py-7 transition hover:text-[var(--mf-gold)]">
               {item.label}
               <span className="absolute inset-x-0 bottom-5 h-px origin-left scale-x-0 bg-[var(--mf-gold)] transition group-hover:scale-x-100" />
             </Link>
@@ -65,7 +66,6 @@ export function Footer() {
         <div className="order-2 xl:order-3">
           <p className="font-semibold text-[var(--mf-champagne)]">Kết nối với chúng tôi</p>
           <div className="mt-4 grid gap-3 text-sm text-[rgba(244,240,232,0.72)]">
-            <span className="flex items-center gap-2"><Phone size={16} />1900 633 398</span>
             <span className="flex items-center gap-2"><Mail size={16} />hello@moneyfest.vn</span>
             <span className="flex items-center gap-2"><Globe size={16} />www.moneyfest.vn</span>
           </div>
@@ -87,6 +87,7 @@ export function PageShell({ children }: { children: React.ReactNode }) {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
+      <MotionProvider />
     </>
   );
 }

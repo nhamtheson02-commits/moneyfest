@@ -32,8 +32,8 @@ export const services = [
   },
   {
     title: "Tư vấn 1:1",
-    price: "Theo nhu cầu",
-    description: "Buổi làm việc riêng để soi dòng tiền, mục tiêu và lập kế hoạch 90 ngày.",
+    price: "Miễn phí",
+    description: "Buổi làm việc riêng để nhìn rõ dòng tiền, mục tiêu và lập kế hoạch 90 ngày.",
     status: "Mở form đăng ký",
   },
   {

@@ -18,10 +18,10 @@ export default function ContactPage() {
             as="h1"
             eyebrow="Tư vấn"
             title="Đăng ký tư vấn 1:1"
-            description="Hãy cho MONEYFEST biết bạn đang muốn làm rõ điều gì. Phase 1 chỉ thu lead và request, chưa thanh toán online."
+            description="Hãy cho MONEYFEST biết bạn đang muốn làm rõ điều gì. Buổi tư vấn hoàn toàn miễn phí."
           />
           <div className="mt-8 grid gap-3 text-sm">
-            <p className="mf-info-alert">Phù hợp nếu bạn muốn soi dòng tiền, xử lý nợ, tạo quỹ dự phòng hoặc lập kế hoạch 90 ngày.</p>
+            <p className="mf-info-alert">Phù hợp nếu bạn muốn nhìn rõ dòng tiền, xử lý nợ, tạo quỹ dự phòng hoặc lập kế hoạch 90 ngày.</p>
             <p className="mf-info-alert">Sau khi gửi form, đội ngũ MONEYFEST sẽ ghi nhận và follow-up thủ công.</p>
           </div>
         </div>

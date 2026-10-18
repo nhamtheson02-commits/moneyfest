@@ -57,7 +57,7 @@ export default function Home() {
             {[
               ["60 – 90 phút", "Online 1:1 với chuyên gia", icons.calendar],
               ["Phù hợp với", "Người đi làm, gia đình trẻ, muốn tối ưu tài chính", icons.users],
-              ["Đầu tư", "Từ 1.500.000đ / buổi", icons.dollar],
+              ["Chi phí", "Miễn phí", icons.dollar],
             ].map(([title, desc, Icon]) => (
               <div key={title as string} className="money-map-service-row">
                 <Icon className="money-map-service-icon" size={18} />
