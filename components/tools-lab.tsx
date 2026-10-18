@@ -58,6 +58,12 @@ export function ToolsLab() {
 
   const activeTool = tools.find((tool) => tool.id === active) ?? null;
 
+  function closePanel() {
+    setActive(null);
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.getElementById("lab")?.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+  }
+
   return (
     <div>
       <div className="tl-grid" role="list">
@@ -95,7 +101,7 @@ export function ToolsLab() {
             <header className="tl-panel-head">
               <span className="tl-card-icon"><activeTool.icon size={22} aria-hidden="true" /></span>
               <h3 className="mf-display text-2xl font-bold text-[var(--mf-midnight)]">{activeTool.title}</h3>
-              <button type="button" className="tl-close" onClick={() => setActive(null)} aria-label="Đóng công cụ">
+              <button type="button" className="tl-close" onClick={closePanel} aria-label="Đóng công cụ">
                 <X size={18} aria-hidden="true" />
               </button>
             </header>
@@ -116,6 +122,25 @@ export function ToolsLab() {
 
 /* ---------- Thành phần dùng chung ---------- */
 
+/** Giữ đầu khung công cụ trong tầm nhìn khi đổi bước/kết quả (quan trọng trên điện thoại). */
+function usePanelTop(dep: unknown) {
+  const ref = useRef<HTMLDivElement>(null);
+  const first = useRef(true);
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    const panel = ref.current?.closest(".tl-panel");
+    if (!panel) return;
+    if (panel.getBoundingClientRect().top < 0) {
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      panel.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+    }
+  }, [dep]);
+  return ref;
+}
+
 function Progress({ step, total }: { step: number; total: number }) {
   return (
     <div className="tl-progress" aria-label={`Bước ${step} trên ${total}`}>
@@ -135,6 +160,7 @@ function ChoiceWizard<T extends string | number>({
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<(T | undefined)[]>([]);
   const question = questions[step];
+  const topRef = usePanelTop(step);
 
   function choose(value: T) {
     const next = [...answers];
@@ -145,7 +171,7 @@ function ChoiceWizard<T extends string | number>({
   }
 
   return (
-    <div>
+    <div ref={topRef}>
       <Progress step={step + 1} total={questions.length} />
       <div key={step} className="tl-step">
         <p className="mf-display text-[1.35rem] font-semibold leading-snug text-[var(--mf-midnight)]">{question.q}</p>
@@ -278,6 +304,7 @@ function CashflowFlow() {
   const [done, setDone] = useState(false);
 
   const field = cashFields[step];
+  const topRef = usePanelTop(`${step}-${done}`);
 
   function setAmount(amount: number | null) {
     setText(amount === null ? "" : nf.format(amount));
@@ -312,11 +339,11 @@ function CashflowFlow() {
   }
 
   if (done) {
-    return <CashflowResult values={values as Record<CashKey, number>} onReset={reset} />;
+    return <div ref={topRef}><CashflowResult values={values as Record<CashKey, number>} onReset={reset} /></div>;
   }
 
   return (
-    <div>
+    <div ref={topRef}>
       <Progress step={step + 1} total={cashFields.length} />
       <form key={step} className="tl-step" onSubmit={next}>
         <label className="mf-display block text-[1.35rem] font-semibold leading-snug text-[var(--mf-midnight)]" htmlFor="cash-input">
@@ -414,12 +441,13 @@ function CashflowResult({ values, onReset }: { values: Record<CashKey, number>; 
 
 function QuizFlow() {
   const [answers, setAnswers] = useState<number[] | null>(null);
+  const topRef = usePanelTop(answers === null);
   const questions = quizAreas.map((area) => ({
     q: area.q,
     options: area.options.map((label, value) => ({ label, value })),
   }));
 
-  if (!answers) return <ChoiceWizard<number> questions={questions} onDone={setAnswers} />;
+  if (!answers) return <div ref={topRef}><ChoiceWizard<number> questions={questions} onDone={setAnswers} /></div>;
 
   const score = answers.reduce((sum, value) => sum + value, 0);
   const tier =
@@ -433,7 +461,7 @@ function QuizFlow() {
   const values = Object.fromEntries(quizAreas.map((area, index) => [area.key, answers[index]]));
 
   return (
-    <div className="tl-result">
+    <div className="tl-result" ref={topRef}>
       <p className="mf-eyebrow !text-[var(--mf-warning)]">Kết quả của bạn</p>
       <div className="tl-score">
         <b>{score}</b><span>/15</span>
@@ -465,8 +493,9 @@ function QuizFlow() {
 
 function PersonaFlow() {
   const [answers, setAnswers] = useState<PersonaKey[] | null>(null);
+  const topRef = usePanelTop(answers === null);
 
-  if (!answers) return <ChoiceWizard<PersonaKey> questions={personaQuestions} onDone={setAnswers} />;
+  if (!answers) return <div ref={topRef}><ChoiceWizard<PersonaKey> questions={personaQuestions} onDone={setAnswers} /></div>;
 
   const counts = Object.fromEntries(personaOrder.map((key) => [key, 0])) as Record<PersonaKey, number>;
   answers.forEach((key) => { counts[key] += 1; });
@@ -477,7 +506,7 @@ function PersonaFlow() {
   const persona = personas[winner];
 
   return (
-    <div className="tl-result">
+    <div className="tl-result" ref={topRef}>
       <p className="mf-eyebrow !text-[var(--mf-warning)]">Chân dung tiền bạc của bạn</p>
       <div className="tl-persona">
         <div className="tl-persona-img">

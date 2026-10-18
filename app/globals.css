@@ -2049,3 +2049,63 @@ nav,
   .tl-bars li .tl-bar { grid-column: 1 / -1; grid-row: 2; }
   .tl-score b { font-size: 3.2rem; }
 }
+
+/* ===== /tools: tối ưu cho điện thoại ===== */
+.tl-panel { scroll-margin-top: 5.5rem; }
+
+@media (max-width: 699px) {
+  .tl-grid { gap: 0.75rem; }
+
+  .tl-card {
+    min-height: 0;
+    gap: 0.5rem;
+    padding: 1rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .tl-card-top { justify-content: flex-start; gap: 0.75rem; }
+  .tl-card-num { display: none; }
+  .tl-card-title { font-size: 1.2rem; }
+  .tl-card-desc { font-size: 0.88rem; line-height: 1.55; }
+  .tl-card-foot { padding-top: 0.6rem; }
+  .tl-card:active { transform: scale(0.985); border-color: var(--mf-gold); }
+
+  .tl-panel { margin-top: 1rem; }
+  .tl-panel-head { padding: 0.8rem 0.9rem; gap: 0.65rem; }
+  .tl-panel-head h3 { font-size: 1.15rem !important; line-height: 1.25; }
+  .tl-panel-body { padding: 1.1rem 0.9rem 1.4rem; }
+  .tl-close { width: 2.75rem; height: 2.75rem; flex: none; }
+
+  .tl-option { min-height: 3.25rem; padding: 0.8rem 0.85rem; }
+  .tl-option:active { border-color: var(--mf-gold); background: #fbf3dc; }
+
+  .tl-money input { font-size: 1.45rem; }
+  .tl-chip { min-height: 2.5rem; padding: 0.5rem 0.95rem; font-size: 0.9rem; }
+
+  .tl-actions { flex-direction: column-reverse; align-items: stretch; gap: 0.25rem; }
+  .tl-actions .mf-btn { width: 100%; justify-content: center; min-height: 3rem; }
+  .tl-actions .tl-back { justify-content: center; padding: 0.7rem 0; }
+  .tl-back { padding: 0.7rem 0; }
+
+  .tl-next .mf-btn { width: 100%; justify-content: center; text-align: center; min-height: 3rem; }
+  .tl-save { padding: 0.95rem; }
+  .tl-save .mf-btn { width: 100%; min-height: 3rem; }
+  .tl-save .mf-field,
+  .tl-money input { font-size: 16px; }
+  .tl-money input { font-size: max(16px, 1.45rem); }
+
+  .tl-persona { gap: 1rem; }
+  .tl-persona-img { aspect-ratio: 16 / 10; }
+
+  .tl-legend li { grid-template-columns: auto 1fr; row-gap: 0.1rem; }
+  .tl-legend li b { grid-column: 2; font-size: 0.9rem; }
+
+  .tl-score b { font-size: 3.4rem; }
+  .tl-score em { margin-left: 0; }
+
+  .tl-range input[type="range"] { height: 2rem; }
+  .tl-goal { gap: 1.5rem; }
+  .tl-goal-result { padding: 1rem; }
+
+  .tl-step-item { padding: 1rem; }
+}
