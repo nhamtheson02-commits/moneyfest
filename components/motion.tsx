@@ -77,7 +77,7 @@ export function MotionProvider() {
     items.forEach((el) => io.observe(el));
 
     // Hero (đầu trang): chạy lại hiệu ứng vào trang mỗi khi cuộn ngược về.
-    let heroObserver: IntersectionObserver | null = null;
+    let heroObserver = null as IntersectionObserver | null;
     const heroTargets = hero
       ? Array.from(hero.querySelectorAll<HTMLElement>(".mf-hero-copy > div > *, .mf-hero-img"))
       : [];
