@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone } from "lucide-react";
+import { Globe, Mail, Phone } from "lucide-react";
 import { navigationItems } from "@/data/navigation";
 import { BrandMark, Emblem } from "@/components/ui";
 import { MobileMenu } from "@/components/mobile-menu";
@@ -67,7 +67,7 @@ export function Footer() {
           <div className="mt-4 grid gap-3 text-sm text-[rgba(244,240,232,0.72)]">
             <span className="flex items-center gap-2"><Phone size={16} />1900 633 398</span>
             <span className="flex items-center gap-2"><Mail size={16} />hello@moneyfest.vn</span>
-            <span>www.moneyfest.vn</span>
+            <span className="flex items-center gap-2"><Globe size={16} />www.moneyfest.vn</span>
           </div>
         </div>
       </div>
