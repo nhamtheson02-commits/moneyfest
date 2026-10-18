@@ -2,12 +2,15 @@
 
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
+import { monthlyNeeded } from "@/lib/goal";
 import { runLeadAutomation } from "@/lib/brevo";
 import {
   cashflowSchema,
   consultationSchema,
   ebookDownloadSchema,
   financialQuizSchema,
+  goalPlannerSchema,
+  moneyPersonaSchema,
 } from "@/lib/validation";
 
 type ActionState = {
@@ -296,4 +299,72 @@ export async function submitFinancialQuiz(
   }
 
   return { ok: true, message: "Đã chấm điểm sức khỏe tài chính.", result, score };
+}
+
+const personaNames = {
+  "giu-lua": "Người giữ lửa",
+  "tham-hiem": "Nhà thám hiểm",
+  "xay-nen": "Người xây nền",
+  "dong-hanh": "Người đồng hành",
+} as const;
+
+export async function submitMoneyPersona(data: unknown): Promise<ActionState> {
+  if (hasHoneypotValue(data)) return fakeSuccess;
+
+  const parsed = moneyPersonaSchema.safeParse(data);
+  if (!parsed.success) {
+    return { ok: false, message: "Kết quả chưa hợp lệ. Vui lòng thử lại." };
+  }
+
+  const { email, persona } = parsed.data;
+  if (!email) return { ok: true, message: "Đã ghi nhận kết quả." };
+
+  const lead = await findOrCreateLead({
+    name: "Tool user",
+    email,
+    source: "money_persona",
+    consentGiven: parsed.data.consentGiven,
+  });
+  await prisma.toolResult.create({
+    data: {
+      toolType: "money_persona",
+      email: email.toLowerCase(),
+      leadId: lead.id,
+      result: personaNames[persona],
+      payload: JSON.stringify(parsed.data),
+    },
+  });
+  safeRevalidate("/admin");
+  return { ok: true, message: "Đã lưu kết quả. Chúng tôi sẽ gợi ý bước tiếp theo qua email." };
+}
+
+export async function submitGoalPlanner(data: unknown): Promise<ActionState> {
+  if (hasHoneypotValue(data)) return fakeSuccess;
+
+  const parsed = goalPlannerSchema.safeParse(data);
+  if (!parsed.success) {
+    return { ok: false, message: "Vui lòng nhập số liệu hợp lệ." };
+  }
+
+  const { email, target, years, current, rate } = parsed.data;
+  if (!email) return { ok: true, message: "Đã tính xong." };
+
+  const monthly = Math.round(monthlyNeeded(target, years, current, rate));
+  const lead = await findOrCreateLead({
+    name: "Tool user",
+    email,
+    source: "goal_planner",
+    consentGiven: parsed.data.consentGiven,
+  });
+  await prisma.toolResult.create({
+    data: {
+      toolType: "goal_planner",
+      email: email.toLowerCase(),
+      leadId: lead.id,
+      result: `Cần khoảng ${monthly.toLocaleString("vi-VN")} VND/tháng trong ${years} năm.`,
+      payload: JSON.stringify(parsed.data),
+    },
+  });
+  safeRevalidate("/admin");
+  return { ok: true, message: "Đã lưu kết quả. Chúng tôi sẽ gợi ý bước tiếp theo qua email." };
 }

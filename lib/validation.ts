@@ -75,3 +75,31 @@ export const financialQuizSchema = z
     message: "Vui lòng đồng ý với Chính sách bảo mật nếu muốn lưu kết quả",
     path: ["consentGiven"],
   });
+
+export const moneyPersonaSchema = z
+  .object({
+    email: optionalEmailSchema,
+    consentGiven: z.boolean().optional(),
+    company: honeypotSchema,
+    persona: z.enum(["giu-lua", "tham-hiem", "xay-nen", "dong-hanh"]),
+    answers: z.array(z.enum(["giu-lua", "tham-hiem", "xay-nen", "dong-hanh"])).min(1).max(12),
+  })
+  .refine((value) => !value.email || value.consentGiven === true, {
+    message: "Vui lòng đồng ý với Chính sách bảo mật nếu muốn lưu kết quả",
+    path: ["consentGiven"],
+  });
+
+export const goalPlannerSchema = z
+  .object({
+    email: optionalEmailSchema,
+    consentGiven: z.boolean().optional(),
+    company: honeypotSchema,
+    target: z.coerce.number().min(1).max(1_000_000_000_000),
+    years: z.coerce.number().min(1).max(50),
+    current: z.coerce.number().min(0).max(1_000_000_000_000),
+    rate: z.coerce.number().min(0).max(20),
+  })
+  .refine((value) => !value.email || value.consentGiven === true, {
+    message: "Vui lòng đồng ý với Chính sách bảo mật nếu muốn lưu kết quả",
+    path: ["consentGiven"],
+  });
