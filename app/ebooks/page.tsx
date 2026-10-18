@@ -21,8 +21,8 @@ export default function EbooksPage() {
         badges={["Thực tế & dễ hiểu", "Dựa trên nguyên tắc", "Cập nhật liên tục"]}
       />
 
-      <section className="mf-cream-section py-0">
-        <div className="mf-container -mt-8 relative z-10 grid overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--border-gold)] md:grid-cols-2">
+      <section className="mf-cream-section py-8">
+        <div className="mf-container grid overflow-hidden rounded-[var(--mf-radius-lg)] border border-[var(--border-gold)] md:grid-cols-2">
           <div className="bg-[var(--mf-midnight)] p-8 text-[var(--mf-ivory)]"><icons.book /><h2 className="mf-display mt-3 text-3xl font-bold">Ebook miễn phí</h2><p>Bắt đầu hành trình tài chính thông minh</p></div>
           <div className="bg-white p-8"><icons.lock /><h2 className="mf-display mt-3 text-3xl font-bold">Ebook trả phí</h2><p className="mf-muted">Đi sâu hơn với framework & công cụ</p></div>
         </div>
