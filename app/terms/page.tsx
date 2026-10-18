@@ -19,8 +19,8 @@ export default function TermsPage() {
           <p>Khi sử dụng website MONEYFEST, bạn đồng ý rằng nội dung trên website chỉ nhằm mục đích giáo dục và tham khảo.</p>
           <h2>Trách nhiệm người dùng</h2>
           <p>Bạn tự chịu trách nhiệm khi áp dụng bất kỳ nội dung, công cụ hoặc gợi ý nào vào hoàn cảnh tài chính cá nhân.</p>
-          <h2>Không đảm bảo lợi nhuận</h2>
-          <p>MONEYFEST không cam kết lợi nhuận đầu tư, không đảm bảo kết quả tài chính và không khuyến nghị mua bán sản phẩm cụ thể trong nội dung công khai.</p>
+          <h2>Nội dung mang tính tham khảo</h2>
+          <p>Mỗi hoàn cảnh tài chính là khác nhau, nên kết quả khi áp dụng sẽ phụ thuộc vào điều kiện riêng của bạn. Nội dung công khai của MONEYFEST giúp bạn hiểu rõ các lựa chọn của mình và có thêm góc nhìn trước khi quyết định.</p>
           <h2>Thay đổi nội dung</h2>
           <p>MONEYFEST có thể cập nhật nội dung, công cụ và điều khoản để ngày càng phù hợp hơn với nhu cầu của người dùng.</p>
         </div>

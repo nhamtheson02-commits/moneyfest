@@ -135,7 +135,7 @@ export const miniTools: HomeCard[] = [
       lead: "Đặt các phương án cạnh nhau để cân nhắc lợi ích và rủi ro trước khi quyết định.",
       points: [
         "So sánh theo thời gian, mức vốn và mức chấp nhận rủi ro.",
-        "Chỉ mang tính tham khảo, không phải lời khuyên mua bán.",
+        "Giúp bạn có thêm góc nhìn trước khi quyết định.",
       ],
       cta: { href: "/contact", label: "Nhận thông báo khi ra mắt" },
     },
