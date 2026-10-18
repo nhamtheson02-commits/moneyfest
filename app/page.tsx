@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { PageShell } from "@/components/site-shell";
 import { GoldButton, HeroSection, OutlineButton, ProblemCard, ProblemChatIcon, ProblemGrowthIcon, ProblemMoneyIcon, ProblemPriorityIcon, ProblemSectionTitle, icons } from "@/components/marketing";
-import { products } from "@/data/products";
+import { HomeExplorer } from "@/components/home-explorer";
+import { miniTools, processSteps, productCards } from "@/data/home-content";
 
 const problems = [
   ["Thu nhập ổn định nhưng tài sản mơ hồ", "Đi làm nhiều năm nhưng chưa rõ mình đã tích lũy được gì và sẽ đạt tự do tài chính khi nào."],
@@ -22,7 +23,7 @@ export default function Home() {
       />
 
       <section className="mf-problem-section">
-        <div className="mx-auto w-[min(100%-2rem,1200px)]">
+        <div className="mf-container">
           <ProblemSectionTitle>
             Bạn có đang gặp những vấn đề này?
           </ProblemSectionTitle>
@@ -81,66 +82,30 @@ export default function Home() {
             <p>Quy trình làm việc</p>
             <h2>Đơn giản – Rõ ràng – Hiệu quả</h2>
           </div>
-          <div className="home-process-strip">
-            {[
-              ["Đăng ký", "Chọn lịch phù hợp và điền thông tin cơ bản"],
-              ["Chuẩn bị", "Điền bảng câu hỏi tài chính trước buổi tư vấn"],
-              ["Buổi tư vấn 1:1", "Soi dòng tiền, phân tích và xác định ưu tiên"],
-              ["Nhận Money Map", "Nhận bản đồ 90 ngày và hướng dẫn triển khai"],
-            ].map(([title, desc], index) => (
-              <div key={title} className="home-process-step">
-                <span>{index + 1}</span>
-                <div>
-                  <h3>{title}</h3>
-                  <p>{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <HomeExplorer variant="process" label="Quy trình" cards={processSteps} />
         </div>
       </section>
 
       <section className="home-tools-products-section">
         <div className="mf-container">
           <p className="home-section-kicker">Công cụ miễn phí nổi bật</p>
-          <div className="home-tools-grid">
-            <div className="home-tool-feature">
-              <div>
-                <h3>Tự kiểm tra sức khỏe tài chính của bạn trong 2 phút</h3>
-                <p>Làm quiz miễn phí để biết bạn đang ở đâu trên hành trình tự do tài chính.</p>
-                <GoldButton href="/tools">Làm quiz ngay</GoldButton>
+          <HomeExplorer
+            variant="tool"
+            label="Công cụ"
+            cards={miniTools}
+            lead={
+              <div className="home-tool-feature">
+                <div>
+                  <h3>Tự kiểm tra sức khỏe tài chính của bạn trong 2 phút</h3>
+                  <p>Làm quiz miễn phí để biết bạn đang ở đâu trên hành trình tự do tài chính.</p>
+                  <GoldButton href="/tools">Làm quiz ngay</GoldButton>
+                </div>
               </div>
-            </div>
-            {[
-              ["Bảng tính dòng tiền cá nhân", "Theo dõi thu nhập, chi tiêu, tiết kiệm.", icons.map],
-              ["Máy tính mục tiêu tài chính", "Tính số tiền và thời gian để đạt mục tiêu.", icons.target],
-              ["So sánh phương án đầu tư", "So sánh kịch bản và đánh giá rủi ro.", icons.scale],
-            ].map(([title, desc, Icon]) => (
-              <div key={title as string} className="home-mini-tool">
-                <Icon size={30} />
-                <h3>{title as string}</h3>
-                <p>{desc as string}</p>
-                <span>Xem ngay →</span>
-              </div>
-            ))}
-          </div>
+            }
+          />
 
           <p className="home-section-kicker mt-6">Sản phẩm & dịch vụ</p>
-          <div className="home-products-grid">
-            {products.map((product, index) => {
-              const ProductIcon = [icons.compass, icons.briefcase, icons.users, icons.book][index] ?? icons.compass;
-              return (
-                <div key={product.title} className={index === 1 ? "home-product-card is-featured" : "home-product-card"}>
-                  <ProductIcon size={34} />
-                  <div>
-                    <h3>{product.title}</h3>
-                    <p>{product.description}</p>
-                    <span>{product.price}</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <HomeExplorer variant="product" label="Sản phẩm" cards={productCards} />
         </div>
       </section>
 

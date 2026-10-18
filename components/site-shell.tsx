@@ -40,8 +40,8 @@ const footerGroups = [
 export function Footer() {
   return (
     <footer className="border-t border-[rgba(212,168,63,0.35)] bg-[var(--mf-obsidian)] text-[var(--mf-ivory)]">
-      <div className="mf-container grid gap-10 py-12 lg:grid-cols-[1.4fr_2fr_1.2fr]">
-        <div>
+      <div className="mf-container grid gap-10 py-12 md:grid-cols-2 xl:grid-cols-[1.2fr_2fr_1fr]">
+        <div className="order-1">
           <BrandMark className="w-52" />
           <p className="mt-5 text-sm leading-7 text-[rgba(244,240,232,0.7)]">
             Hệ sinh thái tri thức, tư vấn và kết nối giải pháp tài chính giúp bạn hiểu luật chơi và làm chủ tương lai dài hạn.
@@ -52,7 +52,7 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="grid gap-8 sm:grid-cols-4">
+        <div className="order-3 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4 md:col-span-2 xl:order-2 xl:col-span-1 xl:grid-cols-2">
           {footerGroups.map((group) => (
             <div key={group.title}>
               <p className="font-semibold text-[var(--mf-champagne)]">{group.title}</p>
@@ -62,7 +62,7 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div>
+        <div className="order-2 xl:order-3">
           <p className="font-semibold text-[var(--mf-champagne)]">Kết nối với chúng tôi</p>
           <div className="mt-4 grid gap-3 text-sm text-[rgba(244,240,232,0.72)]">
             <span className="flex items-center gap-2"><Phone size={16} />1900 633 398</span>

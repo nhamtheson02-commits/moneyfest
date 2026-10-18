@@ -54,7 +54,7 @@ export const icons = {
 
 export function GoldButton({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="mf-btn mf-btn-gold whitespace-nowrap">
+    <Link href={href} className="mf-btn mf-btn-gold">
       {children}
       <ArrowRight size={16} />
     </Link>
@@ -63,7 +63,7 @@ export function GoldButton({ href, children }: { href: string; children: ReactNo
 
 export function OutlineButton({ href, children }: { href: string; children: ReactNode }) {
   return (
-    <Link href={href} className="mf-btn mf-btn-outline whitespace-nowrap">
+    <Link href={href} className="mf-btn mf-btn-outline">
       {children}
       <ArrowRight size={16} />
     </Link>
@@ -100,8 +100,8 @@ export function HeroSection({
 }) {
   return (
     <section className="border-b border-[rgba(212,168,63,0.72)] bg-[var(--mf-obsidian)] text-[var(--mf-ivory)]">
-      <div className="grid w-full overflow-hidden lg:min-h-[382px] lg:grid-cols-[50%_50%]">
-        <div className="relative z-10 flex items-center bg-[var(--mf-midnight)] px-6 py-10 sm:px-10 lg:px-[6.3vw]">
+      <div className="mf-cq grid w-full overflow-hidden lg:min-h-[382px] lg:grid-cols-[50%_50%]">
+        <div className="relative z-10 flex items-center bg-[var(--mf-midnight)] mf-hero-copy py-10">
           <div className="w-full max-w-[520px]">
           {eyebrow ? <p className="mf-eyebrow">{eyebrow}</p> : null}
           <h1 className={`mf-display ${eyebrow ? "mt-3" : ""} text-[clamp(3.1rem,4.45vw,4.55rem)] font-semibold leading-[1.05]`}>
@@ -109,7 +109,7 @@ export function HeroSection({
           </h1>
           <p className="mt-4 max-w-[500px] text-[1rem] leading-7 text-[rgba(244,240,232,0.86)]">{description}</p>
           {(primary || secondary) ? (
-            <div className="mt-7 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               {primary ? <GoldButton href={primary.href}>{primary.label}</GoldButton> : null}
               {secondary ? <OutlineButton href={secondary.href}>{secondary.label}</OutlineButton> : null}
             </div>
@@ -150,7 +150,7 @@ export function ProblemSectionTitle({ children }: { children: ReactNode }) {
   return (
     <div className="mx-auto flex max-w-5xl items-center justify-center gap-5 text-center">
       <span className="mf-title-rule" aria-hidden="true" />
-      <h2 className="mf-display whitespace-nowrap text-[clamp(1.38rem,1.7vw,1.62rem)] font-semibold leading-none text-[var(--mf-midnight)]">
+      <h2 className="mf-display text-balance text-[clamp(1.38rem,1.7vw,1.62rem)] font-semibold leading-none text-[var(--mf-midnight)]">
         {children}
       </h2>
       <span className="mf-title-rule mf-title-rule-right" aria-hidden="true" />

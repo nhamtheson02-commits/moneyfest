@@ -20,7 +20,9 @@ export default function ToolsPage() {
           description="Dùng ngay trên trình duyệt. Nếu để lại email, kết quả sẽ được lưu để MONEYFEST có thể gợi ý bước tiếp theo."
         />
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          <CashflowTool />
+          <div id="cashflow" className="scroll-mt-24">
+            <CashflowTool />
+          </div>
           <FinancialQuiz />
         </div>
       </section>
