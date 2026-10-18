@@ -17,8 +17,8 @@ export default function Home() {
         title={<>Hiểu rõ tiền của bạn đang đi về đâu.</>}
         description="Moneyfest giúp bạn lập bản đồ dòng tiền, tài sản, rủi ro và mục tiêu tài chính — trước khi ra quyết định về tiết kiệm, nợ, bảo hiểm, đầu tư hay mua nhà."
         image="/images/moneyfest/hero/homepage-hero-ai.png"
-        primary={{ href: "/contact", label: "Tư vấn miễn phí" }}
-        secondary={{ href: "/tools", label: "Đánh giá khả năng quản lý tài chính" }}
+        primary={{ href: "/contact", label: "Trao đổi cùng chuyên gia" }}
+        secondary={{ href: "/tools", label: "Khám phá phong cách tài chính của bạn" }}
       />
 
       <section className="mf-problem-section">
