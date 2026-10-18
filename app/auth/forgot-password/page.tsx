@@ -15,7 +15,7 @@ export default function ForgotPasswordPage() {
       <section className="mx-auto max-w-md px-4 py-14">
         <p className="mf-eyebrow">Tài khoản MONEYFEST</p>
         <h1 className="mf-display mt-3 text-4xl font-bold text-[var(--mf-midnight)]">Quên mật khẩu</h1>
-        <p className="mf-muted mt-3 text-sm">Phase 1 ghi nhận yêu cầu an toàn, chưa gửi email reset tự động.</p>
+        <p className="mf-muted mt-3 text-sm">Nhập email đã đăng ký, MONEYFEST sẽ hỗ trợ bạn đặt lại mật khẩu.</p>
         <div className="mt-6">
           <AuthForm action={forgotPasswordAction} submitLabel="Gửi yêu cầu">
             <AuthField label="Email" name="email" type="email" autoComplete="email" />

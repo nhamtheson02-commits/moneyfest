@@ -22,7 +22,7 @@ export default function ContactPage() {
           />
           <div className="mt-8 grid gap-3 text-sm">
             <p className="mf-info-alert">Phù hợp nếu bạn muốn nhìn rõ dòng tiền, xử lý nợ, tạo quỹ dự phòng hoặc lập kế hoạch 90 ngày.</p>
-            <p className="mf-info-alert">Sau khi gửi form, đội ngũ MONEYFEST sẽ ghi nhận và follow-up thủ công.</p>
+            <p className="mf-info-alert">Sau khi nhận thông tin, đội ngũ MONEYFEST sẽ liên hệ lại với bạn để xác nhận lịch trao đổi.</p>
           </div>
         </div>
         <ConsultationForm />

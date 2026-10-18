@@ -7,7 +7,7 @@ import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Quản trị",
-  description: "Khu vực quản trị nội bộ của MONEYFEST Phase 1.",
+  description: "Khu vực quản trị nội bộ của MONEYFEST.",
   robots: {
     index: false,
     follow: false,

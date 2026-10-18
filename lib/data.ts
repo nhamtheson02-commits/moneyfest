@@ -28,13 +28,13 @@ export const services = [
     title: "Ebook trả phí",
     price: "Từ 99.000 VND",
     description: "Bộ workbook thực hành ngân sách, xử lý nợ và lập kế hoạch đầu tư cá nhân.",
-    status: "Sẵn sàng thử nghiệm",
+    status: "Đang mở bán",
   },
   {
     title: "Tư vấn 1:1",
     price: "Miễn phí",
     description: "Buổi làm việc riêng để nhìn rõ dòng tiền, mục tiêu và lập kế hoạch 90 ngày.",
-    status: "Mở form đăng ký",
+    status: "Đăng ký ngay",
   },
   {
     title: "Membership MONEYFEST",

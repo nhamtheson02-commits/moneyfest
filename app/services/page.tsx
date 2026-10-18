@@ -7,7 +7,7 @@ import { services } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Dịch vụ",
   alternates: { canonical: "/services" },
-  description: "Ebook trả phí, tư vấn 1:1, membership sắp ra mắt và dashboard tài chính sắp ra mắt của MONEYFEST.",
+  description: "Ebook, tư vấn 1:1 miễn phí, cộng đồng Membership và Dashboard tài chính của MONEYFEST.",
 };
 
 export default function ServicesPage() {
@@ -18,7 +18,7 @@ export default function ServicesPage() {
           as="h1"
           eyebrow="Dịch vụ"
           title="Sản phẩm và dịch vụ MONEYFEST"
-          description="Phase 1 tập trung xác thực nhu cầu: ebook, tư vấn 1:1 và các gói sắp ra mắt. Chưa tích hợp thanh toán thật."
+          description="Ebook, buổi tư vấn 1:1 miễn phí và những sản phẩm mới đang được chuẩn bị để đồng hành cùng bạn trên hành trình tài chính."
         />
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {services.map((service) => (

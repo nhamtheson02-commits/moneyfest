@@ -22,7 +22,7 @@ export default function TermsPage() {
           <h2>Không đảm bảo lợi nhuận</h2>
           <p>MONEYFEST không cam kết lợi nhuận đầu tư, không đảm bảo kết quả tài chính và không khuyến nghị mua bán sản phẩm cụ thể trong nội dung công khai.</p>
           <h2>Thay đổi nội dung</h2>
-          <p>MONEYFEST có thể cập nhật nội dung, công cụ và điều khoản để phù hợp với giai đoạn phát triển sản phẩm.</p>
+          <p>MONEYFEST có thể cập nhật nội dung, công cụ và điều khoản để ngày càng phù hợp hơn với nhu cầu của người dùng.</p>
         </div>
       </article>
     </PageShell>
