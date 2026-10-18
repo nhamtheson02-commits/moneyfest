@@ -38,7 +38,6 @@ export function MotionProvider() {
     if (!main) return;
 
     const hero = main.querySelector(".mf-hero-copy")?.closest("section") ?? null;
-    const vh = window.innerHeight;
     const seen = new Set<Element>();
     const items: HTMLElement[] = [];
 
@@ -51,8 +50,6 @@ export function MotionProvider() {
         if (seen.has(p)) return;
         p = p.parentElement;
       }
-      // Khối đã nằm trong màn hình đầu tiên: để nguyên (đã có hiệu ứng vào trang bằng CSS).
-      if (el.getBoundingClientRect().top < vh * 0.92) return;
       seen.add(el);
       items.push(el);
     });
@@ -69,18 +66,47 @@ export function MotionProvider() {
 
     const io = new IntersectionObserver(
       (entries) => {
+        // Hiện khi cuộn tới, ẩn lại khi ra khỏi màn hình để lần sau cuộn tới lại có hiệu ứng.
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in");
-          io.unobserve(entry.target);
+          if (entry.isIntersecting) entry.target.classList.add("is-in");
+          else entry.target.classList.remove("is-in");
         });
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
     );
     items.forEach((el) => io.observe(el));
 
+    // Hero (đầu trang): chạy lại hiệu ứng vào trang mỗi khi cuộn ngược về.
+    let heroObserver: IntersectionObserver | null = null;
+    const heroTargets = hero
+      ? Array.from(hero.querySelectorAll<HTMLElement>(".mf-hero-copy > div > *, .mf-hero-img"))
+      : [];
+    if (hero && heroTargets.length) {
+      let out = false;
+      heroObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              out = true;
+              return;
+            }
+            if (!out) return;
+            out = false;
+            heroTargets.forEach((el) => {
+              el.style.animation = "none";
+              void el.offsetWidth;
+              el.style.animation = "";
+            });
+          });
+        },
+        { threshold: 0.35 },
+      );
+      heroObserver.observe(hero);
+    }
+
     return () => {
       io.disconnect();
+      heroObserver?.disconnect();
       items.forEach((el) => {
         el.removeAttribute("data-reveal");
         el.classList.remove("is-in");
