@@ -32,7 +32,7 @@ export default function ToolsPage() {
 
       <section className="mf-cream-section py-12">
         <div className="mf-container">
-          <SectionHeader eyebrow="Cách hoạt động" title="Ba bước, không cần tài khoản" />
+          <SectionHeader eyebrow="Cách hoạt động" title="Ba bước đơn giản" />
           <ol className="tl-steps mt-8">
             {steps.map((step, index) => (
               <li key={step.title} className="tl-step-item">
@@ -54,7 +54,7 @@ export default function ToolsPage() {
         <div className="mf-container">
           <SectionHeader
             eyebrow="Phòng công cụ"
-            title="Bạn đang muốn làm rõ điều gì?"
+            title="Bạn muốn làm rõ điều gì?"
             description="Chọn một thẻ để bắt đầu."
             tone="light"
           />
