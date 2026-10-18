@@ -6,7 +6,7 @@ import { miniTools, processSteps, productCards } from "@/data/home-content";
 
 const problems = [
   ["Thu nhập ổn định nhưng tài sản mơ hồ", "Đi làm nhiều năm nhưng chưa rõ mình đã tích lũy được gì và sẽ đạt tự do tài chính khi nào."],
-  ["Không biết nên ưu tiên điều gì trước", "Nên trả nợ, tiết kiệm, mua bảo hiểm, đầu tư hay mua nhà trước? Làm sao để không hối tiếc?"],
+  ["Không biết nên ưu tiên điều gì trước", "Nên trả nợ, tiết kiệm, mua bảo hiểm, đầu tư hay mua nhà trước? Làm sao để chọn thứ tự phù hợp với hoàn cảnh của mình?"],
   ["Nhiều thông tin nhưng rối hơn", "Nghe ai cũng có lý. Nhưng quyết định sai thì mình phải chịu."],
   ["Cần một kế hoạch phù hợp với mình", "Không phải công thức chung. Bạn cần một lộ trình phù hợp với thu nhập, mục tiêu và hoàn cảnh."],
 ];

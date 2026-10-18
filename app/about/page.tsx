@@ -12,7 +12,7 @@ const coreValues = [
   ["Trí tuệ", "Tìm bản chất, không chỉ nhìn bề mặt.", icons.lightbulb],
   ["Chính trực", "Đặt lợi ích khách hàng trước hoa hồng.", icons.shield],
   ["Sáng tỏ", "Biến điều phức tạp thành quyết định dễ hiểu.", icons.compass],
-  ["Trách nhiệm", "Không FOMO, không hô hào, không cam kết lợi nhuận.", icons.scale],
+  ["Trách nhiệm", "Thông tin rõ ràng, đánh giá cả rủi ro, không cam kết lợi nhuận.", icons.scale],
   ["Tư duy dài hạn", "Ưu tiên sức khỏe tài chính bền vững.", icons.target],
 ] as const;
 

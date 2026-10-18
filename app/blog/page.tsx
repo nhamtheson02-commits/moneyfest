@@ -22,7 +22,7 @@ export default function BlogPage() {
         image="/images/moneyfest/blog/blog-hero-ai.png"
         primary={{ href: "#featured", label: "Đọc bài nổi bật" }}
         secondary={{ href: "/ebooks", label: "Nhận ebook miễn phí" }}
-        badges={["Phân tích dễ hiểu", "Không FOMO", "Có framework", "Ứng dụng được"]}
+        badges={["Phân tích dễ hiểu", "Quyết định có cân nhắc", "Có framework", "Ứng dụng được"]}
       />
 
       <section id="featured" className="mf-dark-section py-14">

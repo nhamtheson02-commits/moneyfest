@@ -19,7 +19,7 @@ export default function CommunityPage() {
         image="/images/moneyfest/community/community-hero-ai.png"
         primary={{ href: "#channels", label: "Tham gia ngay" }}
         secondary={{ href: "#how", label: "Xem hoạt động cộng đồng" }}
-        badges={["Học hỏi có chọn lọc", "Không FOMO", "Có framework", "Có cộng đồng đồng hành"]}
+        badges={["Học hỏi có chọn lọc", "Quyết định có cân nhắc", "Có framework", "Có cộng đồng đồng hành"]}
       />
 
       <section id="channels" className="mf-dark-section py-14">
@@ -65,7 +65,7 @@ export default function CommunityPage() {
         </div>
       </section>
 
-      <CTASection title="Bắt đầu từ một cộng đồng, đi tới những quyết định tốt hơn." description="Chọn kênh phù hợp với bạn và tham gia Moneyfest Community ngay hôm nay." primary="Tham gia cộng đồng" />
+      <CTASection title="Bắt đầu từ một cộng đồng, đi tới những quyết định tốt hơn." description="Chọn kênh phù hợp với bạn và tham gia Moneyfest Community khi bạn sẵn sàng." primary="Tham gia cộng đồng" />
     </PageShell>
   );
 }

@@ -9,7 +9,7 @@ export const communityChannels = [
 
 export const communityRules = [
   { title: "Tôn trọng", description: "Không công kích, chê bai hay áp đặt tư tưởng." },
-  { title: "Không FOMO", description: "Không hô hào, thao túng hay săn tín ngắn hạn." },
+  { title: "Bình tĩnh", description: "Chia sẻ để cùng cân nhắc, không thúc ép hay chạy theo biến động ngắn hạn." },
   { title: "Minh bạch", description: "Chia sẻ có trách nhiệm, nêu rõ dẫn chứng và rủi ro tồn tại." },
   { title: "An toàn", description: "Cẩn trọng quảng cáo, scam và thông tin chưa kiểm chứng." },
 ];
